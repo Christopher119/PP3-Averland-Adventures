@@ -26,13 +26,23 @@ class Character:
     Creates an Instance of a Character Class.
     """
 
-    def __init__(self, name, health, attack, defence, speed, gold):
+    def __init__(self, name, health, attack, defence, speed):
         self.name = name
         self.health = health
         self.attack = attack
         self.defence = defence
         self.speed = speed
+
+class Player(Character):
+    """
+    Creates an Instance of a Player Character Class.
+    """
+
+    def __init__(self, name, health, attack, defence, speed, gold, inventory, quests):
+        super().__init__(name, health, attack, defence, speed)
         self.gold = gold
+        self.inventory = inventory
+        self.quests = quests
 
 #move to intro.py
 def splash_screen():
@@ -97,9 +107,11 @@ def game_intro():
     slow_print("Welcome to the kingdom of Averland, brave adventurer.")
     slow_print("What is your name?\n")
     your_name = input()
-    adventurer = Character(your_name, 100, 10, 10, 5, 10)
+    adventurer = Player(your_name, 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], ["Empty"])
     slow_print(f"You are {adventurer.name}! You are a brave soul with {adventurer.health} points of health.")
     slow_print(f"{adventurer.attack} attack, {adventurer.defence} defence, {adventurer.speed} speed and {adventurer.gold} gold pieces.")
+    slow_print(f"You have {adventurer.inventory} in your inventory.")
+    slow_print(f"Your quest log is {adventurer.quests}... for now.")
     slow_print(f"Prepare to embark on a thrilling adventure, in pursuit of fame and fortune, brave {adventurer.name}!\n")
     slow_print("...", 0.25)
     slow_print("..", 0.25)
@@ -113,12 +125,13 @@ def town():
     """
     os.system('clear')
     print("PLACEHOLDER TEXT")
-    print("You are in town.")
-    print("1. Shop.")
-    print("2. Accept a quest.")
-    print("3. Depart on an adventure.")
-    print("4. Rest and end your adventures.")
-    choice = input("What would you like to do?\n")
+    slow_print("You are in town.")
+    slow_print("What would you like to do?\n")
+    slow_print("1. Shop.")
+    slow_print("2. Accept a quest.")
+    slow_print("3. Depart on an adventure.")
+    slow_print("4. Rest and end your adventures.")
+    choice = input()
     if(choice == str(1)):
         shop()
 
@@ -130,9 +143,9 @@ def town():
 
     elif(choice == str(4)):
         os.system('clear')
-        print("Rest now, brave adventurer.")
-        print("Perhaps we shall see you again, another time.")
-        print("Farewell.")
+        slow_print("Rest now, brave adventurer.")
+        slow_print("Perhaps we shall see you again, another time.")
+        slow_print("Farewell.")
 
     else:
         print("error")
@@ -144,24 +157,25 @@ def shop():
     """
     os.system('clear')
     print("PLACEHOLDER TEXT")
-    print("You are in the shop.")
-    print("1. Buy.")
-    print("2. Sell.")
-    print("3. Leave.")
+    slow_print("You are in the shop.")
+    slow_print("What would you like to do?\n")
+    slow_print("1. Buy.")
+    slow_print("2. Sell.")
+    slow_print("3. Leave.")
 
     def buy():
         os.system('clear')
-        print("Buy things.\n")
+        slow_print("Buy things.\n")
         shop()
 
     def sell():
         os.system('clear')
-        print("Sell things.\n")
+        slow_print("Sell things.\n")
         shop()
 
     def leave_shop():
         os.system('clear')
-        print("You leave.\n")
+        slow_print("You leave.\n")
         town()
 
     choice = input("What would you like to do?\n")
@@ -181,27 +195,28 @@ def shop():
 def find_a_quest():
     os.system('clear')
     print("PLACEHOLDER TEXT")
-    print("You are in the tavern.")
-    print("1. Check the Quest Board.")
-    print("2. Ask a local for work.")
-    print("3. Leave.")
+    slow_print("You are in the tavern.")
+    slow_print("What would you like to do?\n")
+    slow_print("1. Check the Quest Board.")
+    slow_print("2. Ask a local for work.")
+    slow_print("3. Leave.")
 
     def quest_board():
         os.system('clear')
-        print("You check the board and accept X.\n")
+        slow_print("You check the board and accept X.\n")
         find_a_quest()
 
     def ask_a_local():
         os.system('clear')
-        print("You ask a local and they tell you X.\n")
+        slow_print("You ask a local and they tell you X.\n")
         find_a_quest()
 
     def leave_tavern():
         os.system('clear')
-        print("You leave.\n")
+        slow_print("You leave.\n")
         town()
 
-    choice = input("What would you like to do?\n")
+    choice = input()
     if(choice == str(1)):
         quest_board()
 
@@ -218,23 +233,24 @@ def find_a_quest():
 def begin_adventure():
     os.system('clear')
     print("PLACEHOLDER TEXT")
-    print("You set out from town.")
-    print("1. Merchant Road.")
-    print("2. Forest.")
-    print("3. Stay in Town.")
+    slow_print("You set out from town.")
+    slow_print("What is your destination?\n")
+    slow_print("1. Merchant Road.")
+    slow_print("2. Forest.")
+    slow_print("3. Stay in Town.")
 
-    choice = input("What is your destination?\n")
+    choice = input()
     if(choice == str(1)):
         os.system('clear')
-        print("You depart towards the forest.\n")
+        slow_print("You depart towards the forest.\n")
 
     elif(choice == str(2)):
         os.system('clear')
-        print("You travel the merchant's road.\n")
+        slow_print("You travel the merchant's road.\n")
 
     elif(choice == str(3)):
         os.system('clear')
-        print("You turn around and go back to the town square.\n")
+        slow_print("You turn around and go back to the town square.\n")
         town()
 
     else:
