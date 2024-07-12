@@ -60,22 +60,29 @@ def splash_screen():
     os.system('clear')
     slow_print("Averland Adventures\n")
     slow_print("A text based choose your own adventure RPG game.")
-    slow_print("What would you like to do?\n")
-    slow_print("1. Start Game")
-    slow_print("2. Read Rules")
-    slow_print("3. Exit Game")
-    choice = input()
-    if(choice == str(1)):
-        game_intro()
+    while True:
+        slow_print("What would you like to do?\n")
+        slow_print("1. Start Game")
+        slow_print("2. Read Rules")
+        slow_print("3. Exit Game")
+        try:
+            choice = input()
+            if(choice != str(1) and choice != str(2)
+                and choice != str(3)):
+                raise Exception
+        
+        except Exception:
+            print("Please enter only 1, 2 or 3.\n")
+        
+        else:
+            if(choice == str(1)):
+                game_intro()
 
-    elif(choice == str(2)):
-        rules()
+            elif(choice == str(2)):
+                rules()
 
-    elif(choice == str(3)):
-        exit_game()
-
-    else:
-        print("error")
+            elif(choice == str(3)):
+                exit_game()
 
 #move to intro.py
 def rules():
@@ -90,11 +97,18 @@ def rules():
     slow_print("Slaying monsters, rescuing the innocent, recovering lost treasures.")
     slow_print("The game will be played entirely using the number keys. (1,2,3, etc.)")
     slow_print("Simply follow the on screen prompts to decide your next action.")
-    slow_print("Best of luck on your quests, brace Adventurer!")
+    slow_print("Best of luck on your quests, brave Adventurer!")
     slow_print("\nTo return to the main menu, press 1:\n")
-    go_back = input()
-    if(go_back == str(1)):
-        splash_screen()
+    while True:
+        go_back = input()
+        try:
+            if(go_back != str(1)):
+                raise Exception
+        except Exception:
+            print("Please press 1.\n")
+        else:
+            if(go_back == str(1)):
+                splash_screen()
 
 #move to intro.py
 def exit_game():
@@ -113,18 +127,29 @@ def game_intro():
     """
     os.system('clear')
     slow_print("Welcome to the kingdom of Averland, brave adventurer.")
-    slow_print("What is your name?\n")
-    your_name = input()
-    adventurer = Player(your_name, 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], ["Empty"])
-    slow_print(f"You are {adventurer.name}! You are a brave soul with {adventurer.health} points of health.")
-    slow_print(f"{adventurer.attack} attack, {adventurer.defence} defence, {adventurer.speed} speed and {adventurer.gold} gold pieces.")
-    slow_print(f"You have {adventurer.inventory} in your inventory.")
-    slow_print(f"Your quest log is {adventurer.quests}... for now.")
-    slow_print(f"Prepare to embark on a thrilling adventure, in pursuit of fame and fortune, brave {adventurer.name}!\n")
-    slow_print("...", 0.25)
-    slow_print("..", 0.25)
-    slow_print(".", 0.25)
-    town()
+    while True:
+        slow_print("What is your name?")
+        print("(Use alphabetic characters only and use less than 20 characters)")
+        your_name = input()
+        try:
+            if(your_name.isalpha() is False):
+                raise Exception
+            elif(len(your_name) > 20):
+                raise Exception
+        except Exception:
+            print("Please keep your name under 20 characters and only use alphabetic characters.\n")
+        else:
+            adventurer = Player(your_name, 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], ["Empty"])
+            slow_print(f"You are {adventurer.name}! You are a brave soul with {adventurer.health} points of health.")
+            slow_print(f"{adventurer.attack} attack, {adventurer.defence} defence, {adventurer.speed} speed and {adventurer.gold} gold pieces.")
+            slow_print(f"You have {adventurer.inventory} in your inventory.")
+            slow_print(f"Your quest log is {adventurer.quests}... for now.")
+            slow_print(f"Prepare to embark on a thrilling adventure, in pursuit of fame and fortune, brave {adventurer.name}!\n")
+            slow_print("...", 0.25)
+            slow_print("..", 0.25)
+            slow_print(".", 0.25)
+            town()
+            return False
 
 #move to hubworld.py
 def town():
@@ -132,45 +157,43 @@ def town():
     A function to hold the Town the player will return to after completing each adventure.
     """
     os.system('clear')
-    print("PLACEHOLDER TEXT")
     slow_print("You are in town.")
-    slow_print("What would you like to do?\n")
-    slow_print("1. Shop.")
-    slow_print("2. Accept a quest.")
-    slow_print("3. Depart on an adventure.")
-    slow_print("4. Rest and end your adventures.")
-    choice = input()
-    if(choice == str(1)):
-        shop()
+    while True:
+        slow_print("What would you like to do?\n")
+        slow_print("1. Shop.")
+        slow_print("2. Accept a quest.")
+        slow_print("3. Depart on an adventure.")
+        slow_print("4. Rest and end your adventures.")
+        choice = input()
+        try:
+            if(choice != str(1) and choice != str(2)
+                and choice != str(3) and choice != str(4)):
+                raise Exception
+        except:
+            print("Please enter only 1, 2, 3 or 4.\n")
+        else:
+            if(choice == str(1)):
+                shop()
 
-    elif(choice == str(2)):
-        find_a_quest()
+            elif(choice == str(2)):
+                find_a_quest()
 
-    elif(choice == str(3)):
-        begin_adventure()
+            elif(choice == str(3)):
+                begin_adventure()
 
-    elif(choice == str(4)):
-        os.system('clear')
-        slow_print("Rest now, brave adventurer.")
-        slow_print("Perhaps we shall see you again, another time.")
-        slow_print("Farewell.")
-
-    else:
-        print("error")
+            elif(choice == str(4)):
+                os.system('clear')
+                slow_print("Rest now, brave adventurer.")
+                slow_print("Perhaps we shall see you again, another time.")
+                slow_print("Farewell.")
+                return False
 
 #move to hubworld.py
 def shop():
     """
     A function to hold the Shop the player can spend their gold or sell their items at.
     """
-    os.system('clear')
-    print("PLACEHOLDER TEXT")
-    slow_print("You are in the shop.")
-    slow_print("What would you like to do?\n")
-    slow_print("1. Buy.")
-    slow_print("2. Sell.")
-    slow_print("3. Leave.")
-
+    #methods specific to shopping
     def buy():
         os.system('clear')
         slow_print("Buy things.\n")
@@ -186,29 +209,37 @@ def shop():
         slow_print("You leave.\n")
         town()
 
-    choice = input("What would you like to do?\n")
-    if(choice == str(1)):
-        buy()
+    os.system('clear')
+    slow_print("You are in the shop.")
+    while True:
+        slow_print("What would you like to do?\n")
+        slow_print("1. Buy.")
+        slow_print("2. Sell.")
+        slow_print("3. Leave.")
+        choice = input()
+        try:
+            if(choice != str(1) and choice != str(2)
+                and choice != str(3)):
+                raise Exception
+        except:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if(choice == str(1)):
+                buy()
 
-    elif(choice == str(2)):
-        sell()
+            elif(choice == str(2)):
+                sell()
 
-    elif(choice == str(3)):
-        leave_shop()
-
-    else:
-        print("error")
+            elif(choice == str(3)):
+                leave_shop()
 
 #move to hubworld.py
 def find_a_quest():
-    os.system('clear')
-    print("PLACEHOLDER TEXT")
-    slow_print("You are in the tavern.")
-    slow_print("What would you like to do?\n")
-    slow_print("1. Check the Quest Board.")
-    slow_print("2. Ask a local for work.")
-    slow_print("3. Leave.")
+    """
+    A function to hold the tavern where the player can find new quests.
+    """
 
+    #methods specific to the tavern for quests
     def quest_board():
         os.system('clear')
         slow_print("You check the board and accept X.\n")
@@ -224,45 +255,59 @@ def find_a_quest():
         slow_print("You leave.\n")
         town()
 
-    choice = input()
-    if(choice == str(1)):
-        quest_board()
+    os.system('clear')
+    slow_print("You are in the tavern.")
+    while True:
+        slow_print("What would you like to do?\n")
+        slow_print("1. Check the Quest Board.")
+        slow_print("2. Ask a local for work.")
+        slow_print("3. Leave.")
+        choice = input()
+        try:
+            if(choice != str(1) and choice != str(2)
+                and choice != str(3)):
+                raise Exception
+        except:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if(choice == str(1)):
+                quest_board()
 
-    elif(choice == str(2)):
-        ask_a_local()
+            elif(choice == str(2)):
+                ask_a_local()
 
-    elif(choice == str(3)):
-        leave_tavern()
-
-    else:
-        print("error")
+            elif(choice == str(3)):
+                leave_tavern()
 
 #move to hubworld.py
 def begin_adventure():
     os.system('clear')
-    print("PLACEHOLDER TEXT")
     slow_print("You set out from town.")
-    slow_print("What is your destination?\n")
-    slow_print("1. Merchant Road.")
-    slow_print("2. Forest.")
-    slow_print("3. Stay in Town.")
+    while True:
+        slow_print("What is your destination?\n")
+        slow_print("1. Merchant Road.")
+        slow_print("2. Forest.")
+        slow_print("3. Stay in Town.")
+        choice = input()
+        try:
+            if(choice != str(1) and choice != str(2)
+                and choice != str(3)):
+                raise Exception
+        except:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if(choice == str(1)):
+                os.system('clear')
+                slow_print("You depart towards the forest.\n")
 
-    choice = input()
-    if(choice == str(1)):
-        os.system('clear')
-        slow_print("You depart towards the forest.\n")
+            elif(choice == str(2)):
+                os.system('clear')
+                slow_print("You travel the merchant's road.\n")
 
-    elif(choice == str(2)):
-        os.system('clear')
-        slow_print("You travel the merchant's road.\n")
-
-    elif(choice == str(3)):
-        os.system('clear')
-        slow_print("You turn around and go back to the town square.\n")
-        town()
-
-    else:
-        print("error")
+            elif(choice == str(3)):
+                os.system('clear')
+                slow_print("You turn around and go back to the town square.\n")
+                town()
 
 def main():
     """
