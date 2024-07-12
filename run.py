@@ -44,6 +44,14 @@ class Player(Character):
         self.inventory = inventory
         self.quests = quests
 
+class Enemy(Character):
+    """
+    Creates an Instance of an Enemy Character Class.
+    """
+
+    def __init__(self, name, health, attack, defence, speed):
+        super().__init__(name, health, attack, defence, speed)
+
 #move to intro.py
 def splash_screen():
     """
