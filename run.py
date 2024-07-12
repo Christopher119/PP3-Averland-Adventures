@@ -2,6 +2,12 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
+#https://www.geeksforgeeks.org/clear-screen-python/
+import os
+#imported to create a character by character print function
+from sys import stdout
+from time import sleep
+
 #move to characters.py to define protag, enemies, etc in one file.
 class Character:
     """
@@ -21,6 +27,7 @@ def splash_screen():
     """
     A function to display the splash screen to start, display rules, and end the game based on player input.
     """
+    os.system('clear')
     print("Averland Adventures\n")
     print("A text based choose your own adventure RPG game.")
     print("1. Start Game")
@@ -44,6 +51,9 @@ def rules():
     """
     A function to display rules to the player.
     """
+    #https://www.geeksforgeeks.org/clear-screen-python/
+    #clearing screen before presenting new lines
+    os.system('clear')
     print("In Averland Adventures you take on the role of a new adventurer.")
     print("It will be your job to fulfill quests for the townsfolk.")
     print("Slaying monsters, rescuing the innocent, recovering lost treasures.")
@@ -59,6 +69,7 @@ def exit_game():
     """
     A function to end the game.
     """
+    os.system('clear')
     print("You will be missed, brave adventurer.")
     print("Perhaps we shall see you again, another time.")
     print("Farewell.")
@@ -68,6 +79,7 @@ def game_intro():
     """
     A function to begin the game.
     """
+    os.system('clear')
     print("Welcome to the kingdom of Averland, brave adventurer.")
     your_name = input("What is your name?\n")
     adventurer = Character(your_name, 100, 10, 10, 5, 10)
@@ -81,6 +93,8 @@ def town():
     """
     A function to hold the Town the player will return to after completing each adventure.
     """
+    sleep(3)
+    os.system('clear')
     print("PLACEHOLDER TEXT")
     print("You are in town.")
     print("1. Shop.")
@@ -89,18 +103,16 @@ def town():
     print("4. Rest and end your adventures.")
     choice = input("What would you like to do?\n")
     if(choice == str(1)):
-        print("\n")
         shop()
 
     elif(choice == str(2)):
-        print("\n")
         find_a_quest()
 
     elif(choice == str(3)):
-        print("\n")
         begin_adventure()
 
     elif(choice == str(4)):
+        os.system('clear')
         print("Rest now, brave adventurer.")
         print("Perhaps we shall see you again, another time.")
         print("Farewell.")
@@ -113,6 +125,7 @@ def shop():
     """
     A function to hold the Shop the player can spend their gold or sell their items at.
     """
+    os.system('clear')
     print("PLACEHOLDER TEXT")
     print("You are in the shop.")
     print("1. Buy.")
@@ -120,14 +133,17 @@ def shop():
     print("3. Leave.")
 
     def buy():
+        os.system('clear')
         print("Buy things.\n")
         shop()
 
     def sell():
+        os.system('clear')
         print("Sell things.\n")
         shop()
 
     def leave_shop():
+        os.system('clear')
         print("You leave.\n")
         town()
 
@@ -146,6 +162,7 @@ def shop():
 
 #move to hubworld.py
 def find_a_quest():
+    os.system('clear')
     print("PLACEHOLDER TEXT")
     print("You are in the tavern.")
     print("1. Check the Quest Board.")
@@ -153,14 +170,17 @@ def find_a_quest():
     print("3. Leave.")
 
     def quest_board():
+        os.system('clear')
         print("You check the board and accept X.\n")
         find_a_quest()
 
     def ask_a_local():
+        os.system('clear')
         print("You ask a local and they tell you X.\n")
         find_a_quest()
 
     def leave_tavern():
+        os.system('clear')
         print("You leave.\n")
         town()
 
@@ -179,6 +199,7 @@ def find_a_quest():
 
 #move to hubworld.py
 def begin_adventure():
+    os.system('clear')
     print("PLACEHOLDER TEXT")
     print("You set out from town.")
     print("1. Merchant Road.")
@@ -187,12 +208,15 @@ def begin_adventure():
 
     choice = input("What is your destination?\n")
     if(choice == str(1)):
+        os.system('clear')
         print("You depart towards the forest.\n")
 
     elif(choice == str(2)):
+        os.system('clear')
         print("You travel the merchant's road.\n")
 
     elif(choice == str(3)):
+        os.system('clear')
         print("You turn around and go back to the town square.\n")
         town()
 
