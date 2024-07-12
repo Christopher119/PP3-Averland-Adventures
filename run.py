@@ -8,6 +8,18 @@ import os
 from sys import stdout
 from time import sleep
 
+#https://stackoverflow.com/questions/75486619/how-to-print-one-character-at-a-time-but-maintain-print-function-python
+def slow_print(text, delay=0.025):
+    """
+    A function to print out lines character by character rather than having it presented immediately
+    """
+    if text: #checking for text content in the provided string
+        for c in text:
+            print(c, end='', flush=True)
+            sleep(delay)
+        if text[-1] != '\n':
+            print()
+
 #move to characters.py to define protag, enemies, etc in one file.
 class Character:
     """
@@ -28,12 +40,13 @@ def splash_screen():
     A function to display the splash screen to start, display rules, and end the game based on player input.
     """
     os.system('clear')
-    print("Averland Adventures\n")
-    print("A text based choose your own adventure RPG game.")
-    print("1. Start Game")
-    print("2. Read Rules")
-    print("3. Exit Game")
-    choice = input("What would you like to do?\n")
+    slow_print("Averland Adventures\n")
+    slow_print("A text based choose your own adventure RPG game.")
+    slow_print("What would you like to do?\n")
+    slow_print("1. Start Game")
+    slow_print("2. Read Rules")
+    slow_print("3. Exit Game")
+    choice = input()
     if(choice == str(1)):
         game_intro()
 
@@ -54,13 +67,14 @@ def rules():
     #https://www.geeksforgeeks.org/clear-screen-python/
     #clearing screen before presenting new lines
     os.system('clear')
-    print("In Averland Adventures you take on the role of a new adventurer.")
-    print("It will be your job to fulfill quests for the townsfolk.")
-    print("Slaying monsters, rescuing the innocent, recovering lost treasures.")
-    print("The game will be played entirely using the number keys. (1,2,3, etc.)")
-    print("Simply follow the on screen prompts to decide your next action.")
-    print("Best of luck on your quests, brace Adventurer!")
-    go_back = input("To return to the main menu, press 1:\n")
+    slow_print("In Averland Adventures you take on the role of a new adventurer.")
+    slow_print("It will be your job to fulfill quests for the townsfolk.")
+    slow_print("Slaying monsters, rescuing the innocent, recovering lost treasures.")
+    slow_print("The game will be played entirely using the number keys. (1,2,3, etc.)")
+    slow_print("Simply follow the on screen prompts to decide your next action.")
+    slow_print("Best of luck on your quests, brace Adventurer!")
+    slow_print("\nTo return to the main menu, press 1:\n")
+    go_back = input()
     if(go_back == str(1)):
         splash_screen()
 
@@ -70,9 +84,9 @@ def exit_game():
     A function to end the game.
     """
     os.system('clear')
-    print("You will be missed, brave adventurer.")
-    print("Perhaps we shall see you again, another time.")
-    print("Farewell.")
+    slow_print("You will be missed, brave adventurer.")
+    slow_print("Perhaps we shall see you again, another time.")
+    slow_print("Farewell.")
 
 #move to intro.py
 def game_intro():
@@ -80,12 +94,16 @@ def game_intro():
     A function to begin the game.
     """
     os.system('clear')
-    print("Welcome to the kingdom of Averland, brave adventurer.")
-    your_name = input("What is your name?\n")
+    slow_print("Welcome to the kingdom of Averland, brave adventurer.")
+    slow_print("What is your name?\n")
+    your_name = input()
     adventurer = Character(your_name, 100, 10, 10, 5, 10)
-    print(f"You are {adventurer.name}! You are a brave soul with {adventurer.health} points of health.")
-    print(f"{adventurer.attack} attack, {adventurer.defence} defence, {adventurer.speed} speed and {adventurer.gold} gold pieces.")
-    print(f"Prepare to embark on a thrilling adventure, in pursuit of fame and fortune, brave {adventurer.name}!\n")
+    slow_print(f"You are {adventurer.name}! You are a brave soul with {adventurer.health} points of health.")
+    slow_print(f"{adventurer.attack} attack, {adventurer.defence} defence, {adventurer.speed} speed and {adventurer.gold} gold pieces.")
+    slow_print(f"Prepare to embark on a thrilling adventure, in pursuit of fame and fortune, brave {adventurer.name}!\n")
+    slow_print("...", 0.25)
+    slow_print("..", 0.25)
+    slow_print(".", 0.25)
     town()
 
 #move to hubworld.py
@@ -93,7 +111,6 @@ def town():
     """
     A function to hold the Town the player will return to after completing each adventure.
     """
-    sleep(3)
     os.system('clear')
     print("PLACEHOLDER TEXT")
     print("You are in town.")
