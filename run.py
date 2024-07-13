@@ -20,7 +20,6 @@ def slow_print(text, delay=0.025):
         if text[-1] != '\n':
             print()
 
-
 """
 CHARACTER CLASSES AND METHODS
 """
@@ -42,8 +41,6 @@ class Character:
         damage_taken = self.attack - other_char.defence
         other_char.health -= damage_taken
 
-
-
 class Player(Character):
     """
     Creates an Instance of a Player Character Class.
@@ -62,6 +59,8 @@ class Enemy(Character):
 
     def __init__(self, name, health, attack, defence, speed):
         super().__init__(name, health, attack, defence, speed)
+
+adventurer = Player("", 0, 0, 0, 0, 0, [], [])
 
 """
 INTRO FUNCTIONS
@@ -193,16 +192,19 @@ def town():
         else:
             if(choice == str(1)):
                 shop()
+                return False
 
             elif(choice == str(2)):
                 find_a_quest()
+                return False
 
             elif(choice == str(3)):
                 begin_adventure()
+                return False
 
             elif(choice == str(4)):
                 os.system('clear')
-                slow_print("Rest now, brave adventurer.")
+                slow_print(f"Rest now, brave {adventurer.name}.")
                 slow_print("Perhaps we shall see you again, another time.")
                 slow_print("Farewell.")
                 return False
@@ -217,16 +219,19 @@ def shop():
         os.system('clear')
         slow_print("Buy things.\n")
         shop()
+        return False
 
     def sell():
         os.system('clear')
         slow_print("Sell things.\n")
         shop()
+        return False
 
     def leave_shop():
         os.system('clear')
         slow_print("You leave.\n")
         town()
+        return False
 
     os.system('clear')
     slow_print("You are in the shop.")
@@ -245,12 +250,15 @@ def shop():
         else:
             if(choice == str(1)):
                 buy()
+                return False
 
             elif(choice == str(2)):
                 sell()
+                return False
 
             elif(choice == str(3)):
                 leave_shop()
+                return False
 
 #move to hubworld.py
 def find_a_quest():
@@ -261,8 +269,45 @@ def find_a_quest():
     #methods specific to the tavern for quests
     def quest_board():
         os.system('clear')
-        slow_print("You check the board and accept X.\n")
-        find_a_quest()
+        slow_print("You check the quest board for official quests from the town guild.\n")
+        while True:
+            print("Currently available quests:")
+            print("1. Slay 5 slimes on the Merchant Road")
+            print("2. Defend a caravan on the Merchant Road")
+            print("3. Clear out a bandit camp in the Forest")
+            print("4. Leave the quest board")
+            print("What quest will you accept?\n")
+            choice = input()
+            try:
+                if(choice != str(1) and choice != str(2)
+                    and choice != str(3) and choice != str(4)):
+                    raise Exception
+            except:
+                print("Please enter only 1, 2, 3, or 4.\n")
+            else:
+                if(choice == str(1)):
+                    if("Slay Slimes" in adventurer.quests):
+                        print("You have already accepted this quest.")
+                    else:
+                        print("You have accepted the quest to defeat Slimes.")
+                        adventurer.quests.append("Slay Slimes")
+
+                elif(choice == str(2)):
+                    if("Defend Caravan" in adventurer.quests):
+                        print("You have already accepted this quest.")
+                    else:
+                        print("You have accepted the quest to defend a merchant caravan.")
+                        adventurer.quests.append("Defend Caravan")
+
+                elif(choice == str(3)):
+                    if("Clear Bandit Camp" in adventurer.quests):
+                        print("You have already accepted this quest.")
+                    else:
+                        print("You have accepted the quest to clear out a bandit camp.")
+                        adventurer.quests.append("Clear Bandit Camp")
+                elif(choice == str(4)):
+                    find_a_quest()
+                    return False
 
     def ask_a_local():
         os.system('clear')
@@ -291,12 +336,15 @@ def find_a_quest():
         else:
             if(choice == str(1)):
                 quest_board()
+                return False
 
             elif(choice == str(2)):
                 ask_a_local()
+                return False
 
             elif(choice == str(3)):
                 leave_tavern()
+                return False
 
 #move to hubworld.py
 def begin_adventure():
@@ -332,13 +380,8 @@ def main():
     """
     Runs the primary functions for the game.
     """
+    adventurer = Player("Chris", 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], [])
     #splash_screen()
-    adventurer = Player("Chris", 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], ["Empty"])
-    enemySlime = Enemy("Slime", 20, 3, 3, 2)
-
-    print(enemySlime.health)
-    adventurer.attack_other(enemySlime)
-    print(enemySlime.health)
-
+    find_a_quest()
 
 main()
