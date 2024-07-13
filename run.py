@@ -20,6 +20,11 @@ def slow_print(text, delay=0.025):
         if text[-1] != '\n':
             print()
 
+
+"""
+CHARACTER CLASSES AND METHODS
+"""
+
 #move to characters.py to define protag, enemies, etc in one file.
 class Character:
     """
@@ -32,6 +37,12 @@ class Character:
         self.attack = attack
         self.defence = defence
         self.speed = speed
+
+    def attack_other(self, other_char):
+        damage_taken = self.attack - other_char.defence
+        other_char.health -= damage_taken
+
+
 
 class Player(Character):
     """
@@ -51,6 +62,10 @@ class Enemy(Character):
 
     def __init__(self, name, health, attack, defence, speed):
         super().__init__(name, health, attack, defence, speed)
+
+"""
+INTRO FUNCTIONS
+"""
 
 #move to intro.py
 def splash_screen():
@@ -150,6 +165,10 @@ def game_intro():
             slow_print(".", 0.25)
             town()
             return False
+
+"""
+HUBWORLD FUNCTIONS
+"""
 
 #move to hubworld.py
 def town():
@@ -313,6 +332,13 @@ def main():
     """
     Runs the primary functions for the game.
     """
-    splash_screen()
+    #splash_screen()
+    adventurer = Player("Chris", 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], ["Empty"])
+    enemySlime = Enemy("Slime", 20, 3, 3, 2)
+
+    print(enemySlime.health)
+    adventurer.attack_other(enemySlime)
+    print(enemySlime.health)
+
 
 main()
