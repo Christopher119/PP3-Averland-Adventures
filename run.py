@@ -311,8 +311,45 @@ def find_a_quest():
 
     def ask_a_local():
         os.system('clear')
-        slow_print("You ask a local and they tell you X.\n")
-        find_a_quest()
+        slow_print("You ask a local and they tell you about some jobs you could do.\n")
+        while True:
+            print("Currently available quests:")
+            print("1. Find lost necklace on the Merchant Road")
+            print("2. Person missing in the forest")
+            print("3. Bandit kidnapping")
+            print("4. Leave the locals")
+            print("Will you offer help with any of their jobs?\n")
+            choice = input()
+            try:
+                if(choice != str(1) and choice != str(2)
+                    and choice != str(3) and choice != str(4)):
+                    raise Exception
+            except:
+                print("Please enter only 1, 2, 3, or 4.\n")
+            else:
+                if(choice == str(1)):
+                    if("Missing Necklace" in adventurer.quests):
+                        print("You have already accepted this quest.")
+                    else:
+                        print("You have offered to help find the necklace.")
+                        adventurer.quests.append("Missing Necklace")
+
+                elif(choice == str(2)):
+                    if("Missing Person" in adventurer.quests):
+                        print("You have already accepted this quest.")
+                    else:
+                        print("You have agreed to help find the missing person.")
+                        adventurer.quests.append("Missing Person")
+
+                elif(choice == str(3)):
+                    if("Bandit Kidnapping" in adventurer.quests):
+                        print("You have already accepted this quest.")
+                    else:
+                        print("You have agreed to help rescue the kidnapped person.")
+                        adventurer.quests.append("Bandit Kidnapping")
+                elif(choice == str(4)):
+                    find_a_quest()
+                    return False
 
     def leave_tavern():
         os.system('clear')
