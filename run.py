@@ -60,7 +60,7 @@ class Enemy(Character):
     def __init__(self, name, health, attack, defence, speed):
         super().__init__(name, health, attack, defence, speed)
 
-adventurer = Player("", 0, 0, 0, 0, 0, [], [])
+adventurer = Player("", 0, 0, 0, 0, 1000, [], [])
 
 """
 INTRO FUNCTIONS
@@ -274,6 +274,7 @@ def shop():
                                     adventurer.inventory.append("Silver Sword")
                             elif(choice == str(4)):
                                 shop()
+                                return False
 
                 elif(choice == str(2)):
                     while True:
@@ -316,6 +317,7 @@ def shop():
                                     adventurer.inventory.append("Silver Armor")
                             elif(choice == str(4)):
                                 shop()
+                                return False
                     
 
                 elif(choice == str(3)):
@@ -353,6 +355,7 @@ def shop():
                                     adventurer.inventory.append("Max Potion")
                             elif(choice == str(4)):
                                 shop()
+                                return False
 
                 elif(choice == str(4)):
                     find_a_quest()
