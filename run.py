@@ -60,7 +60,7 @@ class Enemy(Character):
     def __init__(self, name, health, attack, defence, speed):
         super().__init__(name, health, attack, defence, speed)
 
-adventurer = Player("", 0, 0, 0, 0, 1000, [], [])
+adventurer = Player("", 0, 0, 0, 0, 1000, ["Old Sword", "New Sword", "Steel Sword", "Potion", "Potion", "Potion", "Potion", "Potion"], [])
 
 """
 INTRO FUNCTIONS
@@ -363,7 +363,48 @@ def shop():
 
     def sell():
         os.system('clear')
-        slow_print("Sell things.\n")
+        slow_print("You open your bag to see what you could sell to the shopkeep.\n")
+        #https://stackoverflow.com/questions/29811082/how-to-print-out-a-numbered-list-in-python-3
+        while True:
+            available_items = 0
+            for number, items_owned in enumerate(adventurer.inventory):
+                print(number+1, items_owned)
+                available_items+=1
+            print("What would you like to sell? Press 0 to return to the shop.")
+            choice = int(input())
+            try:
+                if(choice > available_items and choice.alpha() is False):
+                    raise Exception
+            except Exception:
+                print("Please only enter the numbers on screen, or 0 to return to the shop.")
+            else:
+                if(choice == 0):
+                    shop()
+                    return False
+                elif(choice <= available_items and choice > 0):
+                    if(adventurer.inventory[choice-1] == "Iron Sword" or adventurer.inventory[choice-1] == "Iron Armor"
+                        or adventurer.inventory[choice-1] == "Potion"):
+                        adventurer.gold += 25
+                        print(f"You got 25 gold from selling your {adventurer.inventory[choice-1]}.")
+                        print(f"Current gold: {adventurer.gold}")
+                        adventurer.inventory.pop(choice-1)
+                    elif(adventurer.inventory[choice-1] == "Steel Sword" or adventurer.inventory[choice-1] == "Steel Armor"
+                        or adventurer.inventory[choice-1] == "Large Potion"):
+                        adventurer.gold += 50
+                        print(f"You got 50 gold from selling your {adventurer.inventory[choice-1]}.")
+                        print(f"Current gold: {adventurer.gold}")
+                        adventurer.inventory.pop(choice-1)
+                    elif(adventurer.inventory[choice-1] == "Silver Sword" or adventurer.inventory[choice-1] == "Silver Armor"
+                        or adventurer.inventory[choice-1] == "Max Potion"):
+                        adventurer.gold += 150
+                        print(f"You got 150 gold from selling your {adventurer.inventory[choice-1]}.")
+                        print(f"Current gold: {adventurer.gold}")
+                        adventurer.inventory.pop(choice-1)
+                    else:
+                        adventurer.gold += 10
+                        print(f"You got 10 gold from selling your {adventurer.inventory[choice-1]}.")
+                        print(f"Current gold: {adventurer.gold}")
+                        adventurer.inventory.pop(choice-1)
 
     def leave_shop():
         os.system('clear')
