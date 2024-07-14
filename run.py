@@ -669,28 +669,38 @@ def road_3():
 
     def road_3a():
         pass
+        #empty, look to find tracks to go to 3b
 
     def road_3b():
         pass
+        #battle before 3c
 
     def road3c():
         pass
+        #large battle
 
 def road_4():
+    #notice signs of a fight, 4a
+    #proceed to 5
 
     def road_4a():
+        #fight
         pass
 
     def road_4b():
+        #fight
         pass
 
 def road_5():
+    #fight
     pass
 
 def road_6():
+    #fight?
     pass
 
 def road_7():
+    #town ahead
     pass
 
 
