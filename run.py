@@ -569,30 +569,97 @@ def begin_adventure():
     os.system('clear')
     slow_print("You set out from town.")
     while True:
+        os.system('clear')
         slow_print("What is your destination?\n")
         slow_print("1. Merchant Road.")
         slow_print("2. Forest.")
         slow_print("3. Stay in Town.")
-        choice = input()
+        choice = int(input())
         try:
-            if(choice != str(1) and choice != str(2)
-                and choice != str(3)):
+            if(choice != 1 and choice != 2
+                and choice != 3):
                 raise Exception
         except:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if(choice == str(1)):
-                os.system('clear')
-                slow_print("You depart towards the forest.\n")
-
-            elif(choice == str(2)):
+            if(choice == 1):
                 os.system('clear')
                 slow_print("You travel the merchant's road.\n")
+                road_start()
+                return False
 
-            elif(choice == str(3)):
+            elif(choice == 2):
+                os.system('clear')
+                slow_print("You depart towards the forest\n")
+
+            elif(choice == 3):
                 os.system('clear')
                 slow_print("You turn around and go back to the town square.\n")
                 town()
+                return False
+
+
+"""
+MERCHANT ROAD FUNCTIONS
+"""
+def road_start():
+    print("flavour text")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue down the road.")
+        slow_print("2. Look around.")
+        slow_print("3. Return to town.")
+        choice = int(input())
+        try:
+            if(choice != 1 and choice != 2
+                and choice != 3):
+                raise Exception
+        except:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if(choice == 1):
+                road_1()
+                return False
+            elif(choice == 2):
+                print("flavour text for looking")
+            elif(choice == 3):
+                print("You decide you are unprepared and return to town.")
+                delay(1.5)
+                town()
+                return False
+
+def road_1():
+    found_gold_road_1 = False
+    print("flavour text")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue down the road.")
+        slow_print("2. Look around.")
+        choice = int(input())
+        try:
+            if(choice != 1 and choice != 2
+                and choice != 3):
+                raise Exception
+        except:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if(choice == 1):
+                print("You continue down the road.")
+                road_2()
+                return False
+            elif(choice == 2):
+                if(found_gold_road_1 is not True):
+                    print("flavour text for looking. you found gold!")
+                    adventurer.gold += 10
+                    found_gold_road_1 = True
+                    sleep(1.5)
+                else:
+                    print("There is nothing else of interest.")
+                    sleep(1.5)
+
+
 
 def main():
     """
@@ -600,6 +667,6 @@ def main():
     """
     adventurer = Player("Chris", 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], [])
     #splash_screen()
-    shop()
+    begin_adventure()
 
 main()
