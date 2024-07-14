@@ -693,6 +693,83 @@ def road_6():
 def road_7():
     pass
 
+
+"""
+FOREST EVENTS
+"""
+
+def forest_start():
+    pass
+    #leads to forest1a
+
+def forest_room1a():
+    pass
+    #forest1b or 2a
+
+def forest_room1b():
+    pass
+    #forest 1a or 2b
+
+def forest_room1c():
+    pass
+    #forest 2c
+
+def forest_room2a():
+    pass
+    # forest 1a, 2b, 2c
+
+def forest_room2b():
+    pass
+    # forest 2a or 3b
+
+def forest_room2c():
+    pass
+    #forest 2a or 1c
+
+def forest_room3a():
+    pass
+    #forst 3b or 3c
+
+def forest_room3b():
+    pass
+    #forest 4b or 3a
+
+def forest_room3c():
+    pass
+    #forest 4c
+
+def forest_room4b():
+    pass
+    #forest 3b
+
+def forest_room4c():
+    pass
+    #forest 5c
+
+def forest_room5a():
+    pass
+    #forest 5c, 5b, or 6a
+
+def forest_room5b():
+    pass
+    #forest 5a
+
+def forest_room5c():
+    pass
+    #forest 5a or 6c
+
+def forest_room6a():
+    pass
+    #forest 7
+
+def forest_room6c():
+    pass
+    #forest 5c
+
+def forest_room7():
+    pass
+    #end
+
 def main():
     """
     Runs the primary functions for the game.
