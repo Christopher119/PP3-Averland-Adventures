@@ -659,7 +659,39 @@ def road_1():
                     print("There is nothing else of interest.")
                     sleep(1.5)
 
+def road_2():
+    #bandit battle, leads to road 3
+    pass
 
+def road_3():
+    #empty, can notice the side road (3a) or go to 4
+    pass
+
+    def road_3a():
+        pass
+
+    def road_3b():
+        pass
+
+    def road3c():
+        pass
+
+def road_4():
+
+    def road_4a():
+        pass
+
+    def road_4b():
+        pass
+
+def road_5():
+    pass
+
+def road_6():
+    pass
+
+def road_7():
+    pass
 
 def main():
     """
