@@ -723,13 +723,13 @@ def battle_event(player, enemy_type):
                     for number, items_owned in enumerate(adventurer.inventory):
                         print(number+1, items_owned)
                         available_items+=1
-                    print("What would you like to sell? Press 0 to return to the shop.")
+                    print("What would you like to use? \nPress 0 to return to the battle menu.")
                     choice = int(input())
                     try:
                         if(choice > available_items and choice.alpha() is False):
                             raise Exception
                     except Exception:
-                        print("Please only enter the numbers on screen, or 0 to return to the shop.")
+                        print("Please only enter the numbers on screen, \nor 0 to return to the shop.")
                     else:
                         if(choice == 0):
                             inventory_loop = False
