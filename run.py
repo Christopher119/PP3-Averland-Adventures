@@ -56,6 +56,11 @@ class Character:
         if(self.health > 100):
             self.health = 100
 
+    def use_potion(self, amount):
+        self.recover_health(amount)
+        slow_print(f"You now have {player.health}.")
+        sleep(1.5)
+
 class Player(Character):
     """
     Creates an Instance of a Player Character Class.
@@ -731,18 +736,17 @@ def battle_event(player, enemy_type):
                         elif(choice <= available_items and choice > 0):
                             if(adventurer.inventory[choice-1] == "Potion"):
                                 slow_print(f"You drink the Potion and recover 25 health.")
-                                adventurer.recover_health(25)
+                                adventurer.use_potion(25)
                                 adventurer.inventory.pop(choice-1)
-                                sleep(1.5)
                                 inventory_loop = False
                             elif(adventurer.inventory[choice-1] == "Large Potion"):
                                 print(f"You drink the Large Potion and recover 50 health.")
-                                adventurer.recover_health(50)
+                                adventurer.use_potion(50)
                                 adventurer.inventory.pop(choice-1)
                                 inventory_loop = False
                             elif(adventurer.inventory[choice-1] == "Max Potion"):
                                 print(f"You drink the Max Potion and recover 100 health.")
-                                adventurer.recover_health(100)
+                                adventurer.use_potion(100)
                                 adventurer.inventory.pop(choice-1)
                                 inventory_loop = False
                             else:
