@@ -40,6 +40,13 @@ class Character:
     def attack_other(self, other_char):
         damage_taken = self.attack - other_char.defence
         other_char.health -= damage_taken
+        print(f"{other_char.name} took {damage_taken} damage!")
+
+    def check_life(self):
+        if(self.health > 0):
+            slow_print(f"{self.name} has {self.health} health remaining!")
+        elif(self.health <= 0):
+            slow_print(f"{self.name} has died.")
 
 class Player(Character):
     """
@@ -164,6 +171,32 @@ def game_intro():
             slow_print(".", 0.25)
             town()
             return False
+
+def game_over():
+    slow_print("Alas, brave adventurer, it seems the dangers of Averland were too great for you...")
+    slow_print("Perhaps, someday, another brave soul with take up your sword and fight in your name...")
+    slow_print("For now, rest... and worry not about the people of Averland any longer...")
+    slow_print("...")
+    while True:
+        slow_print("Would you like to start again?")
+        print("1. Yes")
+        print("2. No")
+        choice = int(input())
+        try:
+            if(choice != 1 and choice != 2):
+                raise Exception
+        except:
+            print("Please enter only 1 or 2.\n")
+        else:
+            if(choice == 1):
+                slow_print("May your efforts bear more fruit this time, adventurer.\n")
+                game_intro()
+                return False
+
+            elif(choice == 2):
+                slow_print("Perhaps we shall meet again in another life.\n")
+                delay(3)
+                return False
 
 """
 HUBWORLD FUNCTIONS
@@ -598,6 +631,39 @@ def begin_adventure():
                 town()
                 return False
 
+
+def battle_event(player, enemy_type):
+    print(f"You have encountered a {enemy_type.name}!")
+    if(player.speed > enemy_type.speed):
+        print(f"The {enemy_type.name} tried to attack you but you were ready for it!")
+    elif(player.speed < enemy_type.speed):
+        print(f"The {enemy_type.name} ambushed you!")
+        enemy_type.attack(player)
+        print(f"")
+        while True:
+            os.system('clear')
+            slow_print("What will you do?\n")
+            slow_print("1. Attack.")
+            slow_print("2. Defend.")
+            slow_print("3. Run.")
+            choice = int(input())
+            try:
+                if(choice != 1 and choice != 2
+                    and choice != 3):
+                    raise Exception
+            except:
+                print("Please enter only 1, 2, or 3.\n")
+            else:
+                if(choice == 1):
+                    print(f"You attack the {enemy_type.name}")
+                    player.attack(enemy_type)
+                elif(choice == 2):
+                    print("flavour text for looking")
+                elif(choice == 3):
+                    print("You decide you are unprepared and return to town.")
+                    delay(1.5)
+                    town()
+                    return False
 
 """
 MERCHANT ROAD FUNCTIONS
