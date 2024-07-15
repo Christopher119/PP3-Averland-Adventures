@@ -46,7 +46,7 @@ class Character:
         if(self.health > 0):
             slow_print(f"{self.name} has {self.health} health remaining!")
         elif(self.health <= 0):
-            slow_print(f"{self.name} has died.")
+            return True
 
 class Player(Character):
     """
@@ -67,7 +67,8 @@ class Enemy(Character):
     def __init__(self, name, health, attack, defence, speed):
         super().__init__(name, health, attack, defence, speed)
 
-adventurer = Player("", 0, 0, 0, 0, 1000, ["Old Sword", "New Sword", "Steel Sword", "Potion", "Potion", "Potion", "Potion", "Potion"], [])
+adventurer = Player("Adventurer Boy", 1, 0, 0, 0, 1000, ["Old Sword", "New Sword", "Steel Sword", "Potion", "Potion", "Potion", "Potion", "Potion"], [])
+random_mob = Enemy("Evil Man", 10, 10, 10, 10)
 
 """
 INTRO FUNCTIONS
@@ -195,7 +196,8 @@ def game_over():
 
             elif(choice == 2):
                 slow_print("Perhaps we shall meet again in another life.\n")
-                delay(3)
+                sleep(3)
+                quit()
                 return False
 
 """
@@ -638,8 +640,10 @@ def battle_event(player, enemy_type):
         print(f"The {enemy_type.name} tried to attack you but you were ready for it!")
     elif(player.speed < enemy_type.speed):
         print(f"The {enemy_type.name} ambushed you!")
-        enemy_type.attack(player)
-        print(f"")
+        enemy_type.attack_other(player)
+        player.check_life()
+        if(player.check_life()):
+            game_over()
         while True:
             os.system('clear')
             slow_print("What will you do?\n")
@@ -656,7 +660,9 @@ def battle_event(player, enemy_type):
             else:
                 if(choice == 1):
                     print(f"You attack the {enemy_type.name}")
-                    player.attack(enemy_type)
+                    player.attack_other(enemy_type)
+                    enemy_type.check_life()
+                    return False
                 elif(choice == 2):
                     print("flavour text for looking")
                 elif(choice == 3):
@@ -850,8 +856,7 @@ def main():
     """
     Runs the primary functions for the game.
     """
-    adventurer = Player("Chris", 100, 10, 10, 5, 10, ["Old Sword", "Old Shield"], [])
     #splash_screen()
-    begin_adventure()
+    battle_event(adventurer, random_mob)
 
 main()
