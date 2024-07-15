@@ -8,6 +8,9 @@ import os
 from sys import stdout
 from time import sleep
 
+#imported for battle functionality
+import random
+
 #https://stackoverflow.com/questions/75486619/how-to-print-one-character-at-a-time-but-maintain-print-function-python
 def slow_print(text, delay=0.025):
     """
@@ -38,15 +41,20 @@ class Character:
         self.speed = speed
 
     def attack_other(self, other_char):
-        damage_taken = self.attack - other_char.defence
+        damage_taken = self.attack - (other_char.defence / 2.5)
         other_char.health -= damage_taken
         print(f"{other_char.name} took {damage_taken} damage!")
+        if(other_char.health > 0):
+            slow_print(f"{self.name} has {self.health} health remaining!")
 
     def check_life(self):
-        if(self.health > 0):
-            slow_print(f"{self.name} has {self.health} health remaining!")
-        elif(self.health <= 0):
+        if(self.health <= 0):
             return True
+
+    def recover_health(self, amount):
+        self.health += amount
+        if(self.health > 100):
+            self.health = 100
 
 class Player(Character):
     """
@@ -59,6 +67,12 @@ class Player(Character):
         self.inventory = inventory
         self.quests = quests
 
+    def block_attack(self, other_char):
+        slow_print("You block the enemy attack!")
+        self.defence *=2
+        other_char.attack_other(self)
+        self.defence /=2
+
 class Enemy(Character):
     """
     Creates an Instance of an Enemy Character Class.
@@ -67,8 +81,8 @@ class Enemy(Character):
     def __init__(self, name, health, attack, defence, speed):
         super().__init__(name, health, attack, defence, speed)
 
-adventurer = Player("Adventurer Boy", 1, 0, 0, 0, 1000, ["Old Sword", "New Sword", "Steel Sword", "Potion", "Potion", "Potion", "Potion", "Potion"], [])
-random_mob = Enemy("Evil Man", 10, 10, 10, 10)
+adventurer = Player("Adventurer Boy", 100, 10, 10, 12, 1000, ["Old Sword", "New Sword", "Steel Sword", "Potion", "Potion", "Potion", "Potion", "Potion"], [])
+random_mob = Enemy("Evil Man", 100, 20, 10, 10)
 
 """
 INTRO FUNCTIONS
@@ -635,41 +649,106 @@ def begin_adventure():
 
 
 def battle_event(player, enemy_type):
-    print(f"You have encountered a {enemy_type.name}!")
-    if(player.speed > enemy_type.speed):
-        print(f"The {enemy_type.name} tried to attack you but you were ready for it!")
-    elif(player.speed < enemy_type.speed):
-        print(f"The {enemy_type.name} ambushed you!")
-        enemy_type.attack_other(player)
+
+    battle_loop = True
+
+    def is_player_alive():
         player.check_life()
+        sleep(1.5)
         if(player.check_life()):
             game_over()
-        while True:
-            os.system('clear')
-            slow_print("What will you do?\n")
-            slow_print("1. Attack.")
-            slow_print("2. Defend.")
-            slow_print("3. Run.")
-            choice = int(input())
-            try:
-                if(choice != 1 and choice != 2
-                    and choice != 3):
-                    raise Exception
-            except:
-                print("Please enter only 1, 2, or 3.\n")
-            else:
-                if(choice == 1):
-                    print(f"You attack the {enemy_type.name}")
+
+    slow_print(f"You have encountered a {enemy_type.name}!")
+    if(player.speed > enemy_type.speed):
+        slow_print(f"The {enemy_type.name} tried to attack you but you were ready for it!")
+        sleep(1.5)
+    elif(player.speed < enemy_type.speed):
+        slow_print(f"The {enemy_type.name} ambushed you!")
+        enemy_type.attack_other(player)
+        is_player_alive()
+    while battle_loop is True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Attack.")
+        slow_print("2. Defend.")
+        slow_print("3. Use Item.")
+        choice = int(input())
+        try:
+            if(choice != 1 and choice != 2
+                and choice != 3):
+                raise Exception
+        except:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if(choice == 1):
+                print(f"You attack the {enemy_type.name}")
+                player.attack_other(enemy_type)
+                enemy_type.check_life()
+                if(enemy_type.check_life()):
+                    print(f"You have defeated the {enemy_type.name}!")
+                    print(f"The {enemy_type.name} dropped 10 gold!")
+                    player.gold += 10
+                    battle_loop = False
+                print(f"The {enemy_type.name} counterattacks!")
+                enemy_type.attack_other(player)
+                is_player_alive()
+
+            elif(choice == 2):
+                player.block_attack(enemy_type)
+                #https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9
+                stun_chance = random.randrange(10)+1
+                if(stun_chance > 7):
+                    print(f"You knocked the {enemy_type.name} off balance! You strike for a counter attack!")
+                    player.attack *= 1.5
+                    print(f"defence boost: {player.attack}")
                     player.attack_other(enemy_type)
+                    player.attack /= 1.5
+                    print(f"defence reset: {player.attack}")
                     enemy_type.check_life()
-                    return False
-                elif(choice == 2):
-                    print("flavour text for looking")
-                elif(choice == 3):
-                    print("You decide you are unprepared and return to town.")
-                    delay(1.5)
-                    town()
-                    return False
+                    if(enemy_type.check_life()):
+                        print(f"You have defeated the {enemy_type.name}!")
+                        print(f"The {enemy_type.name} dropped 10 gold!")
+                        battle_loop = False
+                    sleep(1.5)
+
+            elif(choice == 3):
+                inventory_loop = True
+                while inventory_loop is True:
+                    available_items = 0
+                    for number, items_owned in enumerate(adventurer.inventory):
+                        print(number+1, items_owned)
+                        available_items+=1
+                    print("What would you like to sell? Press 0 to return to the shop.")
+                    choice = int(input())
+                    try:
+                        if(choice > available_items and choice.alpha() is False):
+                            raise Exception
+                    except Exception:
+                        print("Please only enter the numbers on screen, or 0 to return to the shop.")
+                    else:
+                        if(choice == 0):
+                            inventory_loop = False
+                        elif(choice <= available_items and choice > 0):
+                            if(adventurer.inventory[choice-1] == "Potion"):
+                                slow_print(f"You drink the Potion and recover 25 health.")
+                                adventurer.recover_health(25)
+                                adventurer.inventory.pop(choice-1)
+                                sleep(1.5)
+                                inventory_loop = False
+                            elif(adventurer.inventory[choice-1] == "Large Potion"):
+                                print(f"You drink the Large Potion and recover 50 health.")
+                                adventurer.recover_health(50)
+                                adventurer.inventory.pop(choice-1)
+                                inventory_loop = False
+                            elif(adventurer.inventory[choice-1] == "Max Potion"):
+                                print(f"You drink the Max Potion and recover 100 health.")
+                                adventurer.recover_health(100)
+                                adventurer.inventory.pop(choice-1)
+                                inventory_loop = False
+                            else:
+                                print("Using that item will have no effect.")
+                
+
 
 """
 MERCHANT ROAD FUNCTIONS
