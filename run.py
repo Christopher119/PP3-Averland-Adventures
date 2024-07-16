@@ -55,6 +55,7 @@ class Character:
         if other_char.health > 0:
             slow_print(f"{other_char.name} has {other_char.health} health remaining!")
         elif other_char.health <= 0:
+            other_char.health = 0
             slow_print(f"{other_char.name} has no health remaining!")
 
     def check_life(self):
@@ -63,6 +64,7 @@ class Character:
         If the health is equal to or below 0 it returns True for checks.
         """
         if self.health <= 0:
+            other_char.health = 0
             return True
 
     def recover_health(self, amount):
@@ -95,6 +97,12 @@ class Player(Character):
         self.gold = gold
         self.inventory = inventory
         self.quests = quests
+        # variables used for checks through dungeons
+        # will be reset to default on return to town
+        self.road3_side_road_seen = False
+        self.road3_tracks_found = False
+        self.road3_enemy_fought = False
+        self.road3_camp_fought = False
 
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
@@ -1002,7 +1010,6 @@ def road_2():
 
 def road_3():
     # empty, can notice the side road (3a) or go to 4
-    side_road_seen = False
     os.system('clear')
     slow_print("flavour text for road 3")
     sleep(1.5)
@@ -1028,15 +1035,15 @@ def road_3():
                 return False
 
             elif choice == 2:
-                if side_road_seen == False:
-                    side_road_seen = True
+                if adventurer.road3_side_road_seen == False:
+                    adventurer.road3_side_road_seen = True
                     slow_print("You notice there is a path "
                                "leading through some bushes.")
-                elif side_road_seen == True:
+                elif adventurer.road3_side_road_seen == True:
                     slow_print("You consider the path you "
                                "noticed earlier.")
                 slow_print("Would you like to investigate "
-                               "this side road?")
+                           "this side road?")
                 slow_print("1. Yes.")
                 slow_print("2. No.")
                 choice = int(input())
@@ -1065,7 +1072,6 @@ def road_3():
 def road_3a():
     slow_print("This is Placeholder text for 3a")
     sleep(1.5)
-    tracks_found = False
     
     while True:
         os.system('clear')
@@ -1086,11 +1092,11 @@ def road_3a():
                 return False
 
             elif choice == 2:
-                if tracks_found == False:
-                    tracks_found = True
+                if adventurer.road3_tracks_found == False:
+                    adventurer.road3_tracks_found = True
                     slow_print("You find some tracks in the "
                                "dirt at your feet.")
-                elif side_road_seen == True:
+                elif adventurer.road3_tracks_found == True:
                     slow_print("You consider the tracks "
                                "you found earlier.")
                 slow_print("Would you like to "
@@ -1121,17 +1127,25 @@ def road_3b():
     slow_print("You follow the tracks through the bushes.")
     sleep(1.5)
 
-    road3_enemies = random_enemy()
-    battle_event(adventurer, road3_enemies)
+    # generating a random enemy and assigning it to a variable
+    # within the Player class to be stored for consistent encounters
+    if adventurer.road3_enemy_fought == False:
+        adventurer.road3_enemies = random_enemy()
+        battle_event(adventurer, adventurer.road3_enemies)
+        adventurer.road3_enemy_fought = True
+        slow_print("After the battle you realise that there must "
+                   "be a group up ahead. It would be dangerous "
+                   "to proceed...")
 
-    slow_print("After the battle you realise that there must "
-               "be a group up ahead. It would be dangerous "
-               "to proceed...")
+    else:
+        slow_print(f"The body of the {adventurer.road3_enemies.name} "
+                   "you defeated is still here.")
+
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
         slow_print("1. Go back.")
-        slow_print(f"2. Enter the {road3_enemies}'s territory.")
+        slow_print(f"2. Enter the {adventurer.road3_enemies.name}'s territory.")
         choice = int(input())
         try:
             if choice != 1 and choice != 2:
@@ -1146,14 +1160,38 @@ def road_3b():
                 return False
 
             elif choice == 2:
-                slow_print("You steel yourself for the battle ahead.")
+                if adventurer.road3_camp_fought == False:
+                    slow_print("You steel yourself for the battle ahead.")
+                else:
+                    slow_print("You walk towards the clearing.")
                 sleep(1.5)
                 road_3c()
                 return False
 
-def road3c():
-    pass
-    # large battle
+def road_3c():
+    if adventurer.road3_camp_fought == False:
+        slow_print("As you thought there are multiple "
+                   f"{adventurer.road3_enemies.name}s here.")
+        sleep(1.5)
+        adventurer.road3_enemies.health += 30
+        adventurer.road3_enemies.attack += 10
+        adventurer.road3_enemies.name += " Group"
+        battle_event(adventurer, adventurer.road3_enemies)
+        adventurer.road3_camp_fought = True
+
+        slow_print("After the battle you search around the area.")
+        slow_print("With nothing else of value to find you return "
+                   "to the main road, triumphant.")
+    
+    else:
+        slow_print("The area is silent now that you have "
+                   "defeated all the enemies here.")
+        slow_print("You turn around and walk back towards "
+                   "the main road.")
+    sleep(1.5)
+    # removing the created variable
+    del adventurer.road3_enemies
+    road_3()
 
 
 def road_4():
