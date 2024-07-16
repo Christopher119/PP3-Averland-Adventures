@@ -1457,7 +1457,7 @@ FOREST EVENTS
 
 
 def forest_start():
-    print("flavour text")
+    slow_print("flavour text for forest start")
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
@@ -1486,7 +1486,7 @@ def forest_start():
 
 
 def forest_room1a():
-    print("flavour text")
+    slow_print("flavour text for room 1a")
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
@@ -1516,17 +1516,83 @@ def forest_room1a():
 
 
 def forest_room1b():
-    pass
+    slow_print("flavour text for room 1b")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Go North.") # 2b
+        slow_print("2. Go West") # 1a
+        slow_print("3. Look around.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+             and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                forest_room2b()
+                return False
+            elif choice == 2:
+                forest_room1a()
+                return False
+            elif choice == 3:
+                slow_print("flavour text for looking")
     # forest 1a or 2b
 
 
 def forest_room1c():
-    pass
+    slow_print("flavour text for room 1c")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Go North.") # 2c
+        slow_print("3. Look around.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+             and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                forest_room2c()
+                return False
+            elif choice == 2:
+                slow_print("flavour text for looking")
     # forest 2c
 
 
 def forest_room2a():
-    pass
+    slow_print("flavour text for room 1a")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Go East.") # 2b
+        slow_print("2. Go West") # 2c
+        slow_print("3. Go South.") # 1a
+        slow_print("4. Look around.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+             and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                forest_room2b()
+                return False
+            elif choice == 2:
+                forest_room2c()
+                return False
+            elif choice == 3:
+                forest_room1a()
+                return False
+            elif choice == 4:
+                slow_print("flavour text for looking")
     # forest 1a, 2b, 2c
 
 
