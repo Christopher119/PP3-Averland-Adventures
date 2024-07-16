@@ -932,6 +932,7 @@ def road_1():
     os.system('clear')
     found_gold_road_1 = False
     slow_print("flavour text for road 1")
+    sleep(1.5)
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
@@ -968,7 +969,7 @@ def road_1():
 def road_2():
     os.system('clear')
     slow_print("flavour text for road 2")
-
+    sleep(1.5)
     random_battle(random_enemy())
 
     while True:
@@ -1001,19 +1002,80 @@ def road_2():
 
 def road_3():
     # empty, can notice the side road (3a) or go to 4
+    side_road_seen = False
+    os.system('clear')
+    slow_print("flavour text for road 3")
+    sleep(1.5)
+
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue down the road.")
+        slow_print("2. Look around.")
+        slow_print("3. Go back up the road.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+            and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                print("You continue down the road.")
+                sleep(1.5)
+                road_3()
+                return False
+
+            elif choice == 2:
+                if side_road_seen == False:
+                    side_road_seen = True
+                    slow_print("You notice there is a path "
+                               "leading through some bushes.")
+                elif side_road_seen == True:
+                    slow_print("You consider the path you "
+                               "noticed earlier.")
+                slow_print("Would you like to investigate "
+                               "this side road?")
+                slow_print("1. Yes.")
+                slow_print("2. No.")
+                choice = int(input())
+                try:
+                    if choice != 1 and choice != 2:
+                        raise Exception
+                except Exception:
+                    print("Please enter only 1, or 2.\n")
+                else:
+                    if choice == 1:
+                        slow_print("You decide to travel the side road.")
+                        sleep(1.5)
+                        road_3a()
+                        return False
+
+                    elif choice == 2:
+                        slow_print("You decide it safer to stick "
+                                    "to the path more trodden.")
+                        sleep(1.5)
+
+            elif choice == 3:
+                slow_print("You make your way back the way you came.")
+                sleep(1.5)
+                road_2()
+
+def road_3a():
+    slow_print("This is Placeholder text for 3a")
+    sleep(1.5)
+    tracks_found = False
     pass
+    # empty, look to find tracks to go to 3b
 
-    def road_3a():
-        pass
-        # empty, look to find tracks to go to 3b
+def road_3b():
+    pass
+    # battle before 3c
 
-    def road_3b():
-        pass
-        # battle before 3c
-
-    def road3c():
-        pass
-        # large battle
+def road3c():
+    pass
+    # large battle
 
 
 def road_4():
@@ -1144,7 +1206,7 @@ def main():
     Runs the primary functions for the game.
     """
     # splash_screen()
-    road_1()
+    road_3()
 
 
 main()
