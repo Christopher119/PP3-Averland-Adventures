@@ -1416,8 +1416,35 @@ def road_6():
 
 def road_7():
     os.system('clear')
-    # town ahead
-    pass
+    slow_print("flavour text for road 5")
+    sleep(1.5)
+
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue towards town.")
+        slow_print("2. Look around.")
+        slow_print("3. Go back up the road.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+            and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                print("You continue and arrive at the next town.")
+                sleep(1.5)
+                town()
+                return False
+            elif choice == 2:
+                print("There is nothing of interest.")
+                sleep(1.5)
+            elif choice == 3:
+                slow_print("You make your way back the way you came.")
+                sleep(1.5)
+                road_6()
 
 
 """
