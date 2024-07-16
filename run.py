@@ -161,15 +161,15 @@ def rules():
     # https://www.geeksforgeeks.org/clear-screen-python/
     # clearing screen before presenting new lines
     os.system('clear')
-    slow_print("In Averland Adventures you take on\
-               the role of a new adventurer.")
+    slow_print("In Averland Adventures you take on "
+               "the role of a new adventurer.")
     slow_print("It will be your job to fulfill quests for the townsfolk.")
-    slow_print("Slaying monsters, rescuing the innocent,\
-               recovering lost treasures.")
-    slow_print("The game will be played entirely using\
-                 the number keys. (1,2,3, etc.)")
-    slow_print("Simply follow the on screen prompts\
-                 to decide your next action.")
+    slow_print("Slaying monsters, rescuing the innocent, "
+               "recovering lost treasures.")
+    slow_print("The game will be played entirely using "
+               "the number keys. (1,2,3, etc.)")
+    slow_print("Simply follow the on screen prompts "
+               "to decide your next action.")
     slow_print("Best of luck on your quests, brave Adventurer!")
     slow_print("\nTo return to the main menu, press 1:\n")
     while True:
@@ -204,8 +204,8 @@ def game_intro():
     slow_print("Welcome to the kingdom of Averland, brave adventurer.")
     while True:
         slow_print("What is your name?")
-        print("(Use alphabetic characters only\
-              and use less than 20 characters)")
+        print("(Use alphabetic characters only "
+              "and use less than 20 characters)")
         your_name = input()
         try:
             if your_name.isalpha() is False:
@@ -213,21 +213,21 @@ def game_intro():
             elif len(your_name) > 20:
                 raise Exception
         except Exception:
-            print("Please keep your name under 20 characters \
-                  and only use alphabetic characters.\n")
+            print("Please keep your name under 20 characters "
+                  "and only use alphabetic characters.\n")
         else:
             adventurer = Player(your_name, 100, 10, 10, 5, 10,
                                 ["Old Sword", "Old Shield"], ["Empty"])
-            slow_print(f"You are {adventurer.name}! You are a brave soul\
-                       with {adventurer.health} points of health.")
-            slow_print(f"{adventurer.attack} attack, {adventurer.defence} \
-                       defence, {adventurer.speed} speed and \
-                       {adventurer.gold} gold pieces.")
+            slow_print(f"You are {adventurer.name}! You are a brave soul "
+                       "with {adventurer.health} points of health.")
+            slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
+                       "defence, {adventurer.speed} speed and "
+                       "{adventurer.gold} gold pieces.")
             slow_print(f"You have {adventurer.inventory} in your inventory.")
             slow_print(f"Your quest log is {adventurer.quests}... for now.")
-            slow_print(f"Prepare to embark on a thrilling adventure, \
-                       in pursuit of fame and fortune, \
-                       brave {adventurer.name}!\n")
+            slow_print(f"Prepare to embark on a thrilling adventure, "
+                       "in pursuit of fame and fortune, "
+                       "brave {adventurer.name}!\n")
             slow_print("...", 0.25)
             slow_print("..", 0.25)
             slow_print(".", 0.25)
@@ -236,12 +236,12 @@ def game_intro():
 
 
 def game_over():
-    slow_print("Alas, brave adventurer, it seems the dangers \
-               of Averland were too great for you...")
-    slow_print("Perhaps, someday, another brave soul with take \
-               up your sword and fight in your name...")
-    slow_print("For now, rest... and worry not about the \
-               people of Averland any longer...")
+    slow_print("Alas, brave adventurer, it seems the dangers "
+               "of Averland were too great for you...")
+    slow_print("Perhaps, someday, another brave soul with take "
+               "up your sword and fight in your name...")
+    slow_print("For now, rest... and worry not about the "
+               "people of Averland any longer...")
     slow_print("...")
     while True:
         slow_print("Would you like to start again?")
@@ -255,8 +255,8 @@ def game_over():
             print("Please enter only 1 or 2.\n")
         else:
             if choice == 1:
-                slow_print("May your efforts bear more fruit \
-                           this time, adventurer.\n")
+                slow_print("May your efforts bear more fruit "
+                           "this time, adventurer.\n")
                 game_intro()
                 return False
 
@@ -342,12 +342,12 @@ def shop():
                 if choice == 1:
                     while True:
                         print("Available weapons for sale:")
-                        print("1. Iron Sword: +2 Attack when \
-                              equipped. 50 gold.")
-                        print("2. Steel Sword: +4 Attack when \
-                              equipped. 150 gold.")
-                        print("3. Silver Sword: +6 Attack when \
-                              equipped. 300 gold.")
+                        print("1. Iron Sword: +2 Attack when "
+                              "equipped. 50 gold.")
+                        print("2. Steel Sword: +4 Attack when "
+                              "equipped. 150 gold.")
+                        print("3. Silver Sword: +6 Attack when "
+                              "equipped. 300 gold.")
                         print("4. Check other options.")
                         choice = int(input())
                         try:
@@ -363,9 +363,9 @@ def shop():
                                 elif "Iron Sword" in adventurer.inventory:
                                     print("You already own an Iron Sword")
                                 else:
-                                    print("You have added an Iron Sword to \
-                                          your inventory. Remember to \
-                                          equip it.")
+                                    print("You have added an Iron Sword to "
+                                          "your inventory. Remember to "
+                                          "equip it.")
                                     adventurer.inventory.append("Iron Sword")
                             elif choice == 2:
                                 if adventurer.gold <= 150:
@@ -373,9 +373,9 @@ def shop():
                                 elif "Steel Sword" in adventurer.inventory:
                                     print("You already own a Steel Sword")
                                 else:
-                                    print("You have added a Steel Sword to \
-                                          your inventory. Remember to \
-                                          equip it.")
+                                    print("You have added a Steel Sword to "
+                                          "your inventory. Remember to "
+                                          "equip it.")
                                     adventurer.inventory.append("Steel Sword")
                             elif choice == 3:
                                 if adventurer.gold <= 300:
@@ -383,9 +383,9 @@ def shop():
                                 elif "Silver Sword" in adventurer.inventory:
                                     print("You already own a Silver Sword")
                                 else:
-                                    print("You have added a Silver Sword \
-                                          to your inventory. Remember to \
-                                          equip it.")
+                                    print("You have added a Silver Sword "
+                                          "to your inventory. Remember to "
+                                          "equip it.")
                                     adventurer.inventory.append("Silver Sword")
                             elif choice == 4:
                                 shop()
@@ -394,12 +394,12 @@ def shop():
                 elif choice == 2:
                     while True:
                         print("Available armor for sale:")
-                        print("1. Iron Armor: +2 Defence \
-                        when equipped. 50 gold.")
-                        print("2. Steel Armor: +4 Defence \
-                        when equipped. 150 gold.")
-                        print("3. Silver Armor: +6 Defence \
-                        when equipped. 300 gold.")
+                        print("1. Iron Armor: +2 Defence "
+                              "when equipped. 50 gold.")
+                        print("2. Steel Armor: +4 Defence "
+                              "when equipped. 150 gold.")
+                        print("3. Silver Armor: +6 Defence "
+                              "when equipped. 300 gold.")
                         print("4. Check other options.")
                         choice = int(input())
                         try:
@@ -415,9 +415,9 @@ def shop():
                                 elif "Iron Armor" in adventurer.inventory:
                                     print("You already own Iron Armor")
                                 else:
-                                    print("You have added Iron Armor to \
-                                          your inventory. Remember to \
-                                          equip it.")
+                                    print("You have added Iron Armor to "
+                                          "your inventory. Remember to "
+                                          "equip it.")
                                     adventurer.inventory.append("Iron Armor")
                             elif choice == 2:
                                 if adventurer.gold <= 150:
@@ -425,9 +425,9 @@ def shop():
                                 elif "Steel Armor" in adventurer.inventory:
                                     print("You already own Steel Armor")
                                 else:
-                                    print("You have added Steel Armor to your \
-                                          inventory. Remember to \
-                                          equip it.")
+                                    print("You have added Steel Armor to your "
+                                          "inventory. Remember to "
+                                          "equip it.")
                                     adventurer.inventory.append("Steel Armor")
                             elif choice == 3:
                                 if adventurer.gold <= 300:
@@ -435,9 +435,9 @@ def shop():
                                 elif "Silver Armor" in adventurer.inventory:
                                     print("You already own a Silver Armor")
                                 else:
-                                    print("You have added Silver Armor to \
-                                          your inventory. Remember to \
-                                          equip it.")
+                                    print("You have added Silver Armor to "
+                                          "your inventory. Remember to "
+                                          "equip it.")
                                     adventurer.inventory.append("Silver Armor")
                             elif choice == 4:
                                 shop()
@@ -462,22 +462,22 @@ def shop():
                                 if adventurer.gold <= 50:
                                     print("You cannot afford this item.")
                                 else:
-                                    print("You have added a Potion \
-                                          to your inventory.")
+                                    print("You have added a Potion "
+                                          "to your inventory.")
                                     adventurer.inventory.append("Potion")
                             elif choice == 2:
                                 if adventurer.gold <= 150:
                                     print("You cannot afford this item.")
                                 else:
-                                    print("You have added a Large Potion \
-                                          to your inventory.")
+                                    print("You have added a Large Potion "
+                                          "to your inventory.")
                                     adventurer.inventory.append("Large Potion")
                             elif choice == 3:
                                 if adventurer.gold <= 300:
                                     print("You cannot afford this item.")
                                 else:
-                                    print("You have added a Max Potion \
-                                          to your inventory.")
+                                    print("You have added a Max Potion "
+                                          "to your inventory.")
                                     adventurer.inventory.append("Max Potion")
                             elif choice == 4:
                                 shop()
@@ -489,23 +489,23 @@ def shop():
 
     def sell():
         os.system('clear')
-        slow_print("You open your bag to see what you \
-                   could sell to the shopkeep.\n")
+        slow_print("You open your bag to see what you "
+                   "could sell to the shopkeep.\n")
         # https://stackoverflow.com/questions/29811082/how-to-print-out-a-numbered-list-in-python-3
         while True:
             available_items = 0
             for number, items_owned in enumerate(adventurer.inventory):
                 print(number+1, items_owned)
                 available_items += 1
-            print("What would you like to sell? \
-                  Press 0 to return to the shop.")
+            print("What would you like to sell? "
+                  "Press 0 to return to the shop.")
             choice = int(input())
             try:
                 if choice > available_items and choice.alpha() is False:
                     raise Exception
             except Exception:
-                print("Please only enter the numbers on screen, \
-                      or 0 to return to the shop.")
+                print("Please only enter the numbers on screen, "
+                      "or 0 to return to the shop.")
             else:
                 if choice == 0:
                     shop()
@@ -515,8 +515,8 @@ def shop():
                     adventurer.inventory[choice-1] == "Iron Armor" \
                     or adventurer.inventory[choice-1] == "Potion":
                         adventurer.gold += 25
-                        print(f"You got 25 gold from selling your \
-                              {adventurer.inventory[choice-1]}.")
+                        print(f"You got 25 gold from selling your "
+                              "{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
@@ -524,8 +524,8 @@ def shop():
                     or adventurer.inventory[choice-1] == "Steel Armor" \
                     or adventurer.inventory[choice-1] == "Large Potion":
                         adventurer.gold += 50
-                        print(f"You got 50 gold from selling your \
-                              {adventurer.inventory[choice-1]}.")
+                        print(f"You got 50 gold from selling your "
+                              "{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
@@ -533,15 +533,15 @@ def shop():
                     or adventurer.inventory[choice-1] == "Silver Armor" \
                     or adventurer.inventory[choice-1] == "Max Potion":
                         adventurer.gold += 150
-                        print(f"You got 150 gold from selling your \
-                              {adventurer.inventory[choice-1]}.")
+                        print(f"You got 150 gold from selling your "
+                              "{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
                     else:
                         adventurer.gold += 10
-                        print(f"You got 10 gold from selling your \
-                              {adventurer.inventory[choice-1]}.")
+                        print(f"You got 10 gold from selling your "
+                              "{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
@@ -589,8 +589,8 @@ def find_a_quest():
     # methods specific to the tavern for quests
     def quest_board():
         os.system('clear')
-        slow_print("You check the quest board for \
-        official quests from the town guild.\n")
+        slow_print("You check the quest board for "
+                   "official quests from the town guild.\n")
         while True:
             print("Currently available quests:")
             print("1. Slay 5 slimes on the Merchant Road")
@@ -610,24 +610,24 @@ def find_a_quest():
                     if "Slay Slimes" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
-                        print("You have accepted the quest to \
-                        defeat Slimes.")
+                        print("You have accepted the quest to "
+                              "defeat Slimes.")
                         adventurer.quests.append("Slay Slimes")
 
                 elif choice == 2:
                     if "Defend Caravan" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
-                        print("You have accepted the quest to \
-                        defend a merchant caravan.")
+                        print("You have accepted the quest to "
+                              "defend a merchant caravan.")
                         adventurer.quests.append("Defend Caravan")
 
                 elif choice == 3:
                     if "Clear Bandit Camp" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
-                        print("You have accepted the quest to \
-                        clear out a bandit camp.")
+                        print("You have accepted the quest to "
+                              "clear out a bandit camp.")
                         adventurer.quests.append("Clear Bandit Camp")
                 elif choice == 4:
                     find_a_quest()
@@ -635,8 +635,8 @@ def find_a_quest():
 
     def ask_a_local():
         os.system('clear')
-        slow_print("You ask a local and they tell you \
-        about some jobs you could do.\n")
+        slow_print("You ask a local and they tell you "
+                   "about some jobs you could do.\n")
         while True:
             print("Currently available quests:")
             print("1. Find lost necklace on the Merchant Road")
@@ -663,16 +663,16 @@ def find_a_quest():
                     if "Missing Person" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
-                        print("You have agreed to help \
-                        find the missing person.")
+                        print("You have agreed to help "
+                              "find the missing person.")
                         adventurer.quests.append("Missing Person")
 
                 elif choice == 3:
                     if "Bandit Kidnapping" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
-                        print("You have agreed to help \
-                        rescue the kidnapped person.")
+                        print("You have agreed to help "
+                              "rescue the kidnapped person.")
                         adventurer.quests.append("Bandit Kidnapping")
                 elif choice == 4:
                     find_a_quest()
@@ -766,8 +766,8 @@ def battle_event(player, enemy_type):
 
     slow_print(f"You have encountered a {enemy_type.name}!")
     if player.speed > enemy_type.speed:
-        slow_print(f"The {enemy_type.name} tried to attack you \
-        but you were ready for it!")
+        slow_print(f"The {enemy_type.name} tried to attack you "
+        "but you were ready for it!")
         sleep(1.5)
     elif player.speed < enemy_type.speed:
         slow_print(f"The {enemy_type.name} ambushed you!")
