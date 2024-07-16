@@ -288,7 +288,7 @@ def town():
         slow_print("4. Rest and end your adventures.")
         choice = int(input())
         try:
-            if choice != 1 and choice != 2
+            if choice != 1 and choice != 2 \
             and choice != 3 and choice != 4:
                 raise Exception
         except Exception:
@@ -333,7 +333,7 @@ def shop():
             print("What would you like to do?\n")
             choice = int(input())
             try:
-                if choice != 1 and choice != 2
+                if choice != 1 and choice != 2 \
                 and choice != 3 and choice != 4:
                     raise Exception
             except Exception:
@@ -351,7 +351,7 @@ def shop():
                         print("4. Check other options.")
                         choice = int(input())
                         try:
-                            if choice != 1 and choice != 2
+                            if choice != 1 and choice != 2 \
                             and choice != 3 and choice != 4:
                                 raise Exception
                         except Exception:
@@ -403,7 +403,7 @@ def shop():
                         print("4. Check other options.")
                         choice = int(input())
                         try:
-                            if choice != 1 and choice != 2
+                            if choice != 1 and choice != 2 \
                             and choice != 3 and choice != 4:
                                 raise Exception
                         except Exception:
@@ -452,7 +452,7 @@ def shop():
                         print("4. Check other options.")
                         choice = int(input())
                         try:
-                            if choice != 1 and choice != 2
+                            if choice != 1 and choice != 2 \
                             and choice != 3 and choice != 4:
                                 raise Exception
                         except Exception:
@@ -511,8 +511,8 @@ def shop():
                     shop()
                     return False
                 elif choice <= available_items and choice > 0:
-                    if adventurer.inventory[choice-1] == "Iron Sword" or
-                    adventurer.inventory[choice-1] == "Iron Armor"
+                    if adventurer.inventory[choice-1] == "Iron Sword" or \
+                    adventurer.inventory[choice-1] == "Iron Armor" \
                     or adventurer.inventory[choice-1] == "Potion":
                         adventurer.gold += 25
                         print(f"You got 25 gold from selling your \
@@ -520,8 +520,8 @@ def shop():
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
-                    elif adventurer.inventory[choice-1] == "Steel Sword"
-                    or adventurer.inventory[choice-1] == "Steel Armor"
+                    elif adventurer.inventory[choice-1] == "Steel Sword" \
+                    or adventurer.inventory[choice-1] == "Steel Armor" \
                     or adventurer.inventory[choice-1] == "Large Potion":
                         adventurer.gold += 50
                         print(f"You got 50 gold from selling your \
@@ -529,8 +529,8 @@ def shop():
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
-                    elif adventurer.inventory[choice-1] == "Silver Sword"
-                    or adventurer.inventory[choice-1] == "Silver Armor"
+                    elif adventurer.inventory[choice-1] == "Silver Sword" \
+                    or adventurer.inventory[choice-1] == "Silver Armor" \
                     or adventurer.inventory[choice-1] == "Max Potion":
                         adventurer.gold += 150
                         print(f"You got 150 gold from selling your \
@@ -561,7 +561,7 @@ def shop():
         slow_print("3. Leave.")
         choice = int(input())
         try:
-            if choice != 1 and choice != 2
+            if choice != 1 and choice != 2 \
             and choice != 3:
                 raise Exception
         except Exception:
@@ -600,7 +600,7 @@ def find_a_quest():
             print("What quest will you accept?\n")
             choice = int(input())
             try:
-                if choice != 1 and choice != 2
+                if choice != 1 and choice != 2 \
                 and choice != 3 and choice != 4:
                     raise Exception
             except Exception:
@@ -646,7 +646,7 @@ def find_a_quest():
             print("Will you offer help with any of their jobs?\n")
             choice = int(input())
             try:
-                if choice != 1 and choice != 2
+                if choice != 1 and choice != 2 \
                 and choice != 3 and choice != 4:
                     raise Exception
             except Exception:
@@ -693,7 +693,7 @@ def find_a_quest():
         slow_print("3. Leave.")
         choice = int(input())
         try:
-            if choice != 1 and choice != 2
+            if choice != 1 and choice != 2 \
             and choice != 3:
                 raise Exception
         except Exception:
@@ -724,7 +724,7 @@ def begin_adventure():
         slow_print("3. Stay in Town.")
         choice = int(input())
         try:
-            if choice != 1 and choice != 2
+            if choice != 1 and choice != 2 \
             and choice != 3:
                 raise Exception
         except Exception:
@@ -781,7 +781,7 @@ def battle_event(player, enemy_type):
         slow_print("3. Use Item.")
         choice = int(input())
         try:
-            if choice != 1 and choice != 2
+            if choice != 1 and choice != 2 \
             and choice != 3:
                 raise Exception
         except Exception:
@@ -828,7 +828,7 @@ def battle_event(player, enemy_type):
                     \nPress 0 to return to the battle menu.")
                     choice = int(input())
                     try:
-                        if choice > available_items
+                        if choice > available_items \
                         and choice.alpha() is False:
                             raise Exception
                     except Exception:
@@ -877,7 +877,7 @@ def road_start():
         slow_print("3. Return to town.")
         choice = int(input())
         try:
-            if choice != 1 and choice != 2
+            if choice != 1 and choice != 2 \
             and choice != 3:
                 raise Exception
         except Exception:
@@ -905,7 +905,7 @@ def road_1():
         slow_print("2. Look around.")
         choice = int(input())
         try:
-            if choice != 1 and choice != 2
+            if choice != 1 and choice != 2 \
             and choice != 3:
                 raise Exception
         except Exception:
