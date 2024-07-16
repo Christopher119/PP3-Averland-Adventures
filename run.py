@@ -109,6 +109,10 @@ class Enemy(Character):
     def __init__(self, name, health, attack, defence, speed):
         super().__init__(name, health, attack, defence, speed)
 
+    def drop_loot(self, player, loot):
+        player.gold += loot
+        print(f"The {self.name} dropped {loot} gold!")
+
 
 adventurer = Player("Adventurer Boy", 100, 10, 10, 12, 1000,
                     ["Old Sword", "New Sword",  "Potion"], [])
@@ -793,8 +797,7 @@ def battle_event(player, enemy_type):
                 enemy_type.check_life()
                 if enemy_type.check_life():
                     print(f"You have defeated the {enemy_type.name}!")
-                    print(f"The {enemy_type.name} dropped 10 gold!")
-                    player.gold += 10
+                    enemy_type.drop_loot(adventurer, 10)
                     battle_loop = False
                 print(f"The {enemy_type.name} counterattacks!")
                 enemy_type.attack_other(player)
@@ -813,7 +816,7 @@ def battle_event(player, enemy_type):
                     enemy_type.check_life()
                     if enemy_type.check_life():
                         print(f"You have defeated the {enemy_type.name}!")
-                        print(f"The {enemy_type.name} dropped 10 gold!")
+                        enemy_type.drop_loot(adventurer, 10)
                         battle_loop = False
                     sleep(1.5)
 
