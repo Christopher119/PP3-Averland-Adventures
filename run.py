@@ -249,13 +249,13 @@ def game_intro():
             slow_print(f"You are {adventurer.name}! You are a brave soul "
                        "with {adventurer.health} points of health.")
             slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
-                       "defence, {adventurer.speed} speed and "
-                       "{adventurer.gold} gold pieces.")
+                       f"defence, {adventurer.speed} speed and "
+                       f"{adventurer.gold} gold pieces.")
             slow_print(f"You have {adventurer.inventory} in your inventory.")
             slow_print(f"Your quest log is {adventurer.quests}... for now.")
             slow_print(f"Prepare to embark on a thrilling adventure, "
                        "in pursuit of fame and fortune, "
-                       "brave {adventurer.name}!\n")
+                       f"brave {adventurer.name}!\n")
             slow_print("...", 0.25)
             slow_print("..", 0.25)
             slow_print(".", 0.25)
@@ -896,21 +896,21 @@ def battle_event(player, enemy_type):
                         elif choice <= available_items and choice > 0:
                             if adventurer.inventory[choice-1] == "Potion":
                                 slow_print(f"You drink the Potion \
-                                and recover 25 health.")
+                                           and recover 25 health.")
                                 adventurer.use_potion(25)
                                 adventurer.inventory.pop(choice-1)
                                 inventory_loop = False
                             elif adventurer.inventory[choice-1] \
                                     == "Large Potion":
-                                print(f"You drink the Large Potion \
-                                and recover 50 health.")
+                                slow_print(f"You drink the Large Potion \
+                                           and recover 50 health.")
                                 adventurer.use_potion(50)
                                 adventurer.inventory.pop(choice-1)
                                 inventory_loop = False
                             elif adventurer.inventory[choice-1] \
                                     == "Max Potion":
-                                print(f"You drink the Max Potion \
-                                and recover 100 health.")
+                                slow_print(f"You drink the Max Potion \
+                                           and recover 100 health.")
                                 adventurer.use_potion(100)
                                 adventurer.inventory.pop(choice-1)
                                 inventory_loop = False
