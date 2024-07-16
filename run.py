@@ -1491,7 +1491,7 @@ def forest_room1a():
         os.system('clear')
         slow_print("What will you do?\n")
         slow_print("1. Go North.") # 2a
-        slow_print("2. Go East") # 1b
+        slow_print("2. Go West") # 1b
         slow_print("3. Go South.") # forest start
         slow_print("4. Look around.")
         choice = int(input())
@@ -1521,7 +1521,7 @@ def forest_room1b():
         os.system('clear')
         slow_print("What will you do?\n")
         slow_print("1. Go North.") # 2b
-        slow_print("2. Go West") # 1a
+        slow_print("2. Go East") # 1a
         slow_print("3. Look around.")
         choice = int(input())
         try:
@@ -1570,8 +1570,8 @@ def forest_room2a():
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
-        slow_print("1. Go East.") # 2b
-        slow_print("2. Go West") # 2c
+        slow_print("1. Go West.") # 2b
+        slow_print("2. Go East") # 2c
         slow_print("3. Go South.") # 1a
         slow_print("4. Look around.")
         choice = int(input())
@@ -1602,7 +1602,7 @@ def forest_room2b():
         os.system('clear')
         slow_print("What will you do?\n")
         slow_print("1. Go North.") # 3b
-        slow_print("2. Go West") # 2a
+        slow_print("2. Go East") # 2a
         slow_print("3. Go South.") # 1b
         slow_print("4. Look around.")
         choice = int(input())
@@ -1628,7 +1628,29 @@ def forest_room2b():
 
 
 def forest_room2c():
-    pass
+    slow_print("flavour text for room 2c")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Go West") # 2a
+        slow_print("2. Go South.") # 1c
+        slow_print("3. Look around.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+             and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                forest_room2a()
+                return False
+            elif choice == 2:
+                forest_room1c()
+                return False
+            elif choice == 3:
+                slow_print("flavour text for looking")
     # forest 2a or 1c
 
 
