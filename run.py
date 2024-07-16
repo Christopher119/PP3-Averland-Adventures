@@ -41,6 +41,9 @@ class Character:
         self.speed = speed
 
     def attack_other(self, other_char):
+        """
+        A function allowing one character to reduce another characters health
+        """
         damage_taken = self.attack - (other_char.defence / 2.5)
         other_char.health -= damage_taken
         print(f"{other_char.name} took {damage_taken} damage!")
@@ -48,15 +51,26 @@ class Character:
             slow_print(f"{self.name} has {self.health} health remaining!")
 
     def check_life(self):
+        """
+        A simple function to check if the character still has health.
+        If the health is equal to or below 0 it returns True for checks.
+        """
         if(self.health <= 0):
             return True
 
     def recover_health(self, amount):
+        """
+        A simple function to restore health to a character and prevent it from going above 100.
+        """
         self.health += amount
         if(self.health > 100):
             self.health = 100
 
     def use_potion(self, amount):
+        """
+        A simple function using the above recover_health() function to restore health and
+        print out the results.
+        """
         self.recover_health(amount)
         slow_print(f"You now have {player.health}.")
         sleep(1.5)
@@ -654,10 +668,15 @@ def begin_adventure():
 
 
 def battle_event(player, enemy_type):
-
+    """
+    A function to contain battles allowing them to be used throughout each dungeon.
+    """
     battle_loop = True
 
     def is_player_alive():
+        """
+        A simple function to check the players health and call the end of the game if the player health drops to 0 or below
+        """
         player.check_life()
         sleep(1.5)
         if(player.check_life()):
@@ -751,8 +770,6 @@ def battle_event(player, enemy_type):
                                 inventory_loop = False
                             else:
                                 print("Using that item will have no effect.")
-                
-
 
 """
 MERCHANT ROAD FUNCTIONS
