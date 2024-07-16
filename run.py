@@ -99,10 +99,15 @@ class Player(Character):
         self.quests = quests
         # variables used for checks through dungeons
         # will be reset to default on return to town
+        # road_3 variables
         self.road3_side_road_seen = False
         self.road3_tracks_found = False
         self.road3_enemy_fought = False
         self.road3_camp_fought = False
+        # road_4 variables
+        self.road_4_struggle_seen = False
+        self.road_4_fight = False
+        self.road_4_group = False
 
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
@@ -115,6 +120,9 @@ class Player(Character):
         self.road3_tracks_found = False
         self.road3_enemy_fought = False
         self.road3_camp_fought = False
+        self.road_4_struggle_seen = False
+        self.road_4_fight = False
+        self.road_4_group = False
 
 
 class Enemy(Character):
@@ -132,7 +140,6 @@ class Enemy(Character):
 
 adventurer = Player("Adventurer Boy", 100, 10, 10, 12, 1000,
                     ["Old Sword", "New Sword",  "Potion"], [])
-random_mob = Enemy("Evil Man", 100, 20, 10, 10)
 
 """
 INTRO FUNCTIONS
@@ -1016,7 +1023,6 @@ def road_2():
 
 
 def road_3():
-    # empty, can notice the side road (3a) or go to 4
     os.system('clear')
     slow_print("flavour text for road 3")
     sleep(1.5)
@@ -1076,7 +1082,9 @@ def road_3():
                 sleep(1.5)
                 road_2()
 
+
 def road_3a():
+    os.system('clear')
     slow_print("This is Placeholder text for 3a")
     sleep(1.5)
     
@@ -1130,7 +1138,9 @@ def road_3a():
                                    "err on the side of caution.")
                         sleep(1.5)
 
+
 def road_3b():
+    os.system('clear')
     slow_print("You follow the tracks through the bushes.")
     sleep(1.5)
 
@@ -1143,6 +1153,7 @@ def road_3b():
         slow_print("After the battle you realise that there must "
                    "be a group up ahead. It would be dangerous "
                    "to proceed...")
+        sleep(1.5)
 
     else:
         slow_print(f"The body of the {adventurer.road3_enemies.name} "
@@ -1169,13 +1180,17 @@ def road_3b():
             elif choice == 2:
                 if adventurer.road3_camp_fought == False:
                     slow_print("You steel yourself for the battle ahead.")
+
                 else:
                     slow_print("You walk towards the clearing.")
+
                 sleep(1.5)
                 road_3c()
                 return False
 
+
 def road_3c():
+    os.system('clear')
     if adventurer.road3_camp_fought == False:
         slow_print("As you thought there are multiple "
                    f"{adventurer.road3_enemies.name}s here.")
@@ -1200,29 +1215,92 @@ def road_3c():
 
 
 def road_4():
-    # notice signs of a fight, 4a
-    # proceed to 5
+    os.system('clear')
+    slow_print("Placeholder text for road 4.")
+    
+    random_battle(random_enemy())
 
-    def road_4a():
-        # fight
-        pass
+    sleep(1.5)
 
-    def road_4b():
-        # fight
-        pass
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue down the road.")
+        slow_print("2. Look around.")
+        slow_print("3. Go back up the road.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+            and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                print("You continue down the road.")
+                sleep(1.5)
+                road_5()
+                return False
+
+            elif choice == 2:
+                if adventurer.road_4_struggle_seen == False:
+                    adventurer.road_4_struggle_seen = True
+                    slow_print("You notice signs of a "
+                               "battle leading off the road.")
+                elif adventurer.road_4_struggle_seen == True:
+                    slow_print("You consider the signs of "
+                               "a struggle you saw earlier.")
+                slow_print("Would you like to investigate?")
+                slow_print("1. Yes.")
+                slow_print("2. No.")
+                choice = int(input())
+                try:
+                    if choice != 1 and choice != 2:
+                        raise Exception
+                except Exception:
+                    print("Please enter only 1, or 2.\n")
+                else:
+                    if choice == 1:
+                        slow_print("You decide to follow the damage.")
+                        sleep(1.5)
+                        road_4a()
+                        return False
+
+                    elif choice == 2:
+                        slow_print("It could be a trap.\n You decide"
+                                   "to stay on the main road.")
+                        sleep(1.5)
+
+            elif choice == 3:
+                slow_print("You make your way back the way you came.")
+                sleep(1.5)
+                road_3()
+
+def road_4a():
+    os.system('clear')
+    # fight
+    pass
+
+def road_4b():
+    os.system('clear')
+    # fight
+    pass
 
 
 def road_5():
+    os.system('clear')
     # fight
     pass
 
 
 def road_6():
+    os.system('clear')
     # fight?
     pass
 
 
 def road_7():
+    os.system('clear')
     # town ahead
     pass
 
