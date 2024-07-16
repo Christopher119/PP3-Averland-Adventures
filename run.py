@@ -1382,8 +1382,36 @@ def road_5():
 
 def road_6():
     os.system('clear')
-    # fight?
-    pass
+    slow_print("flavour text for road 6")
+    sleep(1.5)
+    random_battle(random_enemy())
+
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue down the road.")
+        slow_print("2. Look around.")
+        slow_print("3. Go back up the road.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+            and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                print("You continue down the road.")
+                sleep(1.5)
+                road_7()
+                return False
+            elif choice == 2:
+                print("There is nothing of interest.")
+                sleep(1.5)
+            elif choice == 3:
+                slow_print("You make your way back the way you came.")
+                sleep(1.5)
+                road_5()
 
 
 def road_7():
