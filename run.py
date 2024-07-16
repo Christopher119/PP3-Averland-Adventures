@@ -750,6 +750,30 @@ def begin_adventure():
                 town()
                 return False
 
+def random_enemy():
+    """
+    A function to select a random enemy from a set list
+    and return it to the random_battle function
+    """
+    enemies = [
+        Enemy("Bandit", 20, 10, 10, 10),
+        Enemy("Slime", 10, 5, 5, 2),
+        Enemy("Skeleton", 10, 10, 5, 5),
+        Enemy("Lizard-Man", 15, 15, 10, 10),
+        Enemy("Giant Bug", 25, 15, 15, 10),
+        Enemy("Zombie", 20, 5, 10, 2),
+        Enemy("Wolf", 10, 5, 5, 15)
+    ]
+    # https://stackoverflow.com/questions/306400/how-can-i-randomly-select-choose-an-item-from-a-list-get-a-random-element
+    return random.choice(enemies)
+
+def random_battle(enemy_type):
+    battle_chance = random.randrange(10)+1
+
+    if battle_chance > 5:
+        battle_event(adventurer, enemy_type)
+        delay(3)
+
 
 def battle_event(player, enemy_type):
     """
@@ -906,6 +930,7 @@ def road_1():
         slow_print("What will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
+        slow_print("3. Go back up the road.")
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
@@ -927,11 +952,44 @@ def road_1():
                 else:
                     print("There is nothing else of interest.")
                     sleep(1.5)
+            elif choice == 3:
+                slow_print("You make your way back the way you came.")
+                sleep(1.5)
+                road_start()
 
 
 def road_2():
-    # bandit battle, leads to road 3
-    pass
+    slow_print("You travel further down the road.")
+
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue down the road.")
+        slow_print("2. Look around.")
+        slow_print("3. Go back up the road.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+            and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                print("You continue down the road.")
+                road_2()
+                return False
+            elif choice == 2:
+                if found_gold_road_1 is not True:
+                    print("flavour text for looking.")
+                    sleep(1.5)
+                else:
+                    print("There is nothing else of interest.")
+                    sleep(1.5)
+            elif choice == 3:
+                slow_print("You make your way back the way you came.")
+                sleep(1.5)
+                road_start()
 
 
 def road_3():
