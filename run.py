@@ -1457,7 +1457,31 @@ FOREST EVENTS
 
 
 def forest_start():
-    pass
+    print("flavour text")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue.")
+        slow_print("2. Look around.")
+        slow_print("3. Return to town.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+             and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                forest_room1a()
+                return False
+            elif choice == 2:
+                print("flavour text for looking")
+            elif choice == 3:
+                print("You decide you are unprepared and return to town.")
+                delay(1.5)
+                town()
+                return False
     # leads to forest1a
 
 
