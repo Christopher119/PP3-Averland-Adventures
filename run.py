@@ -65,7 +65,7 @@ class Character:
         If the health is equal to or below 0 it returns True for checks.
         """
         if self.health <= 0:
-            other_char.health = 0
+            self.health = 0
             return True
 
     def recover_health(self, amount):
@@ -139,7 +139,7 @@ class Enemy(Character):
         print(f"The {self.name} dropped {loot} gold!")
 
 
-adventurer = Player("Adventurer Boy", 100, 10, 10, 12, 1000,
+adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
                     ["Old Sword", "New Sword",  "Potion"], [])
 
 """
@@ -544,8 +544,8 @@ def shop():
                        or adventurer.inventory[choice-1] == "Iron Armor"
                        or adventurer.inventory[choice-1] == "Potion"):
                         adventurer.gold += 25
-                        print(f"You got 25 gold from selling your "
-                              "{adventurer.inventory[choice-1]}.")
+                        print("You got 25 gold from selling your "
+                              f"{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
@@ -553,8 +553,8 @@ def shop():
                           or adventurer.inventory[choice-1] == "Steel Armor"
                           or adventurer.inventory[choice-1] == "Large Potion"):
                         adventurer.gold += 50
-                        print(f"You got 50 gold from selling your "
-                              "{adventurer.inventory[choice-1]}.")
+                        print("You got 50 gold from selling your "
+                              f"{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
@@ -562,15 +562,15 @@ def shop():
                           or adventurer.inventory[choice-1] == "Silver Armor"
                           or adventurer.inventory[choice-1] == "Max Potion"):
                         adventurer.gold += 150
-                        print(f"You got 150 gold from selling your "
-                              "{adventurer.inventory[choice-1]}.")
+                        print("You got 150 gold from selling your "
+                              f"{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
                     else:
                         adventurer.gold += 10
-                        print(f"You got 10 gold from selling your "
-                              "{adventurer.inventory[choice-1]}.")
+                        print("You got 10 gold from selling your "
+                              f"{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
@@ -1551,7 +1551,7 @@ def main():
     Runs the primary functions for the game.
     """
     # splash_screen()
-    road_3()
+    road_start()
 
 
 main()
