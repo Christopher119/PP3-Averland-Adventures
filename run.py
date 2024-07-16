@@ -1118,8 +1118,38 @@ def road_3a():
                         sleep(1.5)
 
 def road_3b():
-    pass
-    # battle before 3c
+    slow_print("You follow the tracks through the bushes.")
+    sleep(1.5)
+
+    road3_enemies = random_enemy()
+    battle_event(adventurer, road3_enemies)
+
+    slow_print("After the battle you realise that there must "
+               "be a group up ahead. It would be dangerous "
+               "to proceed...")
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Go back.")
+        slow_print(f"2. Enter the {road3_enemies}'s territory.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, or 2.\n")
+        else:
+            if choice == 1:
+                print("You go back through the bushes.")
+                sleep(1.5)
+                road_3a()
+                return False
+
+            elif choice == 2:
+                slow_print("You steel yourself for the battle ahead.")
+                sleep(1.5)
+                road_3c()
+                return False
 
 def road3c():
     pass
