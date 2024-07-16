@@ -1278,19 +1278,106 @@ def road_4():
 
 def road_4a():
     os.system('clear')
-    # fight
-    pass
+    slow_print("You follow the evidence of a struggle further off the road.")
+    sleep(1.5)
+
+    if adventurer.road_4_fight == False:
+        adventurer.road4_enemies = random_enemy()
+        battle_event(adventurer, adventurer.road4_enemies)
+        adventurer.road4_enemy_fought = True
+        slow_print("After the battle placeholder")
+        sleep(1.5)
+
+    else:
+        slow_print(f"The body of the {adventurer.road4_enemies.name} "
+                   "you defeated is still here.")
+
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Go back.")
+        slow_print(f"2. Go further.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, or 2.\n")
+        else:
+            if choice == 1:
+                print("You go back to the main road.")
+                sleep(1.5)
+                road_4()
+                return False
+
+            elif choice == 2:
+                if adventurer.road_4_group == False:
+                    slow_print("You steel yourself for the battle ahead.")
+
+                else:
+                    slow_print("You walk towards the clearing.")
+
+                sleep(1.5)
+                road_4b()
+                return False
 
 def road_4b():
     os.system('clear')
-    # fight
-    pass
+    if adventurer.road_4_group == False:
+        slow_print("As you thought there are multiple "
+                   f"{adventurer.road4_enemies.name}s here.")
+        sleep(1.5)
+        adventurer.road4_enemies.health += 30
+        adventurer.road4_enemies.attack += 10
+        adventurer.road4_enemies.name += " Group"
+        battle_event(adventurer, adventurer.road4_enemies)
+        adventurer.road_4_group = True
+
+        slow_print("After the battle you search around the area.")
+        slow_print("With nothing else of value to find you return "
+                   "to the main road, triumphant.")
+    
+    else:
+        slow_print("The area is silent now that you have "
+                   "defeated all the enemies here.")
+        slow_print("You turn around and walk back towards "
+                   "the main road.")
+    sleep(1.5)
+    road_4()
 
 
 def road_5():
     os.system('clear')
-    # fight
-    pass
+    slow_print("flavour text for road 5")
+    sleep(1.5)
+    random_battle(random_enemy())
+
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Continue down the road.")
+        slow_print("2. Look around.")
+        slow_print("3. Go back up the road.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2 \
+            and choice != 3:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, 2, or 3.\n")
+        else:
+            if choice == 1:
+                print("You continue down the road.")
+                sleep(1.5)
+                road_6()
+                return False
+            elif choice == 2:
+                print("There is nothing of interest.")
+                sleep(1.5)
+            elif choice == 3:
+                slow_print("You make your way back the way you came.")
+                sleep(1.5)
+                road_4()
 
 
 def road_6():
