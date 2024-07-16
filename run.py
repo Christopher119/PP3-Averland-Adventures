@@ -110,6 +110,12 @@ class Player(Character):
         other_char.attack_other(self)
         self.defence /= 2
 
+    def reset_flags(self):
+        self.road3_side_road_seen = False
+        self.road3_tracks_found = False
+        self.road3_enemy_fought = False
+        self.road3_camp_fought = False
+
 
 class Enemy(Character):
     """
@@ -292,6 +298,7 @@ def town():
     A function to hold the Town the player will return
     to after completing each adventure.
     """
+    adventurer.reset_flags()
     os.system('clear')
     slow_print("You are in town.")
     while True:
@@ -1189,8 +1196,6 @@ def road_3c():
         slow_print("You turn around and walk back towards "
                    "the main road.")
     sleep(1.5)
-    # removing the created variable
-    del adventurer.road3_enemies
     road_3()
 
 
