@@ -53,7 +53,8 @@ class Character:
         other_char.health -= damage_taken
         slow_print(f"{other_char.name} took {damage_taken} damage!")
         if other_char.health > 0:
-            slow_print(f"{other_char.name} has {other_char.health} health remaining!")
+            slow_print(f"{other_char.name} has {other_char.health} "
+                       "health remaining!")
         elif other_char.health <= 0:
             other_char.health = 0
             slow_print(f"{other_char.name} has no health remaining!")
@@ -317,7 +318,7 @@ def town():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3 and choice != 4:
+             and choice != 3 and choice != 4:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, 3 or 4.\n")
@@ -362,7 +363,7 @@ def shop():
             choice = int(input())
             try:
                 if choice != 1 and choice != 2 \
-                and choice != 3 and choice != 4:
+                 and choice != 3 and choice != 4:
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
@@ -380,7 +381,7 @@ def shop():
                         choice = int(input())
                         try:
                             if choice != 1 and choice != 2 \
-                            and choice != 3 and choice != 4:
+                             and choice != 3 and choice != 4:
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
@@ -432,7 +433,7 @@ def shop():
                         choice = int(input())
                         try:
                             if choice != 1 and choice != 2 \
-                            and choice != 3 and choice != 4:
+                             and choice != 3 and choice != 4:
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
@@ -481,7 +482,7 @@ def shop():
                         choice = int(input())
                         try:
                             if choice != 1 and choice != 2 \
-                            and choice != 3 and choice != 4:
+                             and choice != 3 and choice != 4:
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
@@ -539,27 +540,27 @@ def shop():
                     shop()
                     return False
                 elif choice <= available_items and choice > 0:
-                    if adventurer.inventory[choice-1] == "Iron Sword" or \
-                    adventurer.inventory[choice-1] == "Iron Armor" \
-                    or adventurer.inventory[choice-1] == "Potion":
+                    if (adventurer.inventory[choice-1] == "Iron Sword"
+                       or adventurer.inventory[choice-1] == "Iron Armor"
+                       or adventurer.inventory[choice-1] == "Potion"):
                         adventurer.gold += 25
                         print(f"You got 25 gold from selling your "
                               "{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
-                    elif adventurer.inventory[choice-1] == "Steel Sword" \
-                    or adventurer.inventory[choice-1] == "Steel Armor" \
-                    or adventurer.inventory[choice-1] == "Large Potion":
+                    elif (adventurer.inventory[choice-1] == "Steel Sword"
+                          or adventurer.inventory[choice-1] == "Steel Armor"
+                          or adventurer.inventory[choice-1] == "Large Potion"):
                         adventurer.gold += 50
                         print(f"You got 50 gold from selling your "
                               "{adventurer.inventory[choice-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(choice-1)
 
-                    elif adventurer.inventory[choice-1] == "Silver Sword" \
-                    or adventurer.inventory[choice-1] == "Silver Armor" \
-                    or adventurer.inventory[choice-1] == "Max Potion":
+                    elif (adventurer.inventory[choice-1] == "Silver Sword"
+                          or adventurer.inventory[choice-1] == "Silver Armor"
+                          or adventurer.inventory[choice-1] == "Max Potion"):
                         adventurer.gold += 150
                         print(f"You got 150 gold from selling your "
                               "{adventurer.inventory[choice-1]}.")
@@ -590,7 +591,7 @@ def shop():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -629,7 +630,7 @@ def find_a_quest():
             choice = int(input())
             try:
                 if choice != 1 and choice != 2 \
-                and choice != 3 and choice != 4:
+                 and choice != 3 and choice != 4:
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
@@ -675,7 +676,7 @@ def find_a_quest():
             choice = int(input())
             try:
                 if choice != 1 and choice != 2 \
-                and choice != 3 and choice != 4:
+                 and choice != 3 and choice != 4:
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
@@ -722,7 +723,7 @@ def find_a_quest():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -753,7 +754,7 @@ def begin_adventure():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -821,7 +822,7 @@ def battle_event(player, enemy_type):
     slow_print(f"You have encountered a {enemy_type.name}!")
     if player.speed > enemy_type.speed:
         slow_print(f"The {enemy_type.name} tried to attack you "
-        "but you were ready for it!")
+                   "but you were ready for it!")
         sleep(1.5)
     elif player.speed < enemy_type.speed:
         slow_print(f"The {enemy_type.name} ambushed you!")
@@ -836,7 +837,7 @@ def battle_event(player, enemy_type):
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             slow_print("Please enter only 1, 2, or 3.\n")
@@ -884,7 +885,7 @@ def battle_event(player, enemy_type):
                     choice = int(input())
                     try:
                         if choice > available_items \
-                        and choice.alpha() is False:
+                         and choice.alpha() is False:
                             raise Exception
                     except Exception:
                         print("Please only enter the numbers on screen, \
@@ -933,7 +934,7 @@ def road_start():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -964,7 +965,7 @@ def road_1():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -1003,7 +1004,7 @@ def road_2():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+              and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -1036,7 +1037,7 @@ def road_3():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -1048,11 +1049,11 @@ def road_3():
                 return False
 
             elif choice == 2:
-                if adventurer.road3_side_road_seen == False:
+                if adventurer.road3_side_road_seen is False:
                     adventurer.road3_side_road_seen = True
                     slow_print("You notice there is a path "
                                "leading through some bushes.")
-                elif adventurer.road3_side_road_seen == True:
+                elif adventurer.road3_side_road_seen is True:
                     slow_print("You consider the path you "
                                "noticed earlier.")
                 slow_print("Would you like to investigate "
@@ -1074,7 +1075,7 @@ def road_3():
 
                     elif choice == 2:
                         slow_print("You decide it safer to stick "
-                                    "to the path more trodden.")
+                                   "to the path more trodden.")
                         sleep(1.5)
 
             elif choice == 3:
@@ -1087,7 +1088,7 @@ def road_3a():
     os.system('clear')
     slow_print("This is Placeholder text for 3a")
     sleep(1.5)
-    
+
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
@@ -1107,15 +1108,15 @@ def road_3a():
                 return False
 
             elif choice == 2:
-                if adventurer.road3_tracks_found == False:
+                if adventurer.road3_tracks_found is False:
                     adventurer.road3_tracks_found = True
                     slow_print("You find some tracks in the "
                                "dirt at your feet.")
-                elif adventurer.road3_tracks_found == True:
+                elif adventurer.road3_tracks_found is True:
                     slow_print("You consider the tracks "
                                "you found earlier.")
                 slow_print("Would you like to "
-                               "follow them?")
+                           "follow them?")
                 slow_print("1. Yes.")
                 slow_print("2. No.")
                 choice = int(input())
@@ -1146,7 +1147,7 @@ def road_3b():
 
     # generating a random enemy and assigning it to a variable
     # within the Player class to be stored for consistent encounters
-    if adventurer.road3_enemy_fought == False:
+    if adventurer.road3_enemy_fought is False:
         adventurer.road3_enemies = random_enemy()
         battle_event(adventurer, adventurer.road3_enemies)
         adventurer.road3_enemy_fought = True
@@ -1163,7 +1164,8 @@ def road_3b():
         os.system('clear')
         slow_print("What will you do?\n")
         slow_print("1. Go back.")
-        slow_print(f"2. Enter the {adventurer.road3_enemies.name}'s territory.")
+        slow_print(f"2. Enter the {adventurer.road3_enemies.name}'s "
+                   "territory.")
         choice = int(input())
         try:
             if choice != 1 and choice != 2:
@@ -1178,7 +1180,7 @@ def road_3b():
                 return False
 
             elif choice == 2:
-                if adventurer.road3_camp_fought == False:
+                if adventurer.road3_camp_fought is False:
                     slow_print("You steel yourself for the battle ahead.")
 
                 else:
@@ -1191,7 +1193,7 @@ def road_3b():
 
 def road_3c():
     os.system('clear')
-    if adventurer.road3_camp_fought == False:
+    if adventurer.road3_camp_fought is False:
         slow_print("As you thought there are multiple "
                    f"{adventurer.road3_enemies.name}s here.")
         sleep(1.5)
@@ -1204,7 +1206,7 @@ def road_3c():
         slow_print("After the battle you search around the area.")
         slow_print("With nothing else of value to find you return "
                    "to the main road, triumphant.")
-    
+
     else:
         slow_print("The area is silent now that you have "
                    "defeated all the enemies here.")
@@ -1217,7 +1219,7 @@ def road_3c():
 def road_4():
     os.system('clear')
     slow_print("Placeholder text for road 4.")
-    
+
     random_battle(random_enemy())
 
     sleep(1.5)
@@ -1231,7 +1233,7 @@ def road_4():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -1243,11 +1245,11 @@ def road_4():
                 return False
 
             elif choice == 2:
-                if adventurer.road_4_struggle_seen == False:
+                if adventurer.road_4_struggle_seen is False:
                     adventurer.road_4_struggle_seen = True
                     slow_print("You notice signs of a "
                                "battle leading off the road.")
-                elif adventurer.road_4_struggle_seen == True:
+                elif adventurer.road_4_struggle_seen is True:
                     slow_print("You consider the signs of "
                                "a struggle you saw earlier.")
                 slow_print("Would you like to investigate?")
@@ -1276,12 +1278,13 @@ def road_4():
                 sleep(1.5)
                 road_3()
 
+
 def road_4a():
     os.system('clear')
     slow_print("You follow the evidence of a struggle further off the road.")
     sleep(1.5)
 
-    if adventurer.road_4_fight == False:
+    if adventurer.road_4_fight is False:
         adventurer.road4_enemies = random_enemy()
         battle_event(adventurer, adventurer.road4_enemies)
         adventurer.road4_enemy_fought = True
@@ -1311,7 +1314,7 @@ def road_4a():
                 return False
 
             elif choice == 2:
-                if adventurer.road_4_group == False:
+                if adventurer.road_4_group is False:
                     slow_print("You steel yourself for the battle ahead.")
 
                 else:
@@ -1321,9 +1324,10 @@ def road_4a():
                 road_4b()
                 return False
 
+
 def road_4b():
     os.system('clear')
-    if adventurer.road_4_group == False:
+    if adventurer.road_4_group is False:
         slow_print("As you thought there are multiple "
                    f"{adventurer.road4_enemies.name}s here.")
         sleep(1.5)
@@ -1336,7 +1340,7 @@ def road_4b():
         slow_print("After the battle you search around the area.")
         slow_print("With nothing else of value to find you return "
                    "to the main road, triumphant.")
-    
+
     else:
         slow_print("The area is silent now that you have "
                    "defeated all the enemies here.")
@@ -1361,7 +1365,7 @@ def road_5():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -1395,7 +1399,7 @@ def road_6():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
@@ -1428,7 +1432,7 @@ def road_7():
         choice = int(input())
         try:
             if choice != 1 and choice != 2 \
-            and choice != 3:
+             and choice != 3:
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
