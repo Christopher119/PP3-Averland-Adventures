@@ -51,9 +51,11 @@ class Character:
         """
         damage_taken = self.attack - (other_char.defence / 2.5)
         other_char.health -= damage_taken
-        print(f"{other_char.name} took {damage_taken} damage!")
+        slow_print(f"{other_char.name} took {damage_taken} damage!")
         if other_char.health > 0:
-            slow_print(f"{self.name} has {self.health} health remaining!")
+            slow_print(f"{other_char.name} has {other_char.health} health remaining!")
+        elif other_char.health <= 0:
+            slow_print(f"{other_char.name} has no health remaining!")
 
     def check_life(self):
         """
@@ -750,6 +752,7 @@ def begin_adventure():
                 town()
                 return False
 
+
 def random_enemy():
     """
     A function to select a random enemy from a set list
@@ -767,12 +770,13 @@ def random_enemy():
     # https://stackoverflow.com/questions/306400/how-can-i-randomly-select-choose-an-item-from-a-list-get-a-random-element
     return random.choice(enemies)
 
+
 def random_battle(enemy_type):
     battle_chance = random.randrange(10)+1
 
     if battle_chance > 5:
         battle_event(adventurer, enemy_type)
-        delay(3)
+        sleep(3)
 
 
 def battle_event(player, enemy_type):
@@ -813,19 +817,21 @@ def battle_event(player, enemy_type):
             and choice != 3:
                 raise Exception
         except Exception:
-            print("Please enter only 1, 2, or 3.\n")
+            slow_print("Please enter only 1, 2, or 3.\n")
         else:
             if choice == 1:
-                print(f"You attack the {enemy_type.name}")
+                slow_print(f"You attack the {enemy_type.name}")
                 player.attack_other(enemy_type)
                 enemy_type.check_life()
                 if enemy_type.check_life():
-                    print(f"You have defeated the {enemy_type.name}!")
+                    slow_print(f"You have defeated the {enemy_type.name}!")
                     enemy_type.drop_loot(adventurer, 10)
                     battle_loop = False
-                print(f"The {enemy_type.name} counterattacks!")
+                    break
+                slow_print(f"The {enemy_type.name} counterattacks!")
                 enemy_type.attack_other(player)
                 is_player_alive()
+                sleep(1.5)
 
             elif choice == 2:
                 player.block_attack(enemy_type)
@@ -923,8 +929,9 @@ def road_start():
 
 
 def road_1():
+    os.system('clear')
     found_gold_road_1 = False
-    print("flavour text")
+    slow_print("flavour text for road 1")
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
@@ -959,7 +966,10 @@ def road_1():
 
 
 def road_2():
-    slow_print("You travel further down the road.")
+    os.system('clear')
+    slow_print("flavour text for road 2")
+
+    random_battle(random_enemy())
 
     while True:
         os.system('clear')
@@ -977,19 +987,16 @@ def road_2():
         else:
             if choice == 1:
                 print("You continue down the road.")
-                road_2()
+                sleep(1.5)
+                road_3()
                 return False
             elif choice == 2:
-                if found_gold_road_1 is not True:
-                    print("flavour text for looking.")
-                    sleep(1.5)
-                else:
-                    print("There is nothing else of interest.")
-                    sleep(1.5)
+                print("There is nothing of interest.")
+                sleep(1.5)
             elif choice == 3:
                 slow_print("You make your way back the way you came.")
                 sleep(1.5)
-                road_start()
+                road_1()
 
 
 def road_3():
@@ -1137,7 +1144,7 @@ def main():
     Runs the primary functions for the game.
     """
     # splash_screen()
-    battle_event(adventurer, random_mob)
+    road_1()
 
 
 main()
