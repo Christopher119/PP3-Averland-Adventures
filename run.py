@@ -1024,7 +1024,7 @@ def road_3():
             if choice == 1:
                 print("You continue down the road.")
                 sleep(1.5)
-                road_3()
+                road_4()
                 return False
 
             elif choice == 2:
@@ -1066,8 +1066,56 @@ def road_3a():
     slow_print("This is Placeholder text for 3a")
     sleep(1.5)
     tracks_found = False
-    pass
-    # empty, look to find tracks to go to 3b
+    
+    while True:
+        os.system('clear')
+        slow_print("What will you do?\n")
+        slow_print("1. Go back.")
+        slow_print("2. Look around.")
+        choice = int(input())
+        try:
+            if choice != 1 and choice != 2:
+                raise Exception
+        except Exception:
+            print("Please enter only 1, or 2.\n")
+        else:
+            if choice == 1:
+                print("You go back to the main road.")
+                sleep(1.5)
+                road_3()
+                return False
+
+            elif choice == 2:
+                if tracks_found == False:
+                    tracks_found = True
+                    slow_print("You find some tracks in the "
+                               "dirt at your feet.")
+                elif side_road_seen == True:
+                    slow_print("You consider the tracks "
+                               "you found earlier.")
+                slow_print("Would you like to "
+                               "follow them?")
+                slow_print("1. Yes.")
+                slow_print("2. No.")
+                choice = int(input())
+                try:
+                    if choice != 1 and choice != 2:
+                        raise Exception
+                except Exception:
+                    print("Please enter only 1, or 2.\n")
+                else:
+                    if choice == 1:
+                        slow_print("You decide to follow the tracks "
+                                   "further off the road.")
+                        sleep(1.5)
+                        road_3b()
+                        return False
+
+                    elif choice == 2:
+                        slow_print("You aren't sure what may be at "
+                                   "the end of these tracks,\n so you "
+                                   "err on the side of caution.")
+                        sleep(1.5)
 
 def road_3b():
     pass
