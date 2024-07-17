@@ -174,10 +174,6 @@ class Enemy(Character):
 """
 
 
-adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
-                    ["Old Sword", "New Sword",  "Potion"], [])
-bandit = Enemy("Bandit", 20, 10, 10, 10, 10)
-
 """
 INTRO FUNCTIONS
 """
@@ -861,13 +857,13 @@ def begin_adventure():
                 town()
                 return False
 """
-
+"""
 # battle functions
 def random_enemy(area):
     """
-    A function to select a random enemy from a set list
-    and return it to the random_battle function
-    """
+    #A function to select a random enemy from a set list
+    #and return it to the random_battle function
+"""
     bandit_loot = random.randint(10, 30)
     slime_loot = random.randint(2, 5)
     skeleton_loot = random.randint(5, 7)
@@ -918,17 +914,17 @@ def random_battle(enemy_type, encounter_chance):
 
 
 def battle_event(player, enemy_type):
-    """
+    """"""
     A function to contain battles allowing them
     to be used throughout each dungeon.
-    """
+    """"""
     battle_loop = True
 
     def is_player_alive():
         """
-        A simple function to check the players health and
-        call the end of the game if the player health drops to 0 or below
-        """
+        #A simple function to check the players health and
+        #call the end of the game if the player health drops to 0 or below
+"""
         player.check_life()
         sleep(1.5)
         if player.check_life():
@@ -1060,12 +1056,12 @@ def battle_event(player, enemy_type):
                                       "have no effect.")
                             slow_screen_clear()
 
-
+"""
 """
 MERCHANT ROAD FUNCTIONS
 """
 
-
+"""
 def road_start():
 
     while True:
@@ -1638,7 +1634,7 @@ def road_7():
                 slow_screen_clear()
                 road_6()
                 return False
-
+"""
 
 """
 FOREST EVENTS
