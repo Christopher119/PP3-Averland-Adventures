@@ -83,6 +83,9 @@ class Character:
         self.health += amount
         if self.health > 100:
             self.health = 100
+            slow_print("You are fully healed!")
+        else:
+            slow_print(f"You recovered {amount} health!")
 
     def use_potion(self, amount):
         """
@@ -175,29 +178,30 @@ def splash_screen():
     and end the game based on player input.
     """
     os.system('clear')
-    slow_print("Averland Adventures\n")
-    slow_print("A text based choose your own adventure RPG game.")
     while True:
+        slow_print("Averland Adventures\n")
+        slow_print("A text based choose your own adventure RPG game.")
         slow_print("What would you like to do?\n")
         slow_print("1. Start Game")
         slow_print("2. Read Rules")
         slow_print("3. Exit Game")
+        choice = input()
         try:
-            choice = int(input())
-            if choice != 1 and choice != 2 and choice != 3:
+            if choice != str(1) and choice != str(2) and choice != str(3):
                 raise Exception
 
         except Exception:
             print("Please enter only 1, 2 or 3.\n")
+            slow_screen_clear()
 
         else:
-            if choice == 1:
+            if choice == str(1):
                 game_intro()
 
-            elif choice == 2:
+            elif choice == str(2):
                 rules()
 
-            elif choice == 3:
+            elif choice == str(3):
                 exit_game()
 
 
@@ -221,14 +225,15 @@ def rules():
     slow_print("Best of luck on your quests, brave Adventurer!")
     slow_print("\nTo return to the main menu, press 1:\n")
     while True:
-        go_back = int(input())
+        go_back = input()
         try:
-            if go_back != 1:
+            if go_back != str(1):
                 raise Exception
         except Exception:
             print("Please press 1.\n")
+            slow_screen_clear()
         else:
-            if go_back == 1:
+            if go_back == str(1):
                 splash_screen()
 
 
@@ -263,11 +268,12 @@ def game_intro():
         except Exception:
             print("Please keep your name under 20 characters "
                   "and only use alphabetic characters.\n")
+            slow_screen_clear()
         else:
             adventurer = Player(your_name, 100, 10, 10, 5, 10,
                                 ["Old Sword", "Old Shield"], ["Empty"])
             slow_print(f"You are {adventurer.name}! You are a brave soul "
-                       "with {adventurer.health} points of health.")
+                       f"with {adventurer.health} points of health.")
             slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
                        f"defence, {adventurer.speed} speed and "
                        f"{adventurer.gold} gold pieces.")
@@ -295,20 +301,20 @@ def game_over():
         slow_print("Would you like to start again?")
         print("1. Yes")
         print("2. No")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2:
+            if choice != str(1) and choice != str(2):
                 raise Exception
         except Exception:
             print("Please enter only 1 or 2.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
                 slow_print("May your efforts bear more fruit "
                            "this time, adventurer.\n")
                 game_intro()
                 return False
 
-            elif choice == 2:
+            elif choice == str(2):
                 slow_print("Perhaps we shall meet again in another life.\n")
                 sleep(3)
                 quit()
@@ -342,16 +348,30 @@ def town():
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, 3 or 4.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
+                slow_print("You walk towards the local shop, "
+                           "the bell\nabove the door jingling "
+                           "as you enter.")
+                slow_screen_clear()
                 shop()
                 return False
 
             elif choice == str(2):
+                slow_print("You walk towards the tavern, "
+                           "the hustle and bustle of the\n"
+                           "patrons already audible before"
+                           "you open the door.")
+                slow_screen_clear()
                 find_a_quest()
                 return False
 
             elif choice == str(3):
+                slow_print("You walk towards the town gates, "
+                           "where guards\nand other adventurers "
+                           "are gathered.")
+                slow_screen_clear()
                 begin_adventure()
                 return False
 
@@ -371,14 +391,13 @@ def shop():
     """
     # methods specific to shopping
     def buy():
-        os.system('clear')
-        print("You approach the shopkeep and ask what they have for sale.")
         while True:
+            print("You approach the shopkeep and ask what they have for sale.")
             print("Shop selection:")
             print("1. Weapons")
             print("2. Armor")
             print("3. Items")
-            print("4. Leave the shop")
+            print("4. Back to options")
             print("What would you like to do?\n")
             choice = input()
             try:
@@ -387,6 +406,7 @@ def shop():
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
+                slow_screen_clear()
             else:
                 if choice == str(1):
                     while True:
@@ -405,6 +425,7 @@ def shop():
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
+                            slow_screen_clear()
                         else:
                             if choice == str(1):
                                 if adventurer.gold <= 50:
@@ -416,6 +437,7 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Iron Sword")
+                                slow_screen_clear()
                             elif choice == str(2):
                                 if adventurer.gold <= 150:
                                     print("You cannot afford this item.")
@@ -426,6 +448,7 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Steel Sword")
+                                slow_screen_clear()
                             elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     print("You cannot afford this item.")
@@ -436,7 +459,9 @@ def shop():
                                           "to your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Silver Sword")
+                                slow_screen_clear()
                             elif choice == str(4):
+                                os.system('clear')
                                 shop()
                                 return False
 
@@ -457,6 +482,7 @@ def shop():
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
+                            slow_screen_clear()
                         else:
                             if choice == str(1):
                                 if adventurer.gold <= 50:
@@ -468,6 +494,7 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Iron Armor")
+                                slow_screen_clear()
                             elif choice == str(2):
                                 if adventurer.gold <= 150:
                                     print("You cannot afford this item.")
@@ -478,6 +505,7 @@ def shop():
                                           "inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Steel Armor")
+                                slow_screen_clear()
                             elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     print("You cannot afford this item.")
@@ -488,7 +516,9 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Silver Armor")
+                                slow_screen_clear()
                             elif choice == str(4):
+                                os.system('clear')
                                 shop()
                                 return False
 
@@ -506,6 +536,7 @@ def shop():
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
+                            slow_screen_clear()
                         else:
                             if choice == str(1):
                                 if adventurer.gold <= 50:
@@ -514,6 +545,7 @@ def shop():
                                     print("You have added a Potion "
                                           "to your inventory.")
                                     adventurer.inventory.append("Potion")
+                                slow_screen_clear()
                             elif choice == str(2):
                                 if adventurer.gold <= 150:
                                     print("You cannot afford this item.")
@@ -521,6 +553,7 @@ def shop():
                                     print("You have added a Large Potion "
                                           "to your inventory.")
                                     adventurer.inventory.append("Large Potion")
+                                slow_screen_clear()
                             elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     print("You cannot afford this item.")
@@ -528,12 +561,14 @@ def shop():
                                     print("You have added a Max Potion "
                                           "to your inventory.")
                                     adventurer.inventory.append("Max Potion")
+                                slow_screen_clear()
                             elif choice == str(4):
+                                os.system('clear')
                                 shop()
                                 return False
 
                 elif choice == str(4):
-                    find_a_quest()
+                    shop()
                     return False
 
     def sell():
@@ -595,9 +630,8 @@ def shop():
                         adventurer.inventory.pop(int(choice)-1)
 
     def leave_shop():
-        os.system('clear')
         slow_print("You leave the shop and return to the center of town.\n")
-        sleep(1.5)
+        slow_screen_clear()
         town()
         return False
 
@@ -615,6 +649,7 @@ def shop():
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
                 buy()
@@ -637,10 +672,9 @@ def find_a_quest():
 
     # methods specific to the tavern for quests
     def quest_board():
-        os.system('clear')
-        slow_print("You check the quest board for "
-                   "official quests from the town guild.\n")
         while True:
+            slow_print("You check the quest board for "
+                       "official quests from the town guild.\n")
             print("Currently available quests:")
             print("1. Slay 5 slimes")
             print("2. Defend a caravan on the Merchant Road")
@@ -654,6 +688,7 @@ def find_a_quest():
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
+                slow_screen_clear()
             else:
                 if choice == str(1):
                     if "Slay Slimes" in adventurer.quests:
@@ -662,6 +697,7 @@ def find_a_quest():
                         print("You have accepted the quest to "
                               "defeat Slimes.")
                         adventurer.quests.append("Slay Slimes")
+                        slow_screen_clear()
 
                 elif choice == str(2):
                     if "Defend Caravan" in adventurer.quests:
@@ -670,6 +706,7 @@ def find_a_quest():
                         print("You have accepted the quest to "
                               "defend a merchant caravan.")
                         adventurer.quests.append("Defend Caravan")
+                        slow_screen_clear()
 
                 elif choice == str(3):
                     if "Clear Bandit Camp" in adventurer.quests:
@@ -678,15 +715,17 @@ def find_a_quest():
                         print("You have accepted the quest to "
                               "clear out a bandit camp.")
                         adventurer.quests.append("Clear Bandit Camp")
+                        slow_screen_clear()
+
                 elif choice == str(4):
+                    os.system('clear')
                     find_a_quest()
                     return False
 
     def ask_a_local():
-        os.system('clear')
-        slow_print("You ask a local and they tell you "
-                   "about some jobs you could do.\n")
         while True:
+            slow_print("You ask a local and they tell you "
+                       "about some jobs you could do.\n")
             print("Currently available quests:")
             print("1. Find lost necklace")
             print("2. Person missing")
@@ -700,6 +739,7 @@ def find_a_quest():
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
+                slow_screen_clear()
             else:
                 if choice == str(1):
                     if "Missing Necklace" in adventurer.quests:
@@ -707,6 +747,7 @@ def find_a_quest():
                     else:
                         print("You have offered to help find the necklace.")
                         adventurer.quests.append("Missing Necklace")
+                    slow_screen_clear()
 
                 elif choice == str(2):
                     if "Missing Person" in adventurer.quests:
@@ -715,6 +756,7 @@ def find_a_quest():
                         print("You have agreed to help "
                               "find the missing person.")
                         adventurer.quests.append("Missing Person")
+                    slow_screen_clear()
 
                 elif choice == str(3):
                     if "Bandit Kidnapping" in adventurer.quests:
@@ -723,19 +765,19 @@ def find_a_quest():
                         print("You have agreed to help "
                               "rescue the kidnapped person.")
                         adventurer.quests.append("Bandit Kidnapping")
+                    slow_screen_clear()
+
                 elif choice == str(4):
                     find_a_quest()
                     return False
 
     def leave_tavern():
-        os.system('clear')
         slow_print("You leave the tavern and return to the center of town.\n")
-        sleep(1.5)
+        slow_screen_clear()
         town()
 
-    os.system('clear')
-    slow_print("You are in the tavern.")
     while True:
+        slow_print("You are in the tavern.")
         slow_print("What would you like to do?\n")
         slow_print("1. Check the Quest Board.")
         slow_print("2. Ask a local for work.")
@@ -747,6 +789,7 @@ def find_a_quest():
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
                 quest_board()
@@ -763,10 +806,8 @@ def find_a_quest():
 
 # move to hubworld.py
 def begin_adventure():
-    os.system('clear')
-    slow_print("You set out from town.")
     while True:
-        os.system('clear')
+        slow_print("You are at the town gates.")
         slow_print("What is your destination?\n")
         slow_print("1. Merchant Road.")
         slow_print("2. Forest.")
@@ -778,20 +819,23 @@ def begin_adventure():
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
-                os.system('clear')
                 slow_print("You travel the merchant's road.\n")
+                slow_screen_clear()
                 road_start()
                 return False
 
             elif choice == str(2):
-                os.system('clear')
                 slow_print("You depart towards the forest\n")
+                slow_screen_clear()
+                forest_start()
+                return False
 
             elif choice == str(3):
-                os.system('clear')
                 slow_print("You turn around and go back to the town square.\n")
+                slow_screen_clear()
                 town()
                 return False
 
@@ -873,12 +917,16 @@ def battle_event(player, enemy_type):
         slow_print(f"The {enemy_type.name} tried to attack you "
                    "but you were ready for it!")
         sleep(1.5)
+
     elif player.speed < enemy_type.speed:
         slow_print(f"The {enemy_type.name} ambushed you!")
         enemy_type.attack_other(player)
         is_player_alive()
+
     while battle_loop is True:
         os.system('clear')
+        slow_print("You are in combat with a "
+                   f"{enemy_type.name}")
         slow_print("What will you do?\n")
         slow_print("1. Attack.")
         slow_print("2. Defend.")
@@ -890,6 +938,7 @@ def battle_event(player, enemy_type):
                 raise Exception
         except Exception:
             slow_print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
                 slow_print(f"You attack the {enemy_type.name}")
@@ -904,7 +953,7 @@ def battle_event(player, enemy_type):
                 slow_print(f"The {enemy_type.name} counterattacks!")
                 enemy_type.attack_other(player)
                 is_player_alive()
-                sleep(1.5)
+                slow_screen_clear()
 
             elif choice == str(2):
                 player.block_attack(enemy_type)
@@ -912,7 +961,7 @@ def battle_event(player, enemy_type):
                 stun_chance = random.randrange(10)+1
                 if stun_chance > 7:
                     print(f"You knocked the {enemy_type.name} off balance! \
-                    You strike for a counter attack!")
+                          You strike for a counter attack!")
                     player.attack *= 1.5
                     player.attack_other(enemy_type)
                     player.attack /= 1.5
@@ -922,7 +971,7 @@ def battle_event(player, enemy_type):
                         enemy_type.drop_loot(adventurer, enemy_type.loot)
                         slow_screen_clear()
                         battle_loop = False
-                    sleep(1.5)
+                    slow_screen_clear()
 
             elif choice == str(3):
                 inventory_loop = True
@@ -938,45 +987,49 @@ def battle_event(player, enemy_type):
                         if choice > str(available_items) \
                          and choice.alpha() is True:
                             raise Exception
+
                     except Exception:
                         print("Please only enter the numbers on screen, \
                         \nor 0 to return to the shop.")
+                        slow_screen_clear()
+
                     else:
                         if choice == str(0):
                             inventory_loop = False
+
                         elif choice <= str(available_items) and choice > str(0):
                             if adventurer.inventory[int(choice)-1] == "Potion":
                                 if adventurer.health < 100:
-                                    slow_print(f"You drink the Potion "
-                                                "and recover 25 health.")
                                     adventurer.use_potion(25)
                                     adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
+
                                 else:
                                     slow_print(f"You are already at "
                                                 "full health.")
+
                             elif adventurer.inventory[int(choice)-1] \
                                     == "Large Potion":
                                 if adventurer.health < 100:
-                                    slow_print(f"You drink the Large Potion "
-                                                "and recover 50 health.")
                                     adventurer.use_potion(50)
                                     adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
+
                                 else:
                                     slow_print(f"You are already at "
                                                 "full health.")
+
                             elif adventurer.inventory[int(choice)-1] \
                                     == "Max Potion":
                                 if adventurer.health < 100:
-                                    slow_print(f"You drink the Max Potion "
-                                                "and recover 100 health.")
                                     adventurer.use_potion(100)
                                     adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
+
                                 else:
                                     slow_print(f"You are already at "
                                                 "full health.")
+
                             else:
                                 print("Using that item will have no effect.")
                             slow_screen_clear()
@@ -1001,19 +1054,24 @@ def road_start():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You continue down the road.")
                 slow_screen_clear()
                 road_1()
                 return False
+
             elif choice == str(2):
                 print("It is a peaceful and pleasant day, perfect for a "
                       "leisurely walk.\nThough something tells you that "
                       "you won't have a relaxing journey.")
                 slow_screen_clear()
+
             elif choice == str(3):
                 print("You decide you are unprepared and return to town.")
                 slow_screen_clear()
@@ -1041,6 +1099,7 @@ def road_1():
                 slow_screen_clear()
                 road_2()
                 return False
+
             elif choice == str(2):
                 if adventurer.found_gold_road_1 is not True:
                     slow_print("Your eyes scan over the road when you notice "
@@ -1050,9 +1109,11 @@ def road_1():
                     adventurer.gold += 10
                     adventurer.found_gold_road_1 = True
                     slow_screen_clear()
+
                 else:
                     slow_print("You see nothing else of interest.")
                     slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("You make your way back the way you came.")
                 slow_screen_clear()
@@ -1077,18 +1138,23 @@ def road_2():
             if choice != str(1) and choice != str(2) \
               and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You continue down the road.")
                 slow_screen_clear()
                 road_3()
                 return False
+
             elif choice == str(2):
                 slow_print("You wave to some passing merchants "
                            "as they head toward town.")
                 slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("You make your way back the way you came.")
                 slow_screen_clear()
@@ -1109,8 +1175,10 @@ def road_3():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+
         else:
             if choice == str(1):
                 slow_print("You continue down the road.")
@@ -1123,9 +1191,11 @@ def road_3():
                     adventurer.road3_side_road_seen = True
                     slow_print("You notice there is a path "
                                "leading through some bushes.")
+
                 elif adventurer.road3_side_road_seen is True:
                     slow_print("You consider the path you "
                                "noticed earlier.")
+
                 slow_print("Would you like to investigate "
                            "this side road?")
                 slow_print("1. Yes.")
@@ -1134,8 +1204,11 @@ def road_3():
                 try:
                     if choice != str(1) and choice != str(2):
                         raise Exception
+
                 except Exception:
                     print("Please enter only 1, or 2.\n")
+                    slow_screen_clear()
+
                 else:
                     if choice == str(1):
                         slow_print("You decide to travel the side road.")
@@ -1165,8 +1238,11 @@ def road_3a():
         try:
             if choice != str(1) and choice != str(2):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, or 2.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You go back to the main road.")
@@ -1179,9 +1255,11 @@ def road_3a():
                     adventurer.road3_tracks_found = True
                     slow_print("You find some tracks in the "
                                "dirt at your feet.")
+
                 elif adventurer.road3_tracks_found is True:
                     slow_print("You consider the tracks "
                                "you found earlier.")
+
                 slow_print("Would you like to "
                            "follow them?")
                 slow_print("1. Yes.")
@@ -1192,6 +1270,8 @@ def road_3a():
                         raise Exception
                 except Exception:
                     print("Please enter only 1, or 2.\n")
+                    slow_screen_clear()
+
                 else:
                     if choice == str(1):
                         slow_print("You decide to follow the tracks "
@@ -1233,8 +1313,11 @@ def road_3b():
         try:
             if choice != str(1) and choice != str(2):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, or 2.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 print("You go back through the bushes.")
@@ -1295,8 +1378,11 @@ def road_4():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You continue down the road.")
@@ -1309,9 +1395,11 @@ def road_4():
                     adventurer.road_4_struggle_seen = True
                     slow_print("You notice signs of a "
                                "battle leading off the road.")
+
                 elif adventurer.road_4_struggle_seen is True:
                     slow_print("You consider the signs of "
                                "a struggle you saw earlier.")
+
                 slow_print("Would you like to investigate?")
                 slow_print("1. Yes.")
                 slow_print("2. No.")
@@ -1319,8 +1407,11 @@ def road_4():
                 try:
                     if choice != str(1) and choice != str(2):
                         raise Exception
+
                 except Exception:
                     print("Please enter only 1, or 2.\n")
+                    slow_screen_clear()
+
                 else:
                     if choice == str(1):
                         slow_print("You decide to follow the damage.")
@@ -1362,8 +1453,11 @@ def road_4a():
         try:
             if choice != str(1) and choice != str(2):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, or 2.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 print("You go back to the main road.")
@@ -1422,17 +1516,22 @@ def road_5():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 print("You continue down the road.")
                 slow_screen_clear()
                 road_6()
                 return False
+
             elif choice == str(2):
                 print("Nothing catches your eye.")
                 slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("You make your way back the way you came.")
                 slow_screen_clear()
@@ -1456,17 +1555,22 @@ def road_6():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You continue down the road.")
                 slow_screen_clear()
                 road_7()
                 return False
+
             elif choice == str(2):
                 slow_print("There is nothing of interest.")
                 slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("You make your way back the way you came.")
                 slow_screen_clear()
@@ -1486,17 +1590,21 @@ def road_7():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+
         else:
             if choice == str(1):
                 slow_print("You continue and arrive at the next town.")
                 slow_screen_clear()
                 town()
                 return False
+
             elif choice == str(2):
                 slow_print("There is nothing of interest.")
                 slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("You make your way back the way you came.")
                 slow_screen_clear()
@@ -1510,11 +1618,14 @@ FOREST EVENTS
 
 
 def forest_start():
+
+    slow_print("You arrive at the entrance to the nearby forest.\n"
+               "Tales of monsters dens and hidden riches bid many\n"
+               "adventurer to tackle it.\n")
+
     while True:
-        slow_print("You arrive at the entrance to the nearby forest.\n"
-                   "Tales of monsters dens and hidden riches bid many\n"
-                   "adventurer to tackle it.\n")
-        slow_print("\nWhat will you do?\n")
+        slow_print("You are at the entrance to the forest.")
+        slow_print("What will you do?\n")
         slow_print("1. Head deeper into the forest.")
         slow_print("2. Look around.")
         slow_print("3. Return to town.")
@@ -1523,15 +1634,18 @@ def forest_start():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.")
             slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You press through the trees and bushes")
                 slow_screen_clear()
                 forest_room1a()
                 return False
+
             elif choice == str(2):
                 slow_print("The canopy of trees obscures much of the light "
                            "from the sun,\nallowing only a few dappled rays "
@@ -1539,6 +1653,7 @@ def forest_start():
                            "into the forest proper that you can follow\n"
                            "for a certain distance.")
                 slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("You decide you are unprepared and return to town.")
                 slow_screen_clear()
@@ -1547,9 +1662,13 @@ def forest_start():
 
 
 def forest_room1a():
+
+    slow_print("A few animals dash into the bushes\n"
+               "as you walk into a small clearing.")
+
     while True:
-        slow_print("A few animals dash into the bushes\n"
-                   "as you walk into a small clearing.")
+        slow_print("You are standing in a small "
+                   "clearing with some small animals.")
         slow_print("What will you do?\n")
         slow_print("1. Go North.")
         slow_print("2. Go West")
@@ -1560,24 +1679,29 @@ def forest_room1a():
             if choice != str(1) and choice != str(2) \
              and choice != str(3) and choice != str(4):
                 raise Exception
+
         except Exception:
             slow_print("Please enter only 1, 2, 3 or 4.")
+
         else:
             if choice == str(1):
                 slow_print("You head north.")
                 slow_screen_clear()
                 forest_room2a()
                 return False
+
             elif choice == str(2):
                 slow_print("You head west.")
                 slow_screen_clear()
                 forest_room1b()
                 return False
+
             elif choice == str(3):
                 slow_print("You head south.")
                 slow_screen_clear()
                 forest_start()
                 return False
+
             elif choice == str(4):
                 slow_print("The bushes rustle as some critters scurry"
                            "around in the underbrush.")
@@ -1598,35 +1722,44 @@ def forest_room1b():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You head north.")
                 slow_screen_clear()
                 forest_room2b()
                 return False
+
             elif choice == str(2):
                 slow_print("You head west.")
                 slow_screen_clear()
                 forest_room1a()
                 return False
+
             elif choice == str(3):
                 if adventurer.forest1b_gold_found is False:
                     slow_print("You notice something glittering "
                                "in the grass at your feet.")
                     slow_print("You found 5 gold coins!")
                     adventurer.gold += 5
+
                 else:
                     slow_print("You find nothing else of interest.")
-                slow_screen_clear()
+                    slow_screen_clear()
 
 
 def forest_room1c():
+
+    slow_print("The air suddenly feels lighter as you "
+               "come across a \nsmall spring. The water "
+               "seems to shimmer as you look at it.")
+
     while True:
-        slow_print("The air suddenly feels lighter as you "
-                   "come across a \nsmall spring. The water "
-                   "seems to shimmer as you look at it.")
+        slow_print("You are standing by a small spring.")
         slow_print("What will you do?\n")
         slow_print("1. Go back the way you came.")
         slow_print("2. Drink from the spring.")
@@ -1636,8 +1769,11 @@ def forest_room1c():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You turn around and leave the "
@@ -1645,13 +1781,14 @@ def forest_room1c():
                 slow_screen_clear()
                 forest_room2c()
                 return False
+
             elif choice == str(2):
                 slow_print("You kneel by the edge of the water, "
                            "scooping a handful \nof it into your mouth."
                            "You feel invigorated as you drink it!")
                 adventurer.recover_health(20)
-                slow_print("You have recovered 20 hp!")
                 slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("The area seems to almost shine with "
                            "a mystical glow.")
@@ -1662,9 +1799,11 @@ def forest_room2a():
 
     random_battle(random_enemy("Forest"), 5)
 
+    slow_print("Your tunic tears on a sharp branch as "
+               "you walk deeper into the forest.")
+
     while True:
-        slow_print("Your tunic tears on a sharp branch as "
-                   "you walk deeper into the forest.")
+        slow_print("You are standing amongst some sharp branches.")
         slow_print("What will you do?\n")
         slow_print("1. Go West.")
         slow_print("2. Go East")
@@ -1675,28 +1814,35 @@ def forest_room2a():
             if choice != str(1) and choice != str(2) \
              and choice != str(3) and choice != str(4):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You head West.")
                 slow_screen_clear()
                 forest_room2b()
                 return False
+
             elif choice == str(2):
                 slow_print("You head East.")
                 slow_screen_clear()
                 forest_room2c()
                 return False
+
             elif choice == str(3):
                 slow_print("You head South.")
                 slow_screen_clear()
                 forest_room1a()
                 return False
+
             elif choice == str(4):
                 slow_print("There are strange markings on some of the trees. \n"
                            "Perhaps territorial warning signs from some \n"
                            "bandits or monsters.")
+                slow_screen_clear()
     # forest 1a, 2b, 2c
 
 
@@ -1704,9 +1850,11 @@ def forest_room2b():
 
     random_battle(random_enemy("Forest"), 3)
 
+    slow_print("The trees are particularly dense in this part of the \n"
+               "forest, making it difficult to move quickly.")
+
     while True:
-        slow_print("The trees are particularly dense in this part of the \n"
-                   "forest, making it difficult to move quickly.")
+        slow_print("You are standing where the trees are growing densely.")
         slow_print("What will you do?\n")
         slow_print("1. Go North.")
         slow_print("2. Go East")
@@ -1717,33 +1865,42 @@ def forest_room2b():
             if choice != str(1) and choice != str(2) \
              and choice != str(3) and choice != str(4):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
                 slow_print("You head North.")
                 slow_screen_clear()
                 forest_room3b()
                 return False
+
             elif choice == str(2):
                 slow_print("You head East.")
                 slow_screen_clear()
                 forest_room2a()
                 return False
+
             elif choice == str(3):
                 slow_print("You head West.")
                 slow_screen_clear()
                 forest_room1b()
                 return False
+
             elif choice == str(4):
                 slow_print("You notice more of those marking on the "
                            "trees as you move between them.")
+                slow_screen_clear()
 
 
 def forest_room2c():
+
+    slow_print("The forest seems strangely quiet now... \n"
+               "Perhaps there is a danger ahead?")
+
     while True:
-        slow_print("The forest seems strangely quiet now... \n"
-                   "Perhaps there is a danger ahead?")
+        slow_print("You are at a quiet spot in the forest.")
         slow_print("What will you do?\n")
         slow_print("1. Go West")
         slow_print("2. Go South.")
@@ -1753,22 +1910,28 @@ def forest_room2c():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You head West.")
                 slow_screen_clear()
                 forest_room2a()
                 return False
+
             elif choice == str(2):
                 slow_print("You head South.")
                 slow_screen_clear()
                 forest_room1c()
                 return False
+
             elif choice == str(3):
                 slow_print("You can't see anything out of the ordinary "
                            "\nunder the shade of the forest canopy.")
+                slow_screen_clear()
 
 
 def forest_room3a():
@@ -1796,15 +1959,20 @@ def forest_room3a_campfight():
         try:
             if choice != str(1) and choice != str(2):
                 raise Exception
+
         except Exception:
             print("Please enter only 1 or 2.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 if adventurer.speed > random.randint(7, 13):
                     slow_print("You successfully skirt your "
                                "way past the group.")
+                    slow_screen_clear()
                     forest_room3a_campdefeat()
                     return False
+
                 else:
                     slow_print("A cry yells out followed by "
                                "a rush of movement!")
@@ -1814,6 +1982,7 @@ def forest_room3a_campfight():
                     adventurer.forest3c_camp_enemy.attack += 15
                     random_battle(adventurer.forest3c_camp_enemy, -1)
                     adventurer.forest3a_camp = True
+                    slow_screen_clear()
                     forest_room3a_campdefeat()
                     return False
 
@@ -1827,6 +1996,7 @@ def forest_room3a_campfight():
                 adventurer.forest3c_camp_enemy.attack += 10
                 random_battle(adventurer.forest3c_camp_enemy, -1)
                 adventurer.forest3a_camp = True
+                slow_screen_clear()
                 forest_room3a_campdefeat()
                 return False
 
@@ -1850,32 +2020,39 @@ def forest_room3a_campdefeat():
             if choice != str(1) and choice != str(2) \
             and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
                 slow_print("You head East.")
                 slow_screen_clear()
                 forest_room3c()
                 return False
+
             elif choice == str(2):
                 slow_print("You head West.")
                 slow_screen_clear()
                 forest_room3b()
                 return False
+
             elif choice == str(3):
                 slow_print("There is an array of scattered objects on "
                            "the ground, no doubt from that group.")
+                slow_screen_clear()
 
 
 def forest_room3b():
 
     random_battle(random_enemy("Forest"), 6)
 
+    slow_print("A sweet scent reaches your nose as you push "
+               "through some bushes. Perhaps there is a fresh flower "
+               "blooming nearby.")
+
     while True:
-        slow_print("A sweet scent reaches your nose as you push "
-                   "through some bushes. Perhaps there is a fresh flower "
-                   "blooming nearby.")
+        slow_print("You are standing by some flowering bushes.")
         slow_print("What will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go East.")
@@ -1886,36 +2063,46 @@ def forest_room3b():
             if choice != str(1) and choice != str(2) \
              and choice != str(3) and choice != str(4):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You head North.")
                 slow_screen_clear()
                 forest_room4b()
                 return False
+
             elif choice == str(2):
                 slow_print("You head East.")
                 slow_screen_clear()
                 forest_room3a()
                 return False
+
             elif choice == str(3):
                 slow_print("You head South.")
                 slow_screen_clear()
                 forest_room2b()
                 return False
+
             elif choice == str(4):
                 slow_print("You see a flowerbed blooming under "
                            "the shade of a fallen log.")
+                slow_screen_clear()
 
 
 def forest_room3c():
 
     random_battle(random_enemy("Forest"), 3)
 
+    slow_print("The forest is getting denser the deeper you go. \n"
+               "It looks like there's only one path forward.")
+
     while True:
-        slow_print("The forest is getting denser the deeper you go. \n"
-                   "It looks like there's only one path forward.")
+        slow_print("You are standing in a cramped "
+                   "path through the trees.")
         slow_print("What will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go West.")
@@ -1925,29 +2112,37 @@ def forest_room3c():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
                 slow_print("You head North.")
                 slow_screen_clear()
                 forest_room4c()
                 return False
+
             elif choice == str(2):
                 slow_print("You head West.")
                 slow_screen_clear()
                 forest_room3a()
                 return False
+
             elif choice == str(3):
                 slow_print("You could almost swear there are... faces\n "
                            "in the bark of the trees. All of them looking\n "
                            "right at you as you walk through the forest.")
+                slow_screen_clear()
 
 
 def forest_room4b():
+
+    slow_print("You come to a dead end in the path. The trees are\n "
+               "too tightly packed to squeeze through.")
+
     while True:
-        slow_print("You come to a dead end in the path. The trees are\n "
-                   "too tightly packed to squeeze through.")
+        slow_print("You are at a dead end on this forest path.")
         os.system('clear')
         slow_print("What will you do?\n")
         slow_print("1. Back the way you came.")
@@ -1956,14 +2151,18 @@ def forest_room4b():
         try:
             if choice != str(1) and choice != str(2):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, or 2.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You turn around and go back.")
                 slow_screen_clear()
                 forest_room3b()
                 return False
+
             elif choice == str(2):
                 if adventurer.room4bitem is False:
                     slow_print("You notice something just past "
@@ -1973,6 +2172,7 @@ def forest_room4b():
                     adventurer.inventory.append("Steel Sword")
                     adventurer.room4bitem = True
                     slow_screen_clear()
+
                 else:
                     slow_print("You aren't able to see much thanks "
                                "to how dark it is due to the trees.")
@@ -1980,9 +2180,12 @@ def forest_room4b():
 
 
 def forest_room4c():
+
+    slow_print("The trees are growing much more closely together here, \n"
+               "forcing you to squeeze through or turn around.")
+
     while True:
-        slow_print("The trees are growing much more closely together here, \n"
-                   "forcing you to squeeze through or turn around.")
+        slow_print("You are standing between densely packed trees.")
         slow_print("What will you do?\n")
         slow_print("1. Through the trees.")
         slow_print("2. Turn around.")
@@ -1992,8 +2195,11 @@ def forest_room4c():
             if choice != str(1) and choice != str(2) \
              and choice != str(3):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You squeeze yourself through "
@@ -2001,29 +2207,42 @@ def forest_room4c():
                 slow_screen_clear()
                 forest_room5c()
                 return False
+
             elif choice == str(2):
                 slow_print("You turn around and go back.")
                 slow_screen_clear()
                 forest_room3c()
                 return False
+
             elif choice == str(3):
-                if "Missing Necklace" in adventurer.quests:
+                if "Missing Necklace" in adventurer.quests and \
+                 adventurer.necklace_found is False:
                     slow_print("You notice something shining in a hole "
                                "in one of the tree trunks. \nReaching "
                                "inside you grab hold of an old necklace.")
                     adventurer.keyitems.append("Missing Necklace")
+                    adventurer.necklace_found = True
                     slow_screen_clear()
+
+                elif adventurer.necklace_found is True:
+                    slow_print("You don't notice anything "
+                               "else amoung the trees.")
+                    slow_screen_clear()
+
                 else:
-                    slow_print("It's too difficult to take notice of anything.")
+                    slow_print("It's too difficult to take "
+                               "notice of anything.")
                     slow_screen_clear()
 
 
 def forest_room5a():
 
-    while True:
-        slow_print("You step into an empty clearing.\n"
+    slow_print("You step into an empty clearing.\n"
                    "A breath of fresh air after the recent "
                    "squeeze through\nthose tight trees.")
+
+    while True:
+        slow_print("You are standing in a small clearing.")
         slow_print("What will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go East.")
@@ -2034,24 +2253,30 @@ def forest_room5a():
             if choice != str(1) and choice != str(2) \
              and choice != str(3) and choice != str(4):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You head North.")
                 slow_screen_clear()
                 forest_room6a()
                 return False
+
             elif choice == str(2):
                 slow_print("You head East.")
                 slow_screen_clear()
                 forest_room5c()
                 return False
+
             elif choice == str(3):
                 slow_print("You head West.")
                 slow_screen_clear()
                 forest_room5b()
                 return False
+
             elif choice == str(4):
                 slow_print("You notice a small rabbit hopping "
                            "towards the western path.")
@@ -2066,7 +2291,7 @@ def forest_room5b():
                "dust sprinkling from a fairy's wings as it hovers above\n"
                "a small pool of water.")
     while True:
-        os.system('clear')
+        slow_print("You are standing by a fairy's pool.")
         slow_print("What will you do?\n")
         slow_print("1. Go Back.")
         slow_print("2. Try to speak to the fairy.")
@@ -2079,19 +2304,24 @@ def forest_room5b():
              and choice != str(3) and choice != str(4) \
               and choice != str(5):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, 3, 4, or 5.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You turn around and leave the spring behind.")
                 slow_screen_clear()
                 forest_room5a()
                 return False
+
             elif choice == str(2):
                 slow_print("If she is capable of understanding you "
                            "or replying isn't clear.\n "
                            "Either way she gives no response.")
                 slow_screen_clear()
+
             elif choice == str(3):
                 slow_print("As you reach to try and grab the small fairy "
                            "a rush of dust suddenly\nflies into your face.\n"
@@ -2099,6 +2329,7 @@ def forest_room5b():
                            "you realise you are no longer at the fairy's pool...")
                 slow_screen_clear()
                 forest_room3b()
+
             if choice == str(4):
                 slow_print("The fairy regards you curiously as you kneel down and\n"
                            "drink from the pool, but does nothing else.\n"
@@ -2106,10 +2337,12 @@ def forest_room5b():
                 adventurer.recover_health(100)
                 slow_print("The water has fully healed you!")
                 slow_screen_clear()
+
             elif choice == str(5):
                 slow_print("You look at the fairy. She is perhaps no\n"
                            "bigger than a hummingbird and is content to\n"
                            "simply watch you as you watch her.")
+                slow_screen_clear()
 
 
 def forest_room5c():
@@ -2129,27 +2362,34 @@ def forest_room5c():
             if choice != str(1) and choice != str(2) \
              and choice != str(3) and choice != str(4):
                 raise Exception
+
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You head North.")
                 slow_screen_clear()
                 forest_room6c()
                 return False
+
             elif choice == str(2):
                 slow_print("You head West.")
                 slow_screen_clear()
                 forest_room5a()
                 return False
+
             elif choice == str(3):
                 slow_print("You head South.")
                 slow_screen_clear()
                 forest_room4c()
                 return False
+
             elif choice == str(4):
                 slow_print("You notice a path through the trees to the north,\n "
                            "with some sounds of laughter echoing through.")
+                slow_screen_clear()
 
 
 def forest_room6a():
@@ -2167,6 +2407,7 @@ def forest_room6a():
                "equipped to deal with it.")
     slow_screen_clear()
     forest_room7()
+
 
 def forest_room6c():
     if adventurer.forest_6c_camp is False:
@@ -2193,14 +2434,18 @@ def forest_room6c():
         try:
             if choice != 1 and choice != 2:
                 raise Exception
+
         except Exception:
             print("Please enter only 1, or 2.\n")
+            slow_screen_clear()
+
         else:
             if choice == 1:
                 slow_print("You go back the way you came.")
                 slow_screen_clear()
                 forest_room5c()
                 return False
+
             elif choice == 2:
                 if "Missing Person" in adventurer.quests:
                     slow_print("As you look around you notice a "
@@ -2212,17 +2457,19 @@ def forest_room6c():
                                "directions.\nThey are thankful "
                                "for the help and quickly run "
                                "from the forest back to town.")
+                    slow_screen_clear()
+
                 else:
                     slow_print("You notice some discarded rags.\n"
                                "You look through the bandit "
                                "supplies but find nothing of value.")
+                    slow_screen_clear()
 
 
 def forest_room7():
     while True:
-        slow_print("The trees don't grow as tightly together here,\n"
-                   "allowing you to rest in a small clearing as "
-                   "you sit on a fallen log.")
+        slow_print("You are sitting in a small "
+                   "clearing at the end of the forest.")
         slow_print("What will you do?\n")
         slow_print("1. Leave")
         slow_print("3. Look around.")
@@ -2230,8 +2477,11 @@ def forest_room7():
         try:
             if choice != str(1) and choice != str(2):
                 raise Exception
+
         except Exception:
             print("Please enter only 1 or 2.\n")
+            slow_screen_clear()
+
         else:
             if choice == str(1):
                 slow_print("You deprat from the forest,\n"
@@ -2239,6 +2489,7 @@ def forest_room7():
                 slow_screen_clear()
                 town()
                 return False
+
             elif choice == str(2):
                 slow_print("The forest is eerily quiet here.\n"
                            "Perhaps the giant spiders had hunted "
@@ -2250,8 +2501,8 @@ def main():
     """
     Runs the primary functions for the game.
     """
-    # splash_screen()
-    shop()
+    splash_screen()
+    
 
 
 main()
