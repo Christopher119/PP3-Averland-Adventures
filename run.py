@@ -2065,25 +2065,55 @@ def forest_room5a():
 
 
 def forest_room5b():
-    slow_print("flavour text for room 5b")
+    slow_print("The air seems to glow as you step into a small clearing.\n"
+               "It takes a moment but you realise that glow is actually\n"
+               "dust sprinkling from a fairy's wings as it hovers above\n"
+               "a small pool of water.")
     while True:
         os.system('clear')
         slow_print("What will you do?\n")
-        slow_print("1. Go East.") # 5a
-        slow_print("2. Look around.")
-        choice = int(input())
+        slow_print("1. Go Back.")
+        slow_print("2. Try to speak to the fairy.")
+        slow_print("3. Try to catch the fairy.")
+        slow_print("4. Drink from the pool.")
+        slow_print("5. Look around.")
+        choice = input()
         try:
-            if choice != 1 and choice != 2:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3) and choice != str(4) \
+              and choice != str(5):
                 raise Exception
         except Exception:
-            print("Please enter only 1, or 2.\n")
+            print("Please enter only 1, 2, 3, 4, or 5.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You turn around and leave the spring behind.")
+                slow_screen_clear()
                 forest_room5a()
                 return False
-            elif choice == 2:
-                slow_print("flavour text for looking")
-    # forest 5a
+            elif choice == str(2):
+                slow_print("If she is capable of understanding you "
+                           "or replying isn't clear.\n "
+                           "Either way she gives no response.")
+                slow_screen_clear()
+            elif choice == str(3):
+                slow_print("As you reach to try and grab the small fairy "
+                           "a rush of dust suddenly\nflies into your face.\n"
+                           "You wipe your eyes and when you can see again \n"
+                           "you realise you are no longer at the fairy's pool...")
+                slow_screen_clear()
+                forest_room3b()
+            if choice == str(4):
+                slow_print("The fairy regards you curiously as you kneel down and\n"
+                           "drink from the pool, but does nothing else.\n"
+                           "The water instantly restores your vitality.")
+                adventurer.recover_health(100)
+                slow_print("The water has fully healed you!")
+                slow_screen_clear()
+            elif choice == str(5):
+                slow_print("You look at the fairy. She is perhaps no\n"
+                           "bigger than a hummingbird and is content to\n"
+                           "simply watch you as you watch her.")
 
 
 def forest_room5c():
