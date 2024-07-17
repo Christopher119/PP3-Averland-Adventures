@@ -146,6 +146,13 @@ class Player(Character):
         self.road_4_struggle_seen = False
         self.road_4_fight = False
         self.road_4_group = False
+        self.forest1b_gold_found = False
+        self.forest3a_camp = False
+        self.forest3c_camp_enemy = 0
+        self.room4bitem = False
+        self.necklace_found = False
+        self.forest_6c_camp = False
+        self.forest_rescue = False
 
 
 class Enemy(Character):
@@ -2519,7 +2526,7 @@ def main():
     """
     Runs the primary functions for the game.
     """
-    splash_screen()
+    #splash_screen()
 
 
 main()
