@@ -11,8 +11,8 @@ from time import sleep
 # imported for battle functionality
 import random
 
-# imported to prevent words from breaking when printed to terminal
-import textwrap
+# importing other scripts
+from intro import *
 
 
 def slow_print(text, delay=0.025):
@@ -2526,7 +2526,7 @@ def main():
     """
     Runs the primary functions for the game.
     """
-    #splash_screen()
+    intro.splash_screen()
 
 
 main()
