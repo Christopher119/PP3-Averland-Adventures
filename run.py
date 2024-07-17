@@ -131,12 +131,13 @@ class Enemy(Character):
     Creates an Instance of an Enemy Character Class.
     """
 
-    def __init__(self, name, health, attack, defence, speed):
+    def __init__(self, name, health, attack, defence, speed, loot):
         super().__init__(name, health, attack, defence, speed)
+        self.loot = loot
 
     def drop_loot(self, player, loot):
-        player.gold += loot
-        print(f"The {self.name} dropped {loot} gold!")
+        player.gold += self.loot
+        print(f"The {self.name} dropped {self.loot} gold!")
 
 
 adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
@@ -782,24 +783,42 @@ def random_enemy(area):
     A function to select a random enemy from a set list
     and return it to the random_battle function
     """
+    bandit_loot = random.randint(10, 30)
+    slime_loot = random.randint(2, 5)
+    skeleton_loot = random.randint(5, 7)
+    lizard_loot = random.randint(3, 10)
+    bug_loot = random.randint(15, 50)
+    zombie_loot = random.randint(3, 10)
+    wolf_loot = random.randint(2, 5)
+    goblin_loot = random.randint(5, 15)
+
+    bandit = Enemy("Bandit", 20, 10, 10, 10, bandit_loot)
+    slime = Enemy("Slime", 10, 5, 5, 2, slime_loot)
+    skeleton = Enemy("Skeleton", 10, 10, 5, 5, skeleton_loot)
+    lizard = Enemy("Lizard-Man", 15, 15, 10, 10, lizard_loot)
+    bug = Enemy("Giant Bug", 25, 15, 15, 10, bug_loot)
+    zombie = Enemy("Zombie", 20, 5, 10, 2, zombie_loot)
+    wolf = Enemy("Wolf", 10, 5, 5, 15, wolf_loot)
+    goblin = Enemy("Goblin", 10, 10, 10, 5, goblin_loot)
+
     if area == "Road":
         enemies = [
-            Enemy("Bandit", 20, 10, 10, 10),
-            Enemy("Slime", 10, 5, 5, 2),
-            Enemy("Skeleton", 10, 10, 5, 5),
-            Enemy("Wolf", 10, 5, 5, 15),
-            Enemy("Goblin", 10, 10, 10, 5)
+            bandit,
+            slime,
+            skeleton,
+            wolf,
+            goblin
         ]
     elif area == "Forest":
         enemies = [
-            Enemy("Bandit", 20, 10, 10, 10),
-            Enemy("Slime", 10, 5, 5, 2),
-            Enemy("Skeleton", 10, 10, 5, 5),
-            Enemy("Lizard-Man", 15, 15, 10, 10),
-            Enemy("Giant Bug", 25, 15, 15, 10),
-            Enemy("Zombie", 20, 5, 10, 2),
-            Enemy("Wolf", 10, 5, 5, 15),
-            Enemy("Goblin", 10, 10, 10, 5)
+            bandit,
+            slime,
+            skeleton,
+            lizard,
+            bug,
+            zombie,
+            wolf,
+            goblin
         ]
     # https://stackoverflow.com/questions/306400/how-can-i-randomly-select-choose-an-item-from-a-list-get-a-random-element
     return random.choice(enemies)
@@ -859,7 +878,7 @@ def battle_event(player, enemy_type):
                 enemy_type.check_life()
                 if enemy_type.check_life():
                     slow_print(f"You have defeated the {enemy_type.name}!")
-                    enemy_type.drop_loot(adventurer, 10)
+                    enemy_type.drop_loot(adventurer, enemy_type.loot)
                     battle_loop = False
                     break
                 slow_print(f"The {enemy_type.name} counterattacks!")
@@ -880,7 +899,7 @@ def battle_event(player, enemy_type):
                     enemy_type.check_life()
                     if enemy_type.check_life():
                         print(f"You have defeated the {enemy_type.name}!")
-                        enemy_type.drop_loot(adventurer, 10)
+                        enemy_type.drop_loot(adventurer, enemy_type.loot)
                         battle_loop = False
                     sleep(1.5)
 
