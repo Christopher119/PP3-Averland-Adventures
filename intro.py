@@ -4,7 +4,7 @@ import os
 from sys import stdout
 from time import sleep
 
-from run import slow_print
+from slow_functions import *
 
 def splash_screen():
     """
@@ -153,4 +153,3 @@ def game_over():
                 sleep(3)
                 quit()
                 return False
-

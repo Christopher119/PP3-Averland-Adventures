@@ -12,26 +12,27 @@ from time import sleep
 import random
 
 # importing other scripts
+from slow_functions import *
 from intro import *
 
 
-def slow_print(text, delay=0.025):
-    """
-    A function to print out lines character by character rather
-    than having it presented immediately
-    """
-    # https://stackoverflow.com/questions/75486619/how-to-print-one-character-at-a-time-but-maintain-print-function-python
-    if text:  # checking for text content in the provided string
-        for c in text:
-            print(c, end='', flush=True)
-            sleep(delay)
-        if text[-1] != '\n':
-            print()
+#def slow_print(text, delay=0.025):
+#    """
+#    A function to print out lines character by character rather
+#    than having it presented immediately
+#    """
+#    # https://stackoverflow.com/questions/75486619/how-to-print-one-character-at-a-time-but-maintain-print-function-python
+#    if text:  # checking for text content in the provided string
+#        for c in text:
+#            print(c, end='', flush=True)
+#            sleep(delay)
+#        if text[-1] != '\n':
+#            print()
 
 
-def slow_screen_clear():
-    sleep(2)
-    os.system('clear')
+#def slow_screen_clear():
+#    sleep(2)
+#    os.system('clear')
 
 
 """
