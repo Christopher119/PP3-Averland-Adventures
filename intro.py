@@ -4,8 +4,7 @@ import os
 from sys import stdout
 from time import sleep
 
-from run import *
-
+from run import slow_print
 
 def splash_screen():
     """

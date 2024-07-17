@@ -180,37 +180,37 @@ INTRO FUNCTIONS
 # move to intro.py
 
 
-def splash_screen():
-    """
-    A function to display the splash screen to start, display rules,
-    and end the game based on player input.
-    """
-    os.system('clear')
-    while True:
-        slow_print("Averland Adventures\n")
-        slow_print("A text based choose your own adventure RPG game.")
-        slow_print("What would you like to do?\n")
-        slow_print("1. Start Game")
-        slow_print("2. Read Rules")
-        slow_print("3. Exit Game")
-        choice = input()
-        try:
-            if choice != str(1) and choice != str(2) and choice != str(3):
-                raise Exception
-
-        except Exception:
-            print("Please enter only 1, 2 or 3.\n")
-            slow_screen_clear()
-
-        else:
-            if choice == str(1):
-                game_intro()
-
-            elif choice == str(2):
-                rules()
-
-            elif choice == str(3):
-                exit_game()
+#def splash_screen():
+#    """
+#    A function to display the splash screen to start, display rules,
+#    and end the game based on player input.
+#    """
+#    os.system('clear')
+#    while True:
+#        slow_print("Averland Adventures\n")
+#        slow_print("A text based choose your own adventure RPG game.")
+#        slow_print("What would you like to do?\n")
+#        slow_print("1. Start Game")
+#        slow_print("2. Read Rules")
+#        slow_print("3. Exit Game")
+#        choice = input()
+#        try:
+#            if choice != str(1) and choice != str(2) and choice != str(3):
+#                raise Exception
+#
+#        except Exception:
+#            print("Please enter only 1, 2 or 3.\n")
+#            slow_screen_clear()
+#
+#        else:
+#            if choice == str(1):
+#                game_intro()
+#
+#            elif choice == str(2):
+#                rules()
+#
+#            elif choice == str(3):
+#                exit_game()
 
 
 # move to intro.py
@@ -2526,7 +2526,7 @@ def main():
     """
     Runs the primary functions for the game.
     """
-    intro.splash_screen()
+    splash_screen()
 
 
 main()
