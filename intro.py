@@ -6,6 +6,8 @@ from time import sleep
 
 from slow_functions import *
 from characters import *
+from game_variables import *
+from hubworld import town
 
 def splash_screen():
     """

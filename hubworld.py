@@ -1,5 +1,6 @@
 from slow_functions import *
 from characters import *
+from game_variables import *
 
 def town():
     """

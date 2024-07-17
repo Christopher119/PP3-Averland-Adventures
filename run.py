@@ -338,13 +338,13 @@ def game_over():
 HUBWORLD FUNCTIONS
 """
 
-
+"""
 # move to hubworld.py
 def town():
     """
-    A function to hold the Town the player will return
-    to after completing each adventure.
-    """
+    #A function to hold the Town the player will return
+    #to after completing each adventure.
+"""
     adventurer.reset_flags()
     os.system('clear')
     slow_print("You are in town.")
@@ -398,10 +398,10 @@ def town():
 
 # move to hubworld.py
 def shop():
-    """
+    """"""
     A function to hold the Shop the player can
     spend their gold or sell their items at.
-    """
+    """"""
     # methods specific to shopping
     def buy():
         while True:
@@ -688,9 +688,9 @@ def shop():
 
 # move to hubworld.py
 def find_a_quest():
-    """
+    """"""
     A function to hold the tavern where the player can find new quests.
-    """
+    """"""
 
     # methods specific to the tavern for quests
     def quest_board():
@@ -860,7 +860,7 @@ def begin_adventure():
                 slow_screen_clear()
                 town()
                 return False
-
+"""
 
 # battle functions
 def random_enemy(area):
