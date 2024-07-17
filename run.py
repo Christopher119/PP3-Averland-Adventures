@@ -105,6 +105,7 @@ class Player(Character):
         self.gold = gold
         self.inventory = inventory
         self.quests = quests
+        self.keyitems = []
         # variables used for checks through dungeons
         # will be reset to default on return to town
         # road_3 variables
@@ -122,6 +123,7 @@ class Player(Character):
         self.forest3a_camp = False
         self.forest3c_camp_enemy = 0
         self.room4bitem = False
+        self.necklace_found = False
 
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
@@ -1976,36 +1978,50 @@ def forest_room4b():
                     slow_print("You found a Steel Sword!")
                     adventurer.inventory.append("Steel Sword")
                     adventurer.room4bitem = True
+                    slow_screen_clear()
                 else:
                     slow_print("You aren't able to see much thanks "
                                "to how dark it is due to the trees.")
+                    slow_screen_clear()
 
 
 def forest_room4c():
-    slow_print("flavour text for room 4c")
     while True:
-        os.system('clear')
+        slow_print("The trees are growing much more closely together here, \n"
+                   "forcing you to squeeze through or turn around.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North") # 5c
-        slow_print("2. Go South.") # 3c
+        slow_print("1. Through the trees.")
+        slow_print("2. Turn around.")
         slow_print("3. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You squeeze yourself through "
+                           "a gap in the trees.")
+                slow_screen_clear()
                 forest_room5c()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                slow_print("You turn around and go back.")
+                slow_screen_clear()
                 forest_room3c()
                 return False
-            elif choice == 3:
-                slow_print("flavour text for looking")
-    # forest 5c
+            elif choice == str(3):
+                if "Missing Necklace" in adventurer.quests:
+                    slow_print("You notice something shining in a hole "
+                               "in one of the tree trunks. \nReaching "
+                               "inside you grab hold of an old necklace.")
+                    adventurer.keyitems.append("Missing Necklace")
+                    slow_screen_clear()
+                else:
+                    slow_print("It's too difficult to take notice of anything.")
+                    slow_screen_clear()
 
 
 def forest_room5a():
