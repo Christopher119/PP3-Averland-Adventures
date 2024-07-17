@@ -335,27 +335,27 @@ def town():
         slow_print("2. Accept a quest.")
         slow_print("3. Depart on an adventure.")
         slow_print("4. Rest and end your adventures.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3 and choice != 4:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3) and choice != str(4):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, 3 or 4.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
                 shop()
                 return False
 
-            elif choice == 2:
+            elif choice == str(2):
                 find_a_quest()
                 return False
 
-            elif choice == 3:
+            elif choice == str(3):
                 begin_adventure()
                 return False
 
-            elif choice == 4:
+            elif choice == str(4):
                 os.system('clear')
                 slow_print(f"Rest now, brave {adventurer.name}.")
                 slow_print("Perhaps we shall see you again, another time.")
@@ -380,15 +380,15 @@ def shop():
             print("3. Items")
             print("4. Leave the shop")
             print("What would you like to do?\n")
-            choice = int(input())
+            choice = input()
             try:
-                if choice != 1 and choice != 2 \
-                 and choice != 3 and choice != 4:
+                if choice != str(1) and choice != str(2) \
+                 and choice != str(3) and choice != str(4):
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
             else:
-                if choice == 1:
+                if choice == str(1):
                     while True:
                         print("Available weapons for sale:")
                         print("1. Iron Sword: +2 Attack when "
@@ -398,15 +398,15 @@ def shop():
                         print("3. Silver Sword: +6 Attack when "
                               "equipped. 300 gold.")
                         print("4. Check other options.")
-                        choice = int(input())
+                        choice = input()
                         try:
-                            if choice != 1 and choice != 2 \
-                             and choice != 3 and choice != 4:
+                            if choice != str(1) and choice != str(2) \
+                             and choice != str(3) and choice != str(4):
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
                         else:
-                            if choice == 1:
+                            if choice == str(1):
                                 if adventurer.gold <= 50:
                                     print("You cannot afford this item.")
                                 elif "Iron Sword" in adventurer.inventory:
@@ -416,7 +416,7 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Iron Sword")
-                            elif choice == 2:
+                            elif choice == str(2):
                                 if adventurer.gold <= 150:
                                     print("You cannot afford this item.")
                                 elif "Steel Sword" in adventurer.inventory:
@@ -426,7 +426,7 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Steel Sword")
-                            elif choice == 3:
+                            elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     print("You cannot afford this item.")
                                 elif "Silver Sword" in adventurer.inventory:
@@ -436,11 +436,11 @@ def shop():
                                           "to your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Silver Sword")
-                            elif choice == 4:
+                            elif choice == str(4):
                                 shop()
                                 return False
 
-                elif choice == 2:
+                elif choice == str(2):
                     while True:
                         print("Available armor for sale:")
                         print("1. Iron Armor: +2 Defence "
@@ -450,15 +450,15 @@ def shop():
                         print("3. Silver Armor: +6 Defence "
                               "when equipped. 300 gold.")
                         print("4. Check other options.")
-                        choice = int(input())
+                        choice = input()
                         try:
-                            if choice != 1 and choice != 2 \
-                             and choice != 3 and choice != 4:
+                            if choice != str(1) and choice != str(2) \
+                             and choice != str(3) and choice != str(4):
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
                         else:
-                            if choice == 1:
+                            if choice == str(1):
                                 if adventurer.gold <= 50:
                                     print("You cannot afford this item.")
                                 elif "Iron Armor" in adventurer.inventory:
@@ -468,7 +468,7 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Iron Armor")
-                            elif choice == 2:
+                            elif choice == str(2):
                                 if adventurer.gold <= 150:
                                     print("You cannot afford this item.")
                                 elif "Steel Armor" in adventurer.inventory:
@@ -478,7 +478,7 @@ def shop():
                                           "inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Steel Armor")
-                            elif choice == 3:
+                            elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     print("You cannot afford this item.")
                                 elif "Silver Armor" in adventurer.inventory:
@@ -488,51 +488,51 @@ def shop():
                                           "your inventory. Remember to "
                                           "equip it.")
                                     adventurer.inventory.append("Silver Armor")
-                            elif choice == 4:
+                            elif choice == str(4):
                                 shop()
                                 return False
 
-                elif choice == 3:
+                elif choice == str(3):
                     while True:
                         print("Available items for sale:")
                         print("1. Potion. Restore 25 Health. 50 gold.")
                         print("2. Large Potion. Restore 50 Health. 150 gold.")
                         print("3. Max Potion: Fully restore Health. 300 gold.")
                         print("4. Check other options.")
-                        choice = int(input())
+                        choice = input()
                         try:
-                            if choice != 1 and choice != 2 \
-                             and choice != 3 and choice != 4:
+                            if choice != str(1) and choice != str(2) \
+                             and choice != str(3) and choice != str(4):
                                 raise Exception
                         except Exception:
                             print("Please enter only 1, 2, 3, or 4.\n")
                         else:
-                            if choice == 1:
+                            if choice == str(1):
                                 if adventurer.gold <= 50:
                                     print("You cannot afford this item.")
                                 else:
                                     print("You have added a Potion "
                                           "to your inventory.")
                                     adventurer.inventory.append("Potion")
-                            elif choice == 2:
+                            elif choice == str(2):
                                 if adventurer.gold <= 150:
                                     print("You cannot afford this item.")
                                 else:
                                     print("You have added a Large Potion "
                                           "to your inventory.")
                                     adventurer.inventory.append("Large Potion")
-                            elif choice == 3:
+                            elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     print("You cannot afford this item.")
                                 else:
                                     print("You have added a Max Potion "
                                           "to your inventory.")
                                     adventurer.inventory.append("Max Potion")
-                            elif choice == 4:
+                            elif choice == str(4):
                                 shop()
                                 return False
 
-                elif choice == 4:
+                elif choice == str(4):
                     find_a_quest()
                     return False
 
@@ -548,51 +548,51 @@ def shop():
                 available_items += 1
             print("What would you like to sell? "
                   "Press 0 to return to the shop.")
-            choice = int(input())
+            choice = input()
             try:
-                if choice > available_items and choice.alpha() is False:
+                if choice > str(available_items) and choice.alpha() is True:
                     raise Exception
             except Exception:
                 print("Please only enter the numbers on screen, "
                       "or 0 to return to the shop.")
             else:
-                if choice == 0:
+                if choice == str(0):
                     shop()
                     return False
-                elif choice <= available_items and choice > 0:
-                    if (adventurer.inventory[choice-1] == "Iron Sword"
-                       or adventurer.inventory[choice-1] == "Iron Armor"
-                       or adventurer.inventory[choice-1] == "Potion"):
+                elif choice <= str(available_items) and choice > str(0):
+                    if (adventurer.inventory[int(choice)-1] == "Iron Sword"
+                       or adventurer.inventory[int(choice)-1] == "Iron Armor"
+                       or adventurer.inventory[int(choice)-1] == "Potion"):
                         adventurer.gold += 25
                         print("You got 25 gold from selling your "
-                              f"{adventurer.inventory[choice-1]}.")
+                              f"{adventurer.inventory[int(choice)-1]}.")
                         print(f"Current gold: {adventurer.gold}")
-                        adventurer.inventory.pop(choice-1)
+                        adventurer.inventory.pop(int(choice)-1)
 
-                    elif (adventurer.inventory[choice-1] == "Steel Sword"
-                          or adventurer.inventory[choice-1] == "Steel Armor"
-                          or adventurer.inventory[choice-1] == "Large Potion"):
+                    elif (adventurer.inventory[int(choice)-1] == "Steel Sword"
+                          or adventurer.inventory[int(choice)-1] == "Steel Armor"
+                          or adventurer.inventory[int(choice)-1] == "Large Potion"):
                         adventurer.gold += 50
                         print("You got 50 gold from selling your "
-                              f"{adventurer.inventory[choice-1]}.")
+                              f"{adventurer.inventory[int(choice)-1]}.")
                         print(f"Current gold: {adventurer.gold}")
-                        adventurer.inventory.pop(choice-1)
+                        adventurer.inventory.pop(int(choice)-1)
 
-                    elif (adventurer.inventory[choice-1] == "Silver Sword"
-                          or adventurer.inventory[choice-1] == "Silver Armor"
-                          or adventurer.inventory[choice-1] == "Max Potion"):
+                    elif (adventurer.inventory[int(choice)-1] == "Silver Sword"
+                          or adventurer.inventory[int(choice)-1] == "Silver Armor"
+                          or adventurer.inventory[int(choice)-1] == "Max Potion"):
                         adventurer.gold += 150
                         print("You got 150 gold from selling your "
-                              f"{adventurer.inventory[choice-1]}.")
+                              f"{adventurer.inventory[int(choice)-1]}.")
                         print(f"Current gold: {adventurer.gold}")
-                        adventurer.inventory.pop(choice-1)
+                        adventurer.inventory.pop(int(choice)-1)
 
                     else:
                         adventurer.gold += 10
                         print("You got 10 gold from selling your "
-                              f"{adventurer.inventory[choice-1]}.")
+                              f"{adventurer.inventory[int(choice)-1]}.")
                         print(f"Current gold: {adventurer.gold}")
-                        adventurer.inventory.pop(choice-1)
+                        adventurer.inventory.pop(int(choice)-1)
 
     def leave_shop():
         os.system('clear')
@@ -608,23 +608,23 @@ def shop():
         slow_print("1. Buy.")
         slow_print("2. Sell.")
         slow_print("3. Leave.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
                 buy()
                 return False
 
-            elif choice == 2:
+            elif choice == str(2):
                 sell()
                 return False
 
-            elif choice == 3:
+            elif choice == str(3):
                 leave_shop()
                 return False
 
@@ -647,15 +647,15 @@ def find_a_quest():
             print("3. Clear out a bandit camp in the Forest")
             print("4. Leave the quest board")
             print("What quest will you accept?\n")
-            choice = int(input())
+            choice = input()
             try:
-                if choice != 1 and choice != 2 \
-                 and choice != 3 and choice != 4:
+                if choice != str(1) and choice != str(2) \
+                 and choice != str(3) and choice != str(4):
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
             else:
-                if choice == 1:
+                if choice == str(1):
                     if "Slay Slimes" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
@@ -663,7 +663,7 @@ def find_a_quest():
                               "defeat Slimes.")
                         adventurer.quests.append("Slay Slimes")
 
-                elif choice == 2:
+                elif choice == str(2):
                     if "Defend Caravan" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
@@ -671,14 +671,14 @@ def find_a_quest():
                               "defend a merchant caravan.")
                         adventurer.quests.append("Defend Caravan")
 
-                elif choice == 3:
+                elif choice == str(3):
                     if "Clear Bandit Camp" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
                         print("You have accepted the quest to "
                               "clear out a bandit camp.")
                         adventurer.quests.append("Clear Bandit Camp")
-                elif choice == 4:
+                elif choice == str(4):
                     find_a_quest()
                     return False
 
@@ -693,22 +693,22 @@ def find_a_quest():
             print("3. Bandit kidnapping")
             print("4. Leave the locals")
             print("Will you offer help with any of their jobs?\n")
-            choice = int(input())
+            choice = input()
             try:
-                if choice != 1 and choice != 2 \
-                 and choice != 3 and choice != 4:
+                if choice != str(1) and choice != str(2) \
+                 and choice != str(3) and choice != str(4):
                     raise Exception
             except Exception:
                 print("Please enter only 1, 2, 3, or 4.\n")
             else:
-                if choice == 1:
+                if choice == str(1):
                     if "Missing Necklace" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
                         print("You have offered to help find the necklace.")
                         adventurer.quests.append("Missing Necklace")
 
-                elif choice == 2:
+                elif choice == str(2):
                     if "Missing Person" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
@@ -716,14 +716,14 @@ def find_a_quest():
                               "find the missing person.")
                         adventurer.quests.append("Missing Person")
 
-                elif choice == 3:
+                elif choice == str(3):
                     if "Bandit Kidnapping" in adventurer.quests:
                         print("You have already accepted this quest.")
                     else:
                         print("You have agreed to help "
                               "rescue the kidnapped person.")
                         adventurer.quests.append("Bandit Kidnapping")
-                elif choice == 4:
+                elif choice == str(4):
                     find_a_quest()
                     return False
 
@@ -740,23 +740,23 @@ def find_a_quest():
         slow_print("1. Check the Quest Board.")
         slow_print("2. Ask a local for work.")
         slow_print("3. Leave.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
                 quest_board()
                 return False
 
-            elif choice == 2:
+            elif choice == str(2):
                 ask_a_local()
                 return False
 
-            elif choice == 3:
+            elif choice == str(3):
                 leave_tavern()
                 return False
 
@@ -771,25 +771,25 @@ def begin_adventure():
         slow_print("1. Merchant Road.")
         slow_print("2. Forest.")
         slow_print("3. Stay in Town.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
                 os.system('clear')
                 slow_print("You travel the merchant's road.\n")
                 road_start()
                 return False
 
-            elif choice == 2:
+            elif choice == str(2):
                 os.system('clear')
                 slow_print("You depart towards the forest\n")
 
-            elif choice == 3:
+            elif choice == str(3):
                 os.system('clear')
                 slow_print("You turn around and go back to the town square.\n")
                 town()
@@ -2251,7 +2251,7 @@ def main():
     Runs the primary functions for the game.
     """
     # splash_screen()
-    battle_event(adventurer, bandit)
+    shop()
 
 
 main()
