@@ -2025,34 +2025,43 @@ def forest_room4c():
 
 
 def forest_room5a():
-    slow_print("flavour text for room 5a")
+
     while True:
-        os.system('clear')
+        slow_print("You step into an empty clearing.\n"
+                   "A breath of fresh air after the recent "
+                   "squeeze through\nthose tight trees.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North") # 6a
-        slow_print("2. Go East.") # 5c
-        slow_print("3. Go West.") # 5b
+        slow_print("1. Go North")
+        slow_print("2. Go East.")
+        slow_print("3. Go West.")
         slow_print("4. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3 and choice != 4:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3) and choice != str(4):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You head North.")
+                slow_screen_clear()
                 forest_room6a()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                slow_print("You head East.")
+                slow_screen_clear()
                 forest_room5c()
                 return False
-            elif choice == 3:
+            elif choice == str(3):
+                slow_print("You head West.")
+                slow_screen_clear()
                 forest_room5b()
                 return False
-            elif choice == 4:
-                slow_print("flavour text for looking")
-    # forest 5c, 5b, or 6a
+            elif choice == str(4):
+                slow_print("You notice a small rabbit hopping "
+                           "towards the western path.")
+                slow_screen_clear()
 
 
 def forest_room5b():
