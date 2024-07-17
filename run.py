@@ -124,6 +124,7 @@ class Player(Character):
         self.forest3c_camp_enemy = 0
         self.room4bitem = False
         self.necklace_found = False
+        self.forest_6c_camp = False
 
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
@@ -638,7 +639,7 @@ def find_a_quest():
                    "official quests from the town guild.\n")
         while True:
             print("Currently available quests:")
-            print("1. Slay 5 slimes on the Merchant Road")
+            print("1. Slay 5 slimes")
             print("2. Defend a caravan on the Merchant Road")
             print("3. Clear out a bandit camp in the Forest")
             print("4. Leave the quest board")
@@ -684,8 +685,8 @@ def find_a_quest():
                    "about some jobs you could do.\n")
         while True:
             print("Currently available quests:")
-            print("1. Find lost necklace on the Merchant Road")
-            print("2. Person missing in the forest")
+            print("1. Find lost necklace")
+            print("2. Person missing")
             print("3. Bandit kidnapping")
             print("4. Leave the locals")
             print("Will you offer help with any of their jobs?\n")
@@ -2190,11 +2191,25 @@ def forest_room6a():
 
 
 def forest_room6c():
-    slow_print("flavour text for room 6c")
+    if adventurer.forest_6c_camp is False:
+        slow_print("You step out of the trees and into a clearing where\n"
+                   "some bandits have set up a camp!")
+        bandit_camp = Enemy("Bandits", 50, 25, 10, 10, 100)
+        battle_event(adventurer, bandit_camp)
+        adventurer.forest_6c_camp = True
+        if "Clear Bandit Camp" in adventurer.quests:
+            slow_print("You have cleared the bandit camp!\n"
+                       "Report your success in town!")
+            adventurer.keyitems.append("Bandit Camp Cleared")
+    
+    else:
+        slow_print("The camp is now silent, "
+                   "save for the crackling of the dying fire.")
+
     while True:
-        os.system('clear')
+        slow_print("You are standing at the center of the old bandit camp.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North.") # 5c
+        slow_print("1. Go Back.")
         slow_print("2. Look around.")
         choice = int(input())
         try:
@@ -2204,11 +2219,25 @@ def forest_room6c():
             print("Please enter only 1, or 2.\n")
         else:
             if choice == 1:
+                slow_print("You go back the way you came.")
+                slow_screen_clear()
                 forest_room5c()
                 return False
             elif choice == 2:
-                slow_print("flavour text for looking")
-    # forest 5c
+                if "Missing Person" in adventurer.quests:
+                    slow_print("As you look around you notice a "
+                               "bundle of\nrags piled up with "
+                               "some rope.\nTaking a closer look "
+                               "you realise it is a person!\n"
+                               "You cut them free, and give "
+                               "them some supplies and "
+                               "directions.\nThey are thankful "
+                               "for the help and quickly run "
+                               "from the forest back to town.")
+                else:
+                    slow_print("You notice some discarded rags.\n"
+                               "You look through the bandit "
+                               "supplies but find nothing of value.")
 
 
 def forest_room7():
