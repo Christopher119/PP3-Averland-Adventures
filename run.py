@@ -825,7 +825,7 @@ def random_enemy(area):
 
 
 def random_battle(enemy_type, encounter_chance):
-    battle_chance = random.randrange(10)+1
+    battle_chance = random.randint(0, 10)
 
     if battle_chance > encounter_chance:
         battle_event(adventurer, enemy_type)
