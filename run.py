@@ -160,6 +160,7 @@ class Enemy(Character):
 
 adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
                     ["Old Sword", "New Sword",  "Potion"], [])
+bandit = Enemy("Bandit", 20, 10, 10, 10, 10)
 
 """
 INTRO FUNCTIONS
@@ -882,15 +883,15 @@ def battle_event(player, enemy_type):
         slow_print("1. Attack.")
         slow_print("2. Defend.")
         slow_print("3. Use Item.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             slow_print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
                 slow_print(f"You attack the {enemy_type.name}")
                 player.attack_other(enemy_type)
                 enemy_type.check_life()
@@ -905,7 +906,7 @@ def battle_event(player, enemy_type):
                 is_player_alive()
                 sleep(1.5)
 
-            elif choice == 2:
+            elif choice == str(2):
                 player.block_attack(enemy_type)
                 # https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9
                 stun_chance = random.randrange(10)+1
@@ -923,7 +924,7 @@ def battle_event(player, enemy_type):
                         battle_loop = False
                     sleep(1.5)
 
-            elif choice == 3:
+            elif choice == str(3):
                 inventory_loop = True
                 while inventory_loop is True:
                     available_items = 0
@@ -932,52 +933,53 @@ def battle_event(player, enemy_type):
                         available_items += 1
                     print("What would you like to use? \
                     \nPress 0 to return to the battle menu.")
-                    choice = int(input())
+                    choice = input()
                     try:
-                        if choice > available_items \
-                         and choice.alpha() is False:
+                        if choice > str(available_items) \
+                         and choice.alpha() is True:
                             raise Exception
                     except Exception:
                         print("Please only enter the numbers on screen, \
                         \nor 0 to return to the shop.")
                     else:
-                        if choice == 0:
+                        if choice == str(0):
                             inventory_loop = False
-                        elif choice <= available_items and choice > 0:
-                            if adventurer.inventory[choice-1] == "Potion":
+                        elif choice <= str(available_items) and choice > str(0):
+                            if adventurer.inventory[int(choice)-1] == "Potion":
                                 if adventurer.health < 100:
                                     slow_print(f"You drink the Potion "
                                                 "and recover 25 health.")
                                     adventurer.use_potion(25)
-                                    adventurer.inventory.pop(choice-1)
+                                    adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
                                 else:
                                     slow_print(f"You are already at "
                                                 "full health.")
-                            elif adventurer.inventory[choice-1] \
+                            elif adventurer.inventory[int(choice)-1] \
                                     == "Large Potion":
                                 if adventurer.health < 100:
                                     slow_print(f"You drink the Large Potion "
                                                 "and recover 50 health.")
                                     adventurer.use_potion(50)
-                                    adventurer.inventory.pop(choice-1)
+                                    adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
                                 else:
                                     slow_print(f"You are already at "
                                                 "full health.")
-                            elif adventurer.inventory[choice-1] \
+                            elif adventurer.inventory[int(choice)-1] \
                                     == "Max Potion":
                                 if adventurer.health < 100:
                                     slow_print(f"You drink the Max Potion "
                                                 "and recover 100 health.")
                                     adventurer.use_potion(100)
-                                    adventurer.inventory.pop(choice-1)
+                                    adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
                                 else:
                                     slow_print(f"You are already at "
                                                 "full health.")
                             else:
                                 print("Using that item will have no effect.")
+                            slow_screen_clear()
 
 
 """
@@ -2249,7 +2251,7 @@ def main():
     Runs the primary functions for the game.
     """
     # splash_screen()
-    forest_room3a()
+    battle_event(adventurer, bandit)
 
 
 main()
