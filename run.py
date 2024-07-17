@@ -120,6 +120,7 @@ class Player(Character):
         #forest variables
         self.forest1b_gold_found = False
         self.forest3a_camp = False
+        self.forest3c_camp_enemy = 0
 
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
@@ -1774,30 +1775,100 @@ def forest_room2c():
 
 
 def forest_room3a():
-    slow_print("flavour text for room 3a")
+    if adventurer.forest3a_camp is False:
+        forest_room3a_campfight()
+    
+    else:
+        forest_room3a_campdefeat()
+
+
+def forest_room3a_campfight():
     while True:
-        os.system('clear')
+        adventurer.forest3c_camp_enemy = random_enemy("Forest")
+        adventurer.forest3c_camp_enemy.name += " Group"
+        slow_print("You press up against a tree as you hear "
+                   "noises ahead.\nYou peer around the "
+                   "trunk and notice some shadows moving \n"
+                   "just up ahead. It may be a group "
+                   "of monsters...")
+                       
         slow_print("What will you do?\n")
-        slow_print("1. Go East") # 3c
-        slow_print("2. Go West.") # 3b
-        slow_print("3. Look around.")
-        choice = int(input())
+        slow_print("1. Try to sneak past.")
+        slow_print("2. Step into the open.")
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2):
+                raise Exception
+        except Exception:
+            print("Please enter only 1 or 2.\n")
+        else:
+            if choice == str(1):
+                if adventurer.speed > random.randint(7, 13):
+                    slow_print("You successfully skirt your "
+                               "way past the group.")
+                    forest_room3a_campdefeat()
+                    return False
+                else:
+                    slow_print("A cry yells out followed by "
+                               "a rush of movement!")
+                    slow_print("You've been seen! "
+                               "Prepare to fight!")
+                    adventurer.forest3c_camp_enemy.health += 30
+                    adventurer.forest3c_camp_enemy.attack += 15
+                    random_battle(adventurer.forest3c_camp_enemy, -1)
+                    adventurer.forest3a_camp = True
+                    forest_room3a_campdefeat()
+                    return False
+
+            elif choice == str(2):
+                slow_print("You sneak closer and see a "
+                           f"{adventurer.forest3c_camp_enemy.name} \n"
+                           "gathered up ahead.\nYou manage to "
+                           "take one out before the group notices.")
+                slow_print("Prepare to fight!")
+                adventurer.forest3c_camp_enemy.health += 20
+                adventurer.forest3c_camp_enemy.attack += 10
+                random_battle(adventurer.forest3c_camp_enemy, -1)
+                adventurer.forest3a_camp = True
+                forest_room3a_campdefeat()
+                return False
+
+
+def forest_room3a_campdefeat():
+    while True:
+        if adventurer.forest3a_camp is True:
+            slow_print("The bodies of the "
+                       f"{adventurer.forest3c_camp_enemy.name}"
+                       " lay on the ground where you defeated them.")
+        else:
+            slow_print("The noise from the nearby group "
+                       "slowly fades as you sneak away.")
+                    
+        slow_print("What will you do?\n")
+        slow_print("1. Go East")
+        slow_print("2. Go West.")
+        slow_print("3. Look around.")
+        choice = input()
+        try:
+            if choice != str(1) and choice != str(2) \
+            and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You head East.")
+                slow_screen_clear()
                 forest_room3c()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                slow_print("You head West.")
+                slow_screen_clear()
                 forest_room3b()
                 return False
-            elif choice == 3:
-                slow_print("flavour text for looking")
-    # forst 3b or 3c
+            elif choice == str(3):
+                slow_print("There is an array of scattered objects on "
+                           "the ground, no doubt from that group.")
 
 
 def forest_room3b():
@@ -2068,7 +2139,7 @@ def main():
     Runs the primary functions for the game.
     """
     # splash_screen()
-    forest_start()
+    forest_room3a()
 
 
 main()
