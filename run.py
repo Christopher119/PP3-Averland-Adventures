@@ -26,6 +26,11 @@ def slow_print(text, delay=0.025):
             print()
 
 
+def slow_screen_clear():
+    sleep(2)
+    os.system('clear')
+
+
 """
 CHARACTER CLASSES AND METHODS
 """
@@ -1487,29 +1492,35 @@ FOREST EVENTS
 
 
 def forest_start():
-    slow_print("flavour text for forest start")
     while True:
-        os.system('clear')
+        slow_print("flavour text for forest start")
         slow_print("What will you do?\n")
-        slow_print("1. Continue.")
+        slow_print("1. Head deeper into the forest.")
         slow_print("2. Look around.")
         slow_print("3. Return to town.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
+            sleep(2)
+            os.system('clear')
         else:
-            if choice == 1:
+            if choice == str(1):
+                sleep(2)
+                os.system('clear')
                 forest_room1a()
                 return False
-            elif choice == 2:
-                print("flavour text for looking")
-            elif choice == 3:
-                print("You decide you are unprepared and return to town.")
-                delay(1.5)
+            elif choice == str(2):
+                slow_print("flavour text for looking")
+                sleep(2)
+                os.system('clear')
+            elif choice == str(3):
+                slow_print("You decide you are unprepared and return to town.")
+                sleep(2)
+                os.system('clear')
                 town()
                 return False
     # leads to forest1a
@@ -1977,7 +1988,7 @@ def main():
     Runs the primary functions for the game.
     """
     # splash_screen()
-    road_start()
+    forest_start()
 
 
 main()
