@@ -1607,29 +1607,42 @@ def forest_room1b():
                 else:
                     slow_print("You find nothing else of interest.")
                 slow_screen_clear()
-    # forest 1a or 2b
 
 
 def forest_room1c():
-    slow_print("flavour text for room 1c")
     while True:
-        os.system('clear')
+        slow_print("The air suddenly feels lighter as you "
+                   "come across a \nsmall spring. The water "
+                   "seems to shimmer as you look at it.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North.") # 2c
-        slow_print("2. Look around.")
-        choice = int(input())
+        slow_print("1. Go back the way you came.")
+        slow_print("2. Drink from the spring.")
+        slow_print("3. Look around.")
+        choice = input()
         try:
-            if choice != 1 and choice != 2:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
-            print("Please enter only 1, or 2.\n")
+            print("Please enter only 1, 2, or 3.\n")
         else:
             if choice == 1:
+                slow_print("You turn around and leave the "
+                           "small spring behind you.")
+                slow_screen_clear()
                 forest_room2c()
                 return False
             elif choice == 2:
-                slow_print("flavour text for looking")
-    # forest 2c
+                slow_print("You kneel by the edge of the water, "
+                           "scooping a handful \nof it into your mouth."
+                           "You feel invigorated as you drink it!")
+                adventurer.recover_health(20)
+                slow_print("You have recovered 20 hp!")
+                slow_screen_clear()
+            elif choice == 3:
+                slow_print("The area seems to almost shine with "
+                           "a mystical glow.")
+                slow_screen_clear()
 
 
 def forest_room2a():
