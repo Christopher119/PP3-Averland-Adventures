@@ -1893,51 +1893,58 @@ def forest_room3b():
             print("Please enter only 1, 2, 3, or 4.\n")
         else:
             if choice == str(1):
-                low_print("You head North.")
+                slow_print("You head North.")
                 slow_screen_clear()
                 forest_room4b()
                 return False
             elif choice == str(2):
-                low_print("You head East.")
+                slow_print("You head East.")
                 slow_screen_clear()
                 forest_room3a()
                 return False
             elif choice == str(3):
-                low_print("You head South.")
+                slow_print("You head South.")
                 slow_screen_clear()
                 forest_room2b()
                 return False
             elif choice == str(4):
                 slow_print("You see a flowerbed blooming under "
                            "the shade of a fallen log.")
-    # forest 4b or 3a
 
 
 def forest_room3c():
-    slow_print("flavour text for room 3c")
+
+    random_battle(random_enemy("Forest"), 3)
+
     while True:
-        os.system('clear')
+        slow_print("The forest is getting denser the deeper you go. \n"
+                   "It looks like there's only one path forward.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North") # 4c
-        slow_print("2. Go West.") # 3a
+        slow_print("1. Go North")
+        slow_print("2. Go West.")
         slow_print("3. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You head North.")
+                slow_screen_clear()
                 forest_room4c()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                slow_print("You head West.")
+                slow_screen_clear()
                 forest_room3a()
                 return False
-            elif choice == 3:
-                slow_print("flavour text for looking")
-    # forest 4c
+            elif choice == str(3):
+                slow_print("You could almost swear there are... faces\n "
+                           "in the bark of the trees. All of them looking\n "
+                           "right at you as you walk through the forest.")
 
 
 def forest_room4b():
