@@ -119,6 +119,7 @@ class Player(Character):
 
         #forest variables
         self.forest1b_gold_found = False
+        self.forest3a_camp = False
 
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
@@ -1742,30 +1743,34 @@ def forest_room2b():
 
 
 def forest_room2c():
-    slow_print("flavour text for room 2c")
     while True:
-        os.system('clear')
+        slow_print("The forest seems strangely quiet now... \n"
+                   "Perhaps there is a danger ahead?")
         slow_print("What will you do?\n")
-        slow_print("1. Go West") # 2a
-        slow_print("2. Go South.") # 1c
+        slow_print("1. Go West")
+        slow_print("2. Go South.")
         slow_print("3. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You head West.")
+                slow_screen_clear()
                 forest_room2a()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                slow_print("You head South.")
+                slow_screen_clear()
                 forest_room1c()
                 return False
-            elif choice == 3:
-                slow_print("flavour text for looking")
-    # forest 2a or 1c
+            elif choice == str(3):
+                slow_print("You can't see anything out of the ordinary "
+                           "\nunder the shade of the forest canopy.")
 
 
 def forest_room3a():
@@ -1796,6 +1801,7 @@ def forest_room3a():
 
 
 def forest_room3b():
+    adventurer.forest3a_camp
     slow_print("flavour text for room 3b")
     while True:
         os.system('clear')
