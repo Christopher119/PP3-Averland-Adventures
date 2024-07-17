@@ -117,6 +117,9 @@ class Player(Character):
         self.road_4_fight = False
         self.road_4_group = False
 
+        #forest variables
+        self.forest1b_gold_found = False
+
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
         self.defence *= 2
@@ -1565,32 +1568,45 @@ def forest_room1a():
             elif choice == str(4):
                 slow_print("The bushes rustle as some critters scurry"
                            "around in the underbrush.")
+                slow_screen_clear()
 
 
 def forest_room1b():
-    slow_print("flavour text for room 1b")
+    
     while True:
-        os.system('clear')
+        slow_print("Some birds are chirping nearby as you \n"
+                   "make your way through the dense foliage.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North.") # 2b
-        slow_print("2. Go East") # 1a
+        slow_print("1. Go North.")
+        slow_print("2. Go East")
         slow_print("3. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You head north.")
+                slow_screen_clear()
                 forest_room2b()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                slow_print("You head west.")
+                slow_screen_clear()
                 forest_room1a()
                 return False
-            elif choice == 3:
-                slow_print("flavour text for looking")
+            elif choice == str(3):
+                if adventurer.forest1b_gold_found is False:
+                    slow_print("You notice something glittering "
+                               "in the grass at your feet.")
+                    slow_print("You found 5 gold coins!")
+                    adventurer.gold += 5
+                else:
+                    slow_print("You find nothing else of interest.")
+                slow_screen_clear()
     # forest 1a or 2b
 
 
