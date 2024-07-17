@@ -14,6 +14,7 @@ import random
 # imported to prevent words from breaking when printed to terminal
 import textwrap
 
+
 def slow_print(text, delay=0.025):
     """
     A function to print out lines character by character rather
@@ -123,7 +124,7 @@ class Player(Character):
         self.road_4_fight = False
         self.road_4_group = False
 
-        #forest variables
+        # forest variables
         self.forest1b_gold_found = False
         self.forest3a_camp = False
         self.forest3c_camp_enemy = 0
@@ -595,27 +596,36 @@ def shop():
                     shop()
                     return False
                 elif choice <= str(available_items) and choice > str(0):
-                    if (adventurer.inventory[int(choice)-1] == "Iron Sword"
-                       or adventurer.inventory[int(choice)-1] == "Iron Armor"
-                       or adventurer.inventory[int(choice)-1] == "Potion"):
+                    if (adventurer.inventory[int(choice)-1]
+                       == "Iron Sword"
+                       or adventurer.inventory[int(choice)-1]
+                       == "Iron Armor"
+                       or adventurer.inventory[int(choice)-1]
+                       == "Potion"):
                         adventurer.gold += 25
                         print("You got 25 gold from selling your "
                               f"{adventurer.inventory[int(choice)-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(int(choice)-1)
 
-                    elif (adventurer.inventory[int(choice)-1] == "Steel Sword"
-                          or adventurer.inventory[int(choice)-1] == "Steel Armor"
-                          or adventurer.inventory[int(choice)-1] == "Large Potion"):
+                    elif (adventurer.inventory[int(choice)-1]
+                          == "Steel Sword"
+                          or adventurer.inventory[int(choice)-1]
+                          == "Steel Armor"
+                          or adventurer.inventory[int(choice)-1]
+                          == "Large Potion"):
                         adventurer.gold += 50
                         print("You got 50 gold from selling your "
                               f"{adventurer.inventory[int(choice)-1]}.")
                         print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(int(choice)-1)
 
-                    elif (adventurer.inventory[int(choice)-1] == "Silver Sword"
-                          or adventurer.inventory[int(choice)-1] == "Silver Armor"
-                          or adventurer.inventory[int(choice)-1] == "Max Potion"):
+                    elif (adventurer.inventory[int(choice)-1]
+                            == "Silver Sword"
+                          or adventurer.inventory[int(choice)-1]
+                            == "Silver Armor"
+                          or adventurer.inventory[int(choice)-1]
+                            == "Max Potion"):
                         adventurer.gold += 150
                         print("You got 150 gold from selling your "
                               f"{adventurer.inventory[int(choice)-1]}.")
@@ -840,7 +850,7 @@ def begin_adventure():
                 return False
 
 
-#battle functions
+# battle functions
 def random_enemy(area):
     """
     A function to select a random enemy from a set list
@@ -997,19 +1007,22 @@ def battle_event(player, enemy_type):
                         if choice == str(0):
                             inventory_loop = False
 
-                        elif choice <= str(available_items) and choice > str(0):
-                            if adventurer.inventory[int(choice)-1] == "Potion":
+                        elif (choice <= str(available_items)
+                              and choice > str(0)):
+                            if (adventurer.inventory[int(choice)-1]
+                               == "Potion"):
                                 if adventurer.health < 100:
                                     adventurer.use_potion(25)
-                                    adventurer.inventory.pop(int(choice)-1)
+                                    adventurer.inventory.\
+                                        pop(int(choice)-1)
                                     inventory_loop = False
 
                                 else:
                                     slow_print(f"You are already at "
-                                                "full health.")
+                                               "full health.")
 
-                            elif adventurer.inventory[int(choice)-1] \
-                                    == "Large Potion":
+                            elif (adventurer.inventory[int(choice)-1]
+                                  == "Large Potion"):
                                 if adventurer.health < 100:
                                     adventurer.use_potion(50)
                                     adventurer.inventory.pop(int(choice)-1)
@@ -1017,10 +1030,10 @@ def battle_event(player, enemy_type):
 
                                 else:
                                     slow_print(f"You are already at "
-                                                "full health.")
+                                               "full health.")
 
-                            elif adventurer.inventory[int(choice)-1] \
-                                    == "Max Potion":
+                            elif (adventurer.inventory[int(choice)-1]
+                                  == "Max Potion"):
                                 if adventurer.health < 100:
                                     adventurer.use_potion(100)
                                     adventurer.inventory.pop(int(choice)-1)
@@ -1028,10 +1041,11 @@ def battle_event(player, enemy_type):
 
                                 else:
                                     slow_print(f"You are already at "
-                                                "full health.")
+                                               "full health.")
 
                             else:
-                                print("Using that item will have no effect.")
+                                print("Using that item will "
+                                      "have no effect.")
                             slow_screen_clear()
 
 
@@ -1041,7 +1055,7 @@ MERCHANT ROAD FUNCTIONS
 
 
 def road_start():
-    
+
     while True:
         slow_print("The wall of the town is at your back as "
                    "you begin travelling the Merchant's Road.")
@@ -1105,7 +1119,8 @@ def road_1():
                     slow_print("Your eyes scan over the road when you notice "
                                "\na small bag discarded on the roadside. You "
                                "crouch down to examine it,\nfinding it mostly "
-                               "empty, save for a few coins.\nYou found 10 gold!")
+                               "empty, save for a few coins.\n"
+                               "You found 10 gold!")
                     adventurer.gold += 10
                     adventurer.found_gold_road_1 = True
                     slow_screen_clear()
@@ -1580,7 +1595,8 @@ def road_6():
 
 def road_7():
     while True:
-        slow_print("As you walk the road you see the next town not far from you.")
+        slow_print("As you walk the road you see the "
+                   "next town not far from you.")
         slow_print("What will you do?\n")
         slow_print("1. Continue towards town.")
         slow_print("2. Look around.")
@@ -1709,7 +1725,7 @@ def forest_room1a():
 
 
 def forest_room1b():
-    
+
     while True:
         slow_print("Some birds are chirping nearby as you \n"
                    "make your way through the dense foliage.")
@@ -1839,7 +1855,7 @@ def forest_room2a():
                 return False
 
             elif choice == str(4):
-                slow_print("There are strange markings on some of the trees. \n"
+                slow_print("There are strange markings on some of the trees.\n"
                            "Perhaps territorial warning signs from some \n"
                            "bandits or monsters.")
                 slow_screen_clear()
@@ -1937,7 +1953,7 @@ def forest_room2c():
 def forest_room3a():
     if adventurer.forest3a_camp is False:
         forest_room3a_campfight()
-    
+
     else:
         forest_room3a_campdefeat()
 
@@ -1951,7 +1967,6 @@ def forest_room3a_campfight():
                    "trunk and notice some shadows moving \n"
                    "just up ahead. It may be a group "
                    "of monsters...")
-                       
         slow_print("What will you do?\n")
         slow_print("1. Try to sneak past.")
         slow_print("2. Step into the open.")
@@ -2010,7 +2025,7 @@ def forest_room3a_campdefeat():
         else:
             slow_print("The noise from the nearby group "
                        "slowly fades as you sneak away.")
-                    
+
         slow_print("What will you do?\n")
         slow_print("1. Go East")
         slow_print("2. Go West.")
@@ -2018,7 +2033,7 @@ def forest_room3a_campdefeat():
         choice = input()
         try:
             if choice != str(1) and choice != str(2) \
-            and choice != str(3):
+             and choice != str(3):
                 raise Exception
 
         except Exception:
@@ -2238,8 +2253,8 @@ def forest_room4c():
 def forest_room5a():
 
     slow_print("You step into an empty clearing.\n"
-                   "A breath of fresh air after the recent "
-                   "squeeze through\nthose tight trees.")
+               "A breath of fresh air after the recent "
+               "squeeze through\nthose tight trees.")
 
     while True:
         slow_print("You are standing in a small clearing.")
@@ -2302,7 +2317,7 @@ def forest_room5b():
         try:
             if choice != str(1) and choice != str(2) \
              and choice != str(3) and choice != str(4) \
-              and choice != str(5):
+             and choice != str(5):
                 raise Exception
 
         except Exception:
@@ -2326,12 +2341,14 @@ def forest_room5b():
                 slow_print("As you reach to try and grab the small fairy "
                            "a rush of dust suddenly\nflies into your face.\n"
                            "You wipe your eyes and when you can see again \n"
-                           "you realise you are no longer at the fairy's pool...")
+                           "you realise you are no "
+                           "longer at the fairy's pool...")
                 slow_screen_clear()
                 forest_room3b()
 
             if choice == str(4):
-                slow_print("The fairy regards you curiously as you kneel down and\n"
+                slow_print("The fairy regards you curiously "
+                           "as you kneel down and\n"
                            "drink from the pool, but does nothing else.\n"
                            "The water instantly restores your vitality.")
                 adventurer.recover_health(100)
@@ -2353,9 +2370,9 @@ def forest_room5c():
         slow_print("You step into a tiny clearing, \n"
                    "surrounded on all side by densely packed trees.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North") # 6c
-        slow_print("2. Go West.") # 5a
-        slow_print("3. Go South.") # 4c
+        slow_print("1. Go North")
+        slow_print("2. Go West.")
+        slow_print("3. Go South.")
         slow_print("4. Look around.")
         choice = input()
         try:
@@ -2387,7 +2404,8 @@ def forest_room5c():
                 return False
 
             elif choice == str(4):
-                slow_print("You notice a path through the trees to the north,\n "
+                slow_print("You notice a path through "
+                           "the trees to the north,\n "
                            "with some sounds of laughter echoing through.")
                 slow_screen_clear()
 
@@ -2420,7 +2438,7 @@ def forest_room6c():
             slow_print("You have cleared the bandit camp!\n"
                        "Report your success in town!")
             adventurer.keyitems.append("Bandit Camp Cleared")
-    
+
     else:
         slow_print("The camp is now silent, "
                    "save for the crackling of the dying fire.")
@@ -2484,7 +2502,7 @@ def forest_room7():
 
         else:
             if choice == str(1):
-                slow_print("You deprat from the forest,\n"
+                slow_print("You depart from the forest,\n"
                            "heading toward the nearest town.")
                 slow_screen_clear()
                 town()
@@ -2502,7 +2520,6 @@ def main():
     Runs the primary functions for the game.
     """
     splash_screen()
-    
 
 
 main()
