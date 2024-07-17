@@ -11,6 +11,8 @@ from time import sleep
 # imported for battle functionality
 import random
 
+# imported to prevent words from breaking when printed to terminal
+import textwrap
 
 def slow_print(text, delay=0.025):
     """
@@ -1493,8 +1495,10 @@ FOREST EVENTS
 
 def forest_start():
     while True:
-        slow_print("flavour text for forest start")
-        slow_print("What will you do?\n")
+        slow_print("You arrive at the entrance to the nearby forest.\n"
+                   "Tales of monsters dens and hidden riches bid many\n"
+                   "adventurer to tackle it.\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Head deeper into the forest.")
         slow_print("2. Look around.")
         slow_print("3. Return to town.")
@@ -1504,23 +1508,24 @@ def forest_start():
              and choice != str(3):
                 raise Exception
         except Exception:
-            print("Please enter only 1, 2, or 3.\n")
-            sleep(2)
-            os.system('clear')
+            print("Please enter only 1, 2, or 3.")
+            slow_screen_clear()
         else:
             if choice == str(1):
-                sleep(2)
-                os.system('clear')
+                slow_print("You press through the trees and bushes")
+                slow_screen_clear()
                 forest_room1a()
                 return False
             elif choice == str(2):
-                slow_print("flavour text for looking")
-                sleep(2)
-                os.system('clear')
+                slow_print("The canopy of trees obscures much of the light "
+                           "from the sun,\nallowing only a few dappled rays "
+                           "to shine through. There is a\nsmall road leading "
+                           "into the forest proper that you can follow\n"
+                           "for a certain distance.")
+                slow_screen_clear()
             elif choice == str(3):
                 slow_print("You decide you are unprepared and return to town.")
-                sleep(2)
-                os.system('clear')
+                slow_screen_clear()
                 town()
                 return False
     # leads to forest1a
