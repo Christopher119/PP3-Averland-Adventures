@@ -889,6 +889,7 @@ def battle_event(player, enemy_type):
                 if enemy_type.check_life():
                     slow_print(f"You have defeated the {enemy_type.name}!")
                     enemy_type.drop_loot(adventurer, enemy_type.loot)
+                    slow_screen_clear()
                     battle_loop = False
                     break
                 slow_print(f"The {enemy_type.name} counterattacks!")
@@ -910,6 +911,7 @@ def battle_event(player, enemy_type):
                     if enemy_type.check_life():
                         print(f"You have defeated the {enemy_type.name}!")
                         enemy_type.drop_loot(adventurer, enemy_type.loot)
+                        slow_screen_clear()
                         battle_loop = False
                     sleep(1.5)
 
@@ -935,25 +937,37 @@ def battle_event(player, enemy_type):
                             inventory_loop = False
                         elif choice <= available_items and choice > 0:
                             if adventurer.inventory[choice-1] == "Potion":
-                                slow_print(f"You drink the Potion \
-                                           and recover 25 health.")
-                                adventurer.use_potion(25)
-                                adventurer.inventory.pop(choice-1)
-                                inventory_loop = False
+                                if adventurer.health < 100:
+                                    slow_print(f"You drink the Potion "
+                                                "and recover 25 health.")
+                                    adventurer.use_potion(25)
+                                    adventurer.inventory.pop(choice-1)
+                                    inventory_loop = False
+                                else:
+                                    slow_print(f"You are already at "
+                                                "full health.")
                             elif adventurer.inventory[choice-1] \
                                     == "Large Potion":
-                                slow_print(f"You drink the Large Potion \
-                                           and recover 50 health.")
-                                adventurer.use_potion(50)
-                                adventurer.inventory.pop(choice-1)
-                                inventory_loop = False
+                                if adventurer.health < 100:
+                                    slow_print(f"You drink the Large Potion "
+                                                "and recover 50 health.")
+                                    adventurer.use_potion(50)
+                                    adventurer.inventory.pop(choice-1)
+                                    inventory_loop = False
+                                else:
+                                    slow_print(f"You are already at "
+                                                "full health.")
                             elif adventurer.inventory[choice-1] \
                                     == "Max Potion":
-                                slow_print(f"You drink the Max Potion \
-                                           and recover 100 health.")
-                                adventurer.use_potion(100)
-                                adventurer.inventory.pop(choice-1)
-                                inventory_loop = False
+                                if adventurer.health < 100:
+                                    slow_print(f"You drink the Max Potion "
+                                                "and recover 100 health.")
+                                    adventurer.use_potion(100)
+                                    adventurer.inventory.pop(choice-1)
+                                    inventory_loop = False
+                                else:
+                                    slow_print(f"You are already at "
+                                                "full health.")
                             else:
                                 print("Using that item will have no effect.")
 
@@ -1648,8 +1662,7 @@ def forest_room1c():
 def forest_room2a():
 
     random_battle(random_enemy("Forest"), 5)
-    slow_print("Once the battle is finished you sheathe "
-               "your weapon and \ncontinue through the trees.")
+
     while True:
         slow_print("Your tunic tears on a sharp branch as "
                    "you walk deeper into the forest.")
@@ -1660,8 +1673,8 @@ def forest_room2a():
         slow_print("4. Look around.")
         choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3 and choice != 4:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3) and choice != str(4):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
