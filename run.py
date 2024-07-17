@@ -776,20 +776,31 @@ def begin_adventure():
                 return False
 
 
-def random_enemy():
+#battle functions
+def random_enemy(area):
     """
     A function to select a random enemy from a set list
     and return it to the random_battle function
     """
-    enemies = [
-        Enemy("Bandit", 20, 10, 10, 10),
-        Enemy("Slime", 10, 5, 5, 2),
-        Enemy("Skeleton", 10, 10, 5, 5),
-        Enemy("Lizard-Man", 15, 15, 10, 10),
-        Enemy("Giant Bug", 25, 15, 15, 10),
-        Enemy("Zombie", 20, 5, 10, 2),
-        Enemy("Wolf", 10, 5, 5, 15)
-    ]
+    if area == "Road":
+        enemies = [
+            Enemy("Bandit", 20, 10, 10, 10),
+            Enemy("Slime", 10, 5, 5, 2),
+            Enemy("Skeleton", 10, 10, 5, 5),
+            Enemy("Wolf", 10, 5, 5, 15),
+            Enemy("Goblin", 10, 10, 10, 5)
+        ]
+    elif area == "Forest":
+        enemies = [
+            Enemy("Bandit", 20, 10, 10, 10),
+            Enemy("Slime", 10, 5, 5, 2),
+            Enemy("Skeleton", 10, 10, 5, 5),
+            Enemy("Lizard-Man", 15, 15, 10, 10),
+            Enemy("Giant Bug", 25, 15, 15, 10),
+            Enemy("Zombie", 20, 5, 10, 2),
+            Enemy("Wolf", 10, 5, 5, 15),
+            Enemy("Goblin", 10, 10, 10, 5)
+        ]
     # https://stackoverflow.com/questions/306400/how-can-i-randomly-select-choose-an-item-from-a-list-get-a-random-element
     return random.choice(enemies)
 
@@ -993,7 +1004,7 @@ def road_2():
     os.system('clear')
     slow_print("flavour text for road 2")
     sleep(1.5)
-    random_battle(random_enemy())
+    random_battle(random_enemy("Road"))
 
     while True:
         os.system('clear')
@@ -1148,7 +1159,7 @@ def road_3b():
     # generating a random enemy and assigning it to a variable
     # within the Player class to be stored for consistent encounters
     if adventurer.road3_enemy_fought is False:
-        adventurer.road3_enemies = random_enemy()
+        adventurer.road3_enemies = random_enemy("Road")
         battle_event(adventurer, adventurer.road3_enemies)
         adventurer.road3_enemy_fought = True
         slow_print("After the battle you realise that there must "
@@ -1220,7 +1231,7 @@ def road_4():
     os.system('clear')
     slow_print("Placeholder text for road 4.")
 
-    random_battle(random_enemy())
+    random_battle(random_enemy("Road"))
 
     sleep(1.5)
 
@@ -1285,7 +1296,7 @@ def road_4a():
     sleep(1.5)
 
     if adventurer.road_4_fight is False:
-        adventurer.road4_enemies = random_enemy()
+        adventurer.road4_enemies = random_enemy("Road")
         battle_event(adventurer, adventurer.road4_enemies)
         adventurer.road4_enemy_fought = True
         slow_print("After the battle placeholder")
@@ -1354,7 +1365,7 @@ def road_5():
     os.system('clear')
     slow_print("flavour text for road 5")
     sleep(1.5)
-    random_battle(random_enemy())
+    random_battle(random_enemy("Road"))
 
     while True:
         os.system('clear')
@@ -1388,7 +1399,7 @@ def road_6():
     os.system('clear')
     slow_print("flavour text for road 6")
     sleep(1.5)
-    random_battle(random_enemy())
+    random_battle(random_enemy("Road"))
 
     while True:
         os.system('clear')
