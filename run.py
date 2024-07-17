@@ -2152,35 +2152,41 @@ def forest_room5c():
                 forest_room4c()
                 return False
             elif choice == str(4):
-                slow_print("You notice a path through the trees to the north, \n "
+                slow_print("You notice a path through the trees to the north,\n "
                            "with some sounds of laughter echoing through.")
 
 
 def forest_room6a():
-    slow_print("flavour text for room 6a")
     while True:
-        os.system('clear')
+        slow_print("The trees don't grow as tightly together here,\n"
+                   "allowing you to rest in a small clearing as "
+                   "you sit on a fallen log.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North") # 7a
-        slow_print("2. Go South.") # 5a
+        slow_print("1. Go North")
+        slow_print("2. Go South.")
         slow_print("3. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, or 3.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You head North.")
+                slow_screen_clear()
                 forest_room7a()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                slow_print("You head South.")
+                slow_screen_clear()
                 forest_room6a()
                 return False
-            elif choice == 3:
-                slow_print("flavour text for looking")
-    # forest 7
+            elif choice == str(3):
+                slow_print("You look to the north.\n"
+                           "As you do you hear some loud growling from up ahead.\n"
+                           "Best to be prepared before you proceed.")
 
 
 def forest_room6c():
