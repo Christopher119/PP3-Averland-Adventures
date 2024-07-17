@@ -121,6 +121,7 @@ class Player(Character):
         self.forest1b_gold_found = False
         self.forest3a_camp = False
         self.forest3c_camp_enemy = 0
+        self.room4bitem = False
 
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
@@ -1948,25 +1949,36 @@ def forest_room3c():
 
 
 def forest_room4b():
-    slow_print("flavour text for room 4b")
     while True:
+        slow_print("You come to a dead end in the path. The trees are\n "
+                   "too tightly packed to squeeze through.")
         os.system('clear')
         slow_print("What will you do?\n")
-        slow_print("1. Go North.") # 3b
+        slow_print("1. Back the way you came.")
         slow_print("2. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2:
+            if choice != str(1) and choice != str(2):
                 raise Exception
         except Exception:
             print("Please enter only 1, or 2.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                slow_print("You turn around and go back.")
+                slow_screen_clear()
                 forest_room3b()
                 return False
-            elif choice == 2:
-                slow_print("flavour text for looking")
-    # forest 3b
+            elif choice == str(2):
+                if adventurer.room4bitem is False:
+                    slow_print("You notice something just past "
+                               "a gap in the trees.")
+                    slow_print("You reach through and grab it.")
+                    slow_print("You found a Steel Sword!")
+                    adventurer.inventory.append("Steel Sword")
+                    adventurer.room4bitem = True
+                else:
+                    slow_print("You aren't able to see much thanks "
+                               "to how dark it is due to the trees.")
 
 
 def forest_room4c():
