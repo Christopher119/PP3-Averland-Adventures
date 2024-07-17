@@ -14,6 +14,7 @@ import random
 # importing other scripts
 from slow_functions import *
 from intro import *
+from characters import *
 
 
 #def slow_print(text, delay=0.025):
@@ -42,67 +43,69 @@ CHARACTER CLASSES AND METHODS
 # move to characters.py to define protag, enemies, etc in one file.
 
 
-class Character:
-    """
-    Creates an Instance of a Character Class.
-    """
+#class Character:
+#    """
+#    Creates an Instance of a Character Class.
+#    """
+#
+#    def __init__(self, name, health, attack, defence, speed):
+#        self.name = name
+#        self.health = health
+#        self.attack = attack
+#        self.defence = defence
+#        self.speed = speed
+#
+#    def attack_other(self, other_char):
+#        """
+#        A function allowing one character to reduce another characters health
+#        """
+#        damage_taken = self.attack - (other_char.defence / 2.5)
+#        other_char.health -= damage_taken
+#        slow_print(f"{other_char.name} took {damage_taken} damage!")
+#        if other_char.health > 0:
+#            slow_print(f"{other_char.name} has {other_char.health} "
+#                       "health remaining!")
+#        elif other_char.health <= 0:
+#            other_char.health = 0
+#            slow_print(f"{other_char.name} has no health remaining!")
+#
+#    def check_life(self):
+#        """
+#        A simple function to check if the character still has health.
+#        If the health is equal to or below 0 it returns True for checks.
+#        """
+#        if self.health <= 0:
+#            self.health = 0
+#            return True
+#
+#    def recover_health(self, amount):
+#        """
+#        A simple function to restore health to a character
+#        and prevent it from going above 100.
+#        """
+#        self.health += amount
+#        if self.health > 100:
+#            self.health = 100
+#            slow_print("You are fully healed!")
+#        else:
+#            slow_print(f"You recovered {amount} health!")
 
-    def __init__(self, name, health, attack, defence, speed):
-        self.name = name
-        self.health = health
-        self.attack = attack
-        self.defence = defence
-        self.speed = speed
+#    def use_potion(self, amount):
+#        """
+#        A simple function using the above recover_health() function to
+#        restore health and print out the results.
+#        """
+#        self.recover_health(amount)
+#        slow_print(f"You now have {player.health}.")
+#        sleep(1.5)
 
-    def attack_other(self, other_char):
-        """
-        A function allowing one character to reduce another characters health
-        """
-        damage_taken = self.attack - (other_char.defence / 2.5)
-        other_char.health -= damage_taken
-        slow_print(f"{other_char.name} took {damage_taken} damage!")
-        if other_char.health > 0:
-            slow_print(f"{other_char.name} has {other_char.health} "
-                       "health remaining!")
-        elif other_char.health <= 0:
-            other_char.health = 0
-            slow_print(f"{other_char.name} has no health remaining!")
-
-    def check_life(self):
-        """
-        A simple function to check if the character still has health.
-        If the health is equal to or below 0 it returns True for checks.
-        """
-        if self.health <= 0:
-            self.health = 0
-            return True
-
-    def recover_health(self, amount):
-        """
-        A simple function to restore health to a character
-        and prevent it from going above 100.
-        """
-        self.health += amount
-        if self.health > 100:
-            self.health = 100
-            slow_print("You are fully healed!")
-        else:
-            slow_print(f"You recovered {amount} health!")
-
-    def use_potion(self, amount):
-        """
-        A simple function using the above recover_health() function to
-        restore health and print out the results.
-        """
-        self.recover_health(amount)
-        slow_print(f"You now have {player.health}.")
-        sleep(1.5)
-
-
+"""
 class Player(Character):
     """
+"""
     Creates an Instance of a Player Character Class.
     """
+"""
 
     def __init__(self, name, health, attack, defence,
                  speed, gold, inventory, quests):
@@ -157,9 +160,9 @@ class Player(Character):
 
 
 class Enemy(Character):
-    """
+    """"""
     Creates an Instance of an Enemy Character Class.
-    """
+    """"""
 
     def __init__(self, name, health, attack, defence, speed, loot):
         super().__init__(name, health, attack, defence, speed)
@@ -168,6 +171,7 @@ class Enemy(Character):
     def drop_loot(self, player, loot):
         player.gold += self.loot
         print(f"The {self.name} dropped {self.loot} gold!")
+"""
 
 
 adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
@@ -213,12 +217,12 @@ INTRO FUNCTIONS
 #            elif choice == str(3):
 #                exit_game()
 
-
+"""
 # move to intro.py
 def rules():
     """
-    A function to display rules to the player.
-    """
+    #A function to display rules to the player.
+"""
     # https://www.geeksforgeeks.org/clear-screen-python/
     # clearing screen before presenting new lines
     os.system('clear')
@@ -244,24 +248,24 @@ def rules():
         else:
             if go_back == str(1):
                 splash_screen()
-
-
+"""
+"""
 # move to intro.py
 def exit_game():
     """
-    A function to end the game.
-    """
+    #A function to end the game.
+"""
     os.system('clear')
     slow_print("You will be missed, brave adventurer.")
     slow_print("Perhaps we shall see you again, another time.")
     slow_print("Farewell.")
-
-
+"""
+"""
 # move to intro.py
 def game_intro():
     """
-    A function to begin the game.
-    """
+    #A function to begin the game.
+"""
     os.system('clear')
     slow_print("Welcome to the kingdom of Averland, brave adventurer.")
     while True:
@@ -296,8 +300,8 @@ def game_intro():
             slow_print(".", 0.25)
             town()
             return False
-
-
+"""
+"""
 def game_over():
     slow_print("Alas, brave adventurer, it seems the dangers "
                "of Averland were too great for you...")
@@ -328,7 +332,7 @@ def game_over():
                 sleep(3)
                 quit()
                 return False
-
+"""
 
 """
 HUBWORLD FUNCTIONS

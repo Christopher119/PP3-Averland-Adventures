@@ -5,6 +5,7 @@ from sys import stdout
 from time import sleep
 
 from slow_functions import *
+from characters import *
 
 def splash_screen():
     """
@@ -31,12 +32,15 @@ def splash_screen():
         else:
             if choice == str(1):
                 game_intro()
+                return False
 
             elif choice == str(2):
                 rules()
+                return False
 
             elif choice == str(3):
                 exit_game()
+                return False
 
 
 # move to intro.py
@@ -64,11 +68,11 @@ def rules():
             if go_back != str(1):
                 raise Exception
         except Exception:
-            print("Please press 1.\n")
-            slow_screen_clear()
+            print("Please press 1.")
         else:
             if go_back == str(1):
                 splash_screen()
+                return False
 
 
 # move to intro.py
@@ -141,10 +145,12 @@ def game_over():
                 raise Exception
         except Exception:
             print("Please enter only 1 or 2.\n")
+            slow_screen_clear()
         else:
             if choice == str(1):
                 slow_print("May your efforts bear more fruit "
                            "this time, adventurer.\n")
+                slow_screen_clear()
                 game_intro()
                 return False
 
