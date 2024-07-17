@@ -1,3 +1,9 @@
+from slow_functions import *
+from characters import *
+from game_variables import *
+from hubworld import *
+
+
 def forest_start():
 
     slow_print("You arrive at the entrance to the nearby forest.\n"
