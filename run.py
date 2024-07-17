@@ -805,10 +805,10 @@ def random_enemy(area):
     return random.choice(enemies)
 
 
-def random_battle(enemy_type):
+def random_battle(enemy_type, encounter_chance):
     battle_chance = random.randrange(10)+1
 
-    if battle_chance > 5:
+    if battle_chance > encounter_chance:
         battle_event(adventurer, enemy_type)
         sleep(3)
 
@@ -1004,7 +1004,7 @@ def road_2():
     os.system('clear')
     slow_print("flavour text for road 2")
     sleep(1.5)
-    random_battle(random_enemy("Road"))
+    random_battle(random_enemy("Road"), 7)
 
     while True:
         os.system('clear')
@@ -1231,7 +1231,7 @@ def road_4():
     os.system('clear')
     slow_print("Placeholder text for road 4.")
 
-    random_battle(random_enemy("Road"))
+    random_battle(random_enemy("Road"), 5)
 
     sleep(1.5)
 
@@ -1365,7 +1365,7 @@ def road_5():
     os.system('clear')
     slow_print("flavour text for road 5")
     sleep(1.5)
-    random_battle(random_enemy("Road"))
+    random_battle(random_enemy("Road"), 3)
 
     while True:
         os.system('clear')
@@ -1399,7 +1399,7 @@ def road_6():
     os.system('clear')
     slow_print("flavour text for road 6")
     sleep(1.5)
-    random_battle(random_enemy("Road"))
+    random_battle(random_enemy("Road"), 2)
 
     while True:
         os.system('clear')
