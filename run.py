@@ -1872,34 +1872,44 @@ def forest_room3a_campdefeat():
 
 
 def forest_room3b():
-    adventurer.forest3a_camp
-    slow_print("flavour text for room 3b")
+
+    random_battle(random_enemy("Forest"), 6)
+
     while True:
-        os.system('clear')
+        slow_print("A sweet scent reaches your nose as you push "
+                   "through some bushes. Perhaps there is a fresh flower "
+                   "blooming nearby.")
         slow_print("What will you do?\n")
-        slow_print("1. Go North") # 4b
-        slow_print("2. Go East.") # 3a
-        slow_print("3. Go South.") # 2b
+        slow_print("1. Go North")
+        slow_print("2. Go East.")
+        slow_print("3. Go South.")
         slow_print("4. Look around.")
-        choice = int(input())
+        choice = input()
         try:
-            if choice != 1 and choice != 2 \
-             and choice != 3 and choice != 4:
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3) and choice != str(4):
                 raise Exception
         except Exception:
             print("Please enter only 1, 2, 3, or 4.\n")
         else:
-            if choice == 1:
+            if choice == str(1):
+                low_print("You head North.")
+                slow_screen_clear()
                 forest_room4b()
                 return False
-            elif choice == 2:
+            elif choice == str(2):
+                low_print("You head East.")
+                slow_screen_clear()
                 forest_room3a()
                 return False
-            elif choice == 3:
+            elif choice == str(3):
+                low_print("You head South.")
+                slow_screen_clear()
                 forest_room2b()
                 return False
-            elif choice == 4:
-                slow_print("flavour text for looking")
+            elif choice == str(4):
+                slow_print("You see a flowerbed blooming under "
+                           "the shade of a fallen log.")
     # forest 4b or 3a
 
 
