@@ -2062,6 +2062,8 @@ def forest_room5a():
             elif choice == str(4):
                 slow_print("You notice a small rabbit hopping "
                            "towards the western path.")
+                slow_print("You hear a loud noise to the north.\n"
+                           "Best to be prepared before you proceed.")
                 slow_screen_clear()
 
 
@@ -2158,37 +2160,20 @@ def forest_room5c():
 
 
 def forest_room6a():
-    while True:
-        slow_print("The trees don't grow as tightly together here,\n"
-                   "allowing you to rest in a small clearing as "
-                   "you sit on a fallen log.")
-        slow_print("What will you do?\n")
-        slow_print("1. Go North")
-        slow_print("2. Go South.")
-        slow_print("3. Look around.")
-        choice = input()
-        try:
-            if choice != str(1) and choice != str(2) \
-             and choice != str(3):
-                raise Exception
-        except Exception:
-            print("Please enter only 1, 2, or 3.\n")
-        else:
-            if choice == str(1):
-                slow_print("You head North.")
-                slow_screen_clear()
-                forest_room7a()
-                return False
-            elif choice == str(2):
-                slow_print("You head South.")
-                slow_screen_clear()
-                forest_room6a()
-                return False
-            elif choice == str(3):
-                slow_print("You look to the north.\n"
-                           "As you do you hear some loud growling from up ahead.\n"
-                           "Best to be prepared before you proceed.")
+    slow_print("As you move through the trees you here an "
+               "indescribable noise.\n Like something "
+               "scracthing the very thoughts in your mind.")
+    slow_print("A shadow bursts forth from between the trees!")
+    spider = Enemy("Giant Spider", 50, 25, 10, 10, 150)
+    battle_event(adventurer, spider)
 
+    slow_print("With the spider defeated you press onward"
+               "past its twitching corpse.\n"
+               "Delaying here would only be dangerous.\n"
+               "A nest is likely nearby and you aren't "
+               "equipped to deal with it.")
+    slow_screen_clear()
+    forest_room7()
 
 def forest_room6c():
     if adventurer.forest_6c_camp is False:
@@ -2241,25 +2226,31 @@ def forest_room6c():
 
 
 def forest_room7():
-    slow_print("flavour text for room 7a")
     while True:
-        os.system('clear')
+        slow_print("The trees don't grow as tightly together here,\n"
+                   "allowing you to rest in a small clearing as "
+                   "you sit on a fallen log.")
         slow_print("What will you do?\n")
-        slow_print("1. Go South.") # 5a
-        slow_print("2. Look around.")
-        choice = int(input())
+        slow_print("1. Leave")
+        slow_print("3. Look around.")
+        choice = input()
         try:
-            if choice != 1 and choice != 2:
+            if choice != str(1) and choice != str(2):
                 raise Exception
         except Exception:
-            print("Please enter only 1, or 2.\n")
+            print("Please enter only 1 or 2.\n")
         else:
-            if choice == 1:
-                forest_room6a()
+            if choice == str(1):
+                slow_print("You deprat from the forest,\n"
+                           "heading toward the nearest town.")
+                slow_screen_clear()
+                town()
                 return False
-            elif choice == 2:
-                slow_print("flavour text for looking")
-    # end
+            elif choice == str(2):
+                slow_print("The forest is eerily quiet here.\n"
+                           "Perhaps the giant spiders had hunted "
+                           "or scared all the other critters away.")
+                slow_screen_clear()
 
 
 def main():
