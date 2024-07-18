@@ -52,6 +52,12 @@ def random_enemy(area):
 
 
 def random_battle(enemy_type, encounter_chance):
+    """
+    A function to roll a random number and compare
+    against the provided number. If the random
+    number is greater than the provided number
+    a battle will occur.
+    """
     battle_chance = random.randint(0, 10)
 
     if battle_chance > encounter_chance:
