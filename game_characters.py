@@ -104,6 +104,8 @@ class Player(Character):
         self.gold = new_value.gold
         self.inventory = new_value.inventory
         self.quests = new_value.quests
+        self.sword = new_value.sword
+        self.shield = new_value.shield
 
     def check_status(self):
         """
