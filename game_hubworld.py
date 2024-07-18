@@ -361,10 +361,10 @@ def find_a_quest():
             slow_print("You check the quest board for "
                        "official quests from the town guild.\n")
             slow_print("\nCurrently available quests:")
-            slow_print("1. Slay 5 slimes")
-            slow_print("2. Defend a caravan on the Merchant Road")
-            slow_print("3. Clear out a bandit camp in the Forest")
-            slow_print("4. Leave the quest board")
+            slow_print("1. Slay 5 slimes.")
+            slow_print("2. Defend a caravan on the Merchant Road.")
+            slow_print("3. Clear out a bandit camp in the Forest.")
+            slow_print("4. Leave the quest board.")
             slow_print("What quest will you accept?\n")
             choice = input()
             try:
@@ -456,17 +456,81 @@ def find_a_quest():
                     find_a_quest()
                     return False
 
+
+    def report_quests():
+        slow_print("You step up to the counter to report on your quests.")
+        if "Slay Slimes" in adventurer.quests:
+            if adventurer.slimes_defeated >= 5:
+                slow_print("You collected your reward for slaying 5 slimes.")
+                slow_print("You earned 50 gold!")
+                adventurer.gold += 50
+                adventurer.slimes_defeated = 0
+            else:
+                slow_print("You haven't defeated enough slimes yet.")
+
+        if "Defend Caravan" in adventurer.quests:
+            if adventurer.caravan_saved is True:
+                slow_print("You collected your reward for slaying 5 slimes.")
+                slow_print("You earned 100 gold!")
+                adventurer.gold += 100
+                adventurer.caravan_saved = False
+            else:
+                slow_print("You haven't defended any caravan.")
+
+        if "Clear Bandit Camp" in adventurer.quests:
+            if adventurer.forest_6c_camp is True:
+                slow_print("You collected your reward for clearing the bandit camp.")
+                slow_print("You earned 70 gold!")
+                adventurer.gold += 70
+                adventurer.forest_6c_camp = False
+            else:
+                slow_print("You haven't cleared the camp.")
+
+        if "Missing Necklace" in adventurer.quests:
+            if adventurer.necklace_found is True:
+                slow_print("You collected your reward for finding the necklace.")
+                slow_print("You earned 30 gold!")
+                adventurer.gold += 30
+                adventurer.necklace_found = False
+            else:
+                slow_print("You haven't found the necklace.")
+
+        if "Missing Person" in adventurer.quests:
+            if adventurer.missing_person_found is True:
+                slow_print("You collected your reward for finding the missing person.")
+                slow_print("You earned 40 gold!")
+                adventurer.gold += 40
+                adventurer.missing_person_found = False
+            else:
+                slow_print("You haven't found the missing person.")
+
+        if "Bandit Kidnapping" in adventurer.quests:
+            if adventurer.forest_kidnapped_person is True:
+                slow_print("You collected your reward for rescuing the kidnapped person.")
+                slow_print("You earned 100 gold!")
+                adventurer.gold += 100
+                adventurer.forest_kidnapped_person = False
+
+            else:
+                slow_print("You haven't found the kidnapped person.")
+
+        else:
+            slow_print("You haven't accepted any quests yet.")
+
+
     def leave_tavern():
         slow_print("You leave the tavern and return to the center of town.\n")
         slow_screen_clear()
         town()
+
 
     while True:
         slow_print("You are in the tavern.")
         slow_print("\nWhat would you like to do?\n")
         slow_print("1. Check the Quest Board.")
         slow_print("2. Ask a local for work.")
-        slow_print("3. Leave.")
+        slow_print("3. Report a completed quest.")
+        slow_print("4. Leave.")
         choice = input()
         try:
             if choice != str(1) and choice != str(2) \
@@ -485,6 +549,10 @@ def find_a_quest():
                 return False
 
             elif choice == str(3):
+                report_quests()
+                return False
+
+            elif choice == str(4):
                 leave_tavern()
                 return False
 

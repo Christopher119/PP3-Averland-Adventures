@@ -60,6 +60,14 @@ class Player(Character):
         self.shield = shield
         self.keyitems = []
 
+        # quest variables
+        self.slimes_defeated = 0
+        self.caravan_saved = False
+        self.forest_6c_camp = False
+        self.necklace_found = False
+        self.missing_person_found = False
+        self.forest_kidnapped_person = False
+
         # variables used for checks through dungeons
         # will be reset to default on return to town
         # road variables
@@ -81,8 +89,6 @@ class Player(Character):
         self.forest3a_camp = False
         self.forest3c_camp_enemy = 0
         self.room4bitem = False
-        self.necklace_found = False
-        self.forest_6c_camp = False
 
 
     def update_values(self, new_value):
@@ -98,16 +104,10 @@ class Player(Character):
 
     def check_status(self):
         slow_screen_clear()
-        slow_print(f"Your name: {self.name}")
-        slow_print(f"Your level: {self.level}")
-        slow_print(f"Your experience: {self.exp}/100")
-        slow_print(f"Your health: {self.health}/{self.max_health}")
-        slow_print(f"Your attack: {self.attack}")
-        slow_print(f"Your defence: {self.defence}")
-        slow_print(f"Your speed: {self.speed}")
-        slow_print(f"Your gold: {self.gold}")
-        slow_print(f"Your sword: {self.sword}")
-        slow_print(f"Your shield: {self.shield}")
+        slow_print(f"Your name: {self.name}. Your level: {self.level}. Your gold: {self.gold}")
+        slow_print(f"Your experience: {self.exp}/100. Your health: {self.health}/{self.max_health}")
+        slow_print(f"Your attack: {self.attack}. Your defence: {self.defence}. Your speed: {self.speed}")
+        slow_print(f"Your sword: {self.sword}. Your shield: {self.shield}")
         slow_print(f"Your inventory:")
         for number, items_owned in enumerate(self.inventory):
                 print(number+1, items_owned)
@@ -117,7 +117,7 @@ class Player(Character):
         slow_print(f"Your key items:")
         for number, keys_owned in enumerate(self.keyitems):
                 print(number+1, keys_owned)
-        
+
         while True:
             slow_print("\nWould you like to change your equipment?")
             slow_print("1. Yes.")
@@ -154,12 +154,14 @@ class Player(Character):
             try:
                 if choice > str(available_items) and choice.alpha() is True:
                     raise Exception
+
             except Exception:
                 slow_print("Please only enter the numbers on screen, "
                            "or 0 to return to the previous menu.")
             else:
                 if choice == str(0):
                     return False
+
                 elif choice <= str(available_items) and choice > str(0):
                     if "Sword" in adventurer.inventory[int(choice)-1]:
                         self.equip_shield(adventurer.inventory[int(choice)-1])
@@ -264,6 +266,7 @@ class Player(Character):
 
 
     def reset_flags(self):
+        self.found_gold_road_1 = False
         self.road3_side_road_seen = False
         self.road3_tracks_found = False
         self.road3_enemy_fought = False
@@ -275,9 +278,6 @@ class Player(Character):
         self.forest3a_camp = False
         self.forest3c_camp_enemy = 0
         self.room4bitem = False
-        self.necklace_found = False
-        self.forest_6c_camp = False
-        self.forest_rescue = False
 
 
 class Enemy(Character):
