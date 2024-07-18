@@ -184,7 +184,10 @@ def forest_room1c():
 
 def forest_room2a():
 
-    random_battle(random_enemy("Forest"), 5)
+    enemy = random_enemy("Forest")
+    random_battle(enemy, 5)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     slow_print("Your tunic tears on a sharp branch as "
                "you walk deeper into the forest.")
@@ -235,7 +238,10 @@ def forest_room2a():
 
 def forest_room2b():
 
-    random_battle(random_enemy("Forest"), 3)
+    enemy = random_enemy("Forest")
+    random_battle(enemy, 3)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     slow_print("The trees are particularly dense in this part of the \n"
                "forest, making it difficult to move quickly.")
@@ -368,6 +374,8 @@ def forest_room3a_campfight():
                     adventurer.forest3c_camp_enemy.attack += 15
                     random_battle(adventurer.forest3c_camp_enemy, -1)
                     adventurer.forest3a_camp = True
+                    if forest3c_camp_enemy.name == "Slime":
+                        adventurer.slimes_defeated += 3
                     slow_screen_clear()
                     forest_room3a_campdefeat()
                     return False
@@ -382,6 +390,8 @@ def forest_room3a_campfight():
                 adventurer.forest3c_camp_enemy.attack += 10
                 random_battle(adventurer.forest3c_camp_enemy, -1)
                 adventurer.forest3a_camp = True
+                if forest3c_camp_enemy.name == "Slime":
+                        adventurer.slimes_defeated += 3
                 slow_screen_clear()
                 forest_room3a_campdefeat()
                 return False
@@ -431,7 +441,10 @@ def forest_room3a_campdefeat():
 
 def forest_room3b():
 
-    random_battle(random_enemy("Forest"), 6)
+    enemy = random_enemy("Forest")
+    random_battle(enemy, 6)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     slow_print("A sweet scent reaches your nose as you push "
                "through some bushes. Perhaps there is a fresh flower "
@@ -481,7 +494,10 @@ def forest_room3b():
 
 def forest_room3c():
 
-    random_battle(random_enemy("Forest"), 3)
+    enemy = random_enemy("Forest")
+    random_battle(enemy, 3)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     slow_print("The forest is getting denser the deeper you go. \n"
                "It looks like there's only one path forward.")
@@ -735,7 +751,10 @@ def forest_room5b():
 
 def forest_room5c():
 
-    random_battle(random_enemy("Forest"), 3)
+    enemy = random_enemy("Forest")
+    random_battle(enemy, 3)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     while True:
         slow_print("You step into a tiny clearing, \n"

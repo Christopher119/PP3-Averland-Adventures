@@ -86,7 +86,10 @@ def road_1():
 
 
 def road_2():
-    random_battle(random_enemy("Road"), 7)
+    enemy = random_enemy("Road")
+    random_battle(enemy, 7)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     while True:
         slow_print("You stay wary the further you get from a town.\n"
@@ -260,6 +263,8 @@ def road_3b():
         adventurer.road3_enemies = random_enemy("Road")
         battle_event(adventurer, adventurer.road3_enemies)
         adventurer.road3_enemy_fought = True
+        if road3_enemies.name == "Slime":
+            adventurer.slimes_defeated += 1
         slow_print("After the battle you realise that there must "
                    "be a group up ahead. It would be dangerous "
                    "to proceed...")
@@ -311,6 +316,8 @@ def road_3c():
         adventurer.road3_enemies.name += " Group"
         battle_event(adventurer, adventurer.road3_enemies)
         adventurer.road3_camp_fought = True
+        if road3_enemies.name == "Slime":
+            adventurer.slimes_defeated += 3
 
         slow_print("After the battle you search around the area.")
         slow_print("With nothing else of value to find you return "
@@ -327,7 +334,10 @@ def road_3c():
 
 def road_4():
 
-    random_battle(random_enemy("Road"), 5)
+    enemy = random_enemy("Road")
+    random_battle(enemy, 5)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     while True:
         slow_print("You check your map as you walk,\n"
@@ -403,6 +413,9 @@ def road_4a():
         adventurer.road4_enemies = random_enemy("Road")
         battle_event(adventurer, adventurer.road4_enemies)
         adventurer.road4_enemy_fought = True
+        enemy = random_enemy("Road")
+        if road4_enemies.name == "Slime":
+            adventurer.slimes_defeated += 1
         slow_print("After the battle placeholder")
 
     else:
@@ -450,6 +463,8 @@ def road_4b():
         adventurer.road4_enemies.attack += 10
         adventurer.road4_enemies.name += " Group"
         battle_event(adventurer, adventurer.road4_enemies)
+        if enemy.name == "Slime":
+            adventurer.slimes_defeated += 3
         adventurer.road_4_group = True
 
         slow_print("After the battle you search around the area.")
@@ -466,7 +481,10 @@ def road_4b():
 
 
 def road_5():
-    random_battle(random_enemy("Road"), 3)
+    enemy = random_enemy("Road")
+    random_battle(enemy, 3)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     while True:
         slow_print("You pause for a moment of rest on the side of the road,\n"
@@ -504,8 +522,10 @@ def road_5():
 
 
 def road_6():
-
-    random_battle(random_enemy("Road"), 2)
+    enemy = random_enemy("Road")
+    random_battle(enemy, 2)
+    if enemy.name == "Slime":
+        adventurer.slimes_defeated += 1
 
     while True:
         slow_print("The road is getting a little busier, more merchants,\n"
