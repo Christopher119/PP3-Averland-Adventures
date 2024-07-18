@@ -12,7 +12,7 @@ def forest_start():
 
     while True:
         slow_print("You are at the entrance to the forest.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Head deeper into the forest.")
         slow_print("2. Look around.")
         slow_print("3. Return to town.")
@@ -56,7 +56,7 @@ def forest_room1a():
     while True:
         slow_print("You are standing in a small "
                    "clearing with some small animals.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go North.")
         slow_print("2. Go West")
         slow_print("3. Go South.")
@@ -100,7 +100,7 @@ def forest_room1b():
     while True:
         slow_print("Some birds are chirping nearby as you \n"
                    "make your way through the dense foliage.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go North.")
         slow_print("2. Go East")
         slow_print("3. Look around.")
@@ -147,7 +147,7 @@ def forest_room1c():
 
     while True:
         slow_print("You are standing by a small spring.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go back the way you came.")
         slow_print("2. Drink from the spring.")
         slow_print("3. Look around.")
@@ -191,7 +191,7 @@ def forest_room2a():
 
     while True:
         slow_print("You are standing amongst some sharp branches.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go West.")
         slow_print("2. Go East")
         slow_print("3. Go South.")
@@ -242,7 +242,7 @@ def forest_room2b():
 
     while True:
         slow_print("You are standing where the trees are growing densely.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go North.")
         slow_print("2. Go East")
         slow_print("3. Go South.")
@@ -288,7 +288,7 @@ def forest_room2c():
 
     while True:
         slow_print("You are at a quiet spot in the forest.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go West")
         slow_print("2. Go South.")
         slow_print("3. Look around.")
@@ -338,7 +338,7 @@ def forest_room3a_campfight():
                    "trunk and notice some shadows moving \n"
                    "just up ahead. It may be a group "
                    "of monsters...")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Try to sneak past.")
         slow_print("2. Step into the open.")
         choice = input()
@@ -397,7 +397,7 @@ def forest_room3a_campdefeat():
             slow_print("The noise from the nearby group "
                        "slowly fades as you sneak away.")
 
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go East")
         slow_print("2. Go West.")
         slow_print("3. Look around.")
@@ -439,7 +439,7 @@ def forest_room3b():
 
     while True:
         slow_print("You are standing by some flowering bushes.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go East.")
         slow_print("3. Go South.")
@@ -489,7 +489,7 @@ def forest_room3c():
     while True:
         slow_print("You are standing in a cramped "
                    "path through the trees.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go West.")
         slow_print("3. Look around.")
@@ -530,7 +530,7 @@ def forest_room4b():
     while True:
         slow_print("You are at a dead end on this forest path.")
         os.system('clear')
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Back the way you came.")
         slow_print("2. Look around.")
         choice = input()
@@ -572,7 +572,7 @@ def forest_room4c():
 
     while True:
         slow_print("You are standing between densely packed trees.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Through the trees.")
         slow_print("2. Turn around.")
         slow_print("3. Look around.")
@@ -629,7 +629,7 @@ def forest_room5a():
 
     while True:
         slow_print("You are standing in a small clearing.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go East.")
         slow_print("3. Go West.")
@@ -678,7 +678,7 @@ def forest_room5b():
                "a small pool of water.")
     while True:
         slow_print("You are standing by a fairy's pool.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go Back.")
         slow_print("2. Try to speak to the fairy.")
         slow_print("3. Try to catch the fairy.")
@@ -740,7 +740,7 @@ def forest_room5c():
     while True:
         slow_print("You step into a tiny clearing, \n"
                    "surrounded on all side by densely packed trees.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go West.")
         slow_print("3. Go South.")
@@ -786,7 +786,7 @@ def forest_room6a():
                "indescribable noise.\n Like something "
                "scracthing the very thoughts in your mind.")
     slow_print("A shadow bursts forth from between the trees!")
-    spider = Enemy("Giant Spider", 50, 25, 10, 10, 150)
+    spider = Enemy("Giant Spider", 50, 25, 10, 10, 150, 100)
     battle_event(adventurer, spider)
 
     slow_print("With the spider defeated you press onward"
@@ -816,7 +816,7 @@ def forest_room6c():
 
     while True:
         slow_print("You are standing at the center of the old bandit camp.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go Back.")
         slow_print("2. Look around.")
         choice = int(input())
@@ -859,7 +859,7 @@ def forest_room7():
     while True:
         slow_print("You are sitting in a small "
                    "clearing at the end of the forest.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Leave")
         slow_print("3. Look around.")
         choice = input()

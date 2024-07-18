@@ -91,7 +91,7 @@ def battle_event(player, enemy_type):
         os.system('clear')
         slow_print("You are in combat with a "
                    f"{enemy_type.name}")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Attack.")
         slow_print("2. Defend.")
         slow_print("3. Use Item.")
@@ -125,14 +125,14 @@ def battle_event(player, enemy_type):
                 # https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9
                 stun_chance = random.randrange(10)+1
                 if stun_chance > 7:
-                    print(f"You knocked the {enemy_type.name} off balance! \
-                          You strike for a counter attack!")
+                    slow_print(f"You knocked the {enemy_type.name} off balance! \
+                               You strike for a counter attack!")
                     player.attack *= 1.5
                     player.attack_other(enemy_type)
                     player.attack /= 1.5
                     enemy_type.check_life()
                     if enemy_type.check_life():
-                        print(f"You have defeated the {enemy_type.name}!")
+                        slow_print(f"You have defeated the {enemy_type.name}!")
                         enemy_type.drop_loot(adventurer, enemy_type.loot)
                         adventurer.level_up(enemy_type.experience)
                         slow_screen_clear()
@@ -144,9 +144,9 @@ def battle_event(player, enemy_type):
                 while inventory_loop is True:
                     available_items = 0
                     for number, items_owned in enumerate(adventurer.inventory):
-                        print(number+1, items_owned)
+                        slow_print(number+1, items_owned)
                         available_items += 1
-                    print("What would you like to use? \
+                    slow_print("\nWhat would you like to use? \
                     \nPress 0 to return to the battle menu.")
                     choice = input()
                     try:
@@ -155,7 +155,7 @@ def battle_event(player, enemy_type):
                             raise Exception
 
                     except Exception:
-                        print("Please only enter the numbers on screen, \
+                        slow_print("Please only enter the numbers on screen, \
                         \nor 0 to return to the shop.")
                         slow_screen_clear()
 
@@ -200,6 +200,6 @@ def battle_event(player, enemy_type):
                                                "full health.")
 
                             else:
-                                print("Using that item will "
+                                slow_print("Using that item will "
                                       "have no effect.")
                             slow_screen_clear()

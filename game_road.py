@@ -8,7 +8,7 @@ def road_start():
     while True:
         slow_print("The wall of the town is at your back as "
                    "you begin travelling the Merchant's Road.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Return to town.")
@@ -45,7 +45,7 @@ def road_start():
 def road_1():
     while True:
         slow_print("You walk at a brisk pace, enjoying the refreshing air.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Go back up the road.")
@@ -93,7 +93,7 @@ def road_2():
                    "Though merchant roads are well travelled, they "
                    "\nare also often targeted by many thieves and "
                    "monsters for that same reason.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Go back up the road.")
@@ -130,7 +130,7 @@ def road_3():
     while True:
         slow_print("You keep your hand on the hilt of your "
                    "weapon, wary for any potential threats.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Go back up the road.")
@@ -160,7 +160,7 @@ def road_3():
                     slow_print("You consider the path you "
                                "noticed earlier.")
 
-                slow_print("Would you like to investigate "
+                slow_print("\nWould you like to investigate "
                            "this side road?")
                 slow_print("1. Yes.")
                 slow_print("2. No.")
@@ -195,7 +195,7 @@ def road_3():
 def road_3a():
     while True:
         slow_print("You move through some bushes warily.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go back.")
         slow_print("2. Look around.")
         choice = input()
@@ -224,7 +224,7 @@ def road_3a():
                     slow_print("You consider the tracks "
                                "you found earlier.")
 
-                slow_print("Would you like to "
+                slow_print("\nWould you like to "
                            "follow them?")
                 slow_print("1. Yes.")
                 slow_print("2. No.")
@@ -269,7 +269,7 @@ def road_3b():
                    "you defeated is still here.")
 
     while True:
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go back.")
         slow_print(f"2. Enter the {adventurer.road3_enemies.name}'s "
                    "territory.")
@@ -333,7 +333,7 @@ def road_4():
         slow_print("You check your map as you walk,\n"
                    "estimating you are about halfway\n"
                    "to the next town.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Go back up the road.")
@@ -364,7 +364,7 @@ def road_4():
                     slow_print("You consider the signs of "
                                "a struggle you saw earlier.")
 
-                slow_print("Would you like to investigate?")
+                slow_print("\nWould you like to investigate?")
                 slow_print("1. Yes.")
                 slow_print("2. No.")
                 choice = input()
@@ -410,7 +410,7 @@ def road_4a():
                    "you defeated is still here.")
 
     while True:
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Go back.")
         slow_print(f"2. Go further.")
         choice = input()
@@ -471,7 +471,7 @@ def road_5():
     while True:
         slow_print("You pause for a moment of rest on the side of the road,\n"
                    "keeping a careful watch for any threats.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Go back up the road.")
@@ -510,7 +510,7 @@ def road_6():
     while True:
         slow_print("The road is getting a little busier, more merchants,\n"
                    "but also more possible threats lying in wait ahead.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Go back up the road.")
@@ -546,7 +546,7 @@ def road_7():
     while True:
         slow_print("As you walk the road you see the "
                    "next town not far from you.")
-        slow_print("What will you do?\n")
+        slow_print("\nWhat will you do?\n")
         slow_print("1. Continue towards town.")
         slow_print("2. Look around.")
         slow_print("3. Go back up the road.")

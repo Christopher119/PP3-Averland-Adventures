@@ -18,7 +18,7 @@ def splash_screen():
     while True:
         slow_print("Averland Adventures\n")
         slow_print("A text based choose your own adventure RPG game.")
-        slow_print("What would you like to do?\n")
+        slow_print("\nWhat would you like to do?\n")
         slow_print("1. Start Game")
         slow_print("2. Read Rules")
         slow_print("3. Exit Game")
@@ -28,7 +28,7 @@ def splash_screen():
                 raise Exception
 
         except Exception:
-            print("Please enter only 1, 2 or 3.\n")
+            slow_print("Please enter only 1, 2 or 3.\n")
             slow_screen_clear()
 
         else:
@@ -70,7 +70,7 @@ def rules():
             if go_back != str(1):
                 raise Exception
         except Exception:
-            print("Please press 1.")
+            slow_print("Please press 1.")
         else:
             if go_back == str(1):
                 splash_screen()
@@ -97,8 +97,8 @@ def game_intro():
     slow_print("Welcome to the kingdom of Averland, brave adventurer.")
     while True:
         slow_print("What is your name?")
-        print("(Use alphabetic characters only "
-              "and use less than 20 characters)")
+        slow_print("(Use alphabetic characters only "
+                   "and use less than 20 characters)")
         your_name = input()
         try:
             if your_name.isalpha() is False:
@@ -106,8 +106,8 @@ def game_intro():
             elif len(your_name) > 20:
                 raise Exception
         except Exception:
-            print("Please keep your name under 20 characters "
-                  "and only use alphabetic characters.\n")
+            slow_print("Please keep your name under 20 characters "
+                       "and only use alphabetic characters.\n")
             slow_screen_clear()
         else:
             adventurer.update_values(Player(your_name, 100, 10, 10, 5, 1000,
@@ -138,15 +138,15 @@ def game_over():
                "people of Averland any longer...")
     slow_print("...")
     while True:
-        slow_print("Would you like to start again?")
-        print("1. Yes")
-        print("2. No")
+        slow_print("\nWould you like to start again?")
+        slow_print("1. Yes")
+        slow_print("2. No")
         choice = input()
         try:
             if choice != str(1) and choice != str(2):
                 raise Exception
         except Exception:
-            print("Please enter only 1 or 2.\n")
+            slow_print("Please enter only 1 or 2.\n")
             slow_screen_clear()
         else:
             if choice == str(1):

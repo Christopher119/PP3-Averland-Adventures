@@ -97,6 +97,7 @@ class Player(Character):
     def check_status(self):
         slow_print(f"Your name: {self.name}")
         slow_print(f"Your level: {self.level}")
+        slow_print(f"Your experience: {self.exp}/100")
         slow_print(f"Your health: {self.health}/{self.max_health}")
         slow_print(f"Your attack: {self.attack}")
         slow_print(f"Your defence: {self.defence}")
@@ -115,7 +116,7 @@ class Player(Character):
 
     def level_up(self, xp_amount):
         self.exp += xp_amount
-        slow_print(f"You earned {xp_amount} from your victory!")
+        slow_print(f"You earned {xp_amount} experience from your victory!")
 
         if self.exp >= 100:
             slow_print("You leveled up!")
