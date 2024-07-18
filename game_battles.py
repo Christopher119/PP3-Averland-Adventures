@@ -19,14 +19,14 @@ def random_enemy(area):
 
     experience_drop = random.randint(5, 15)
 
-    bandit = Enemy("Bandit", 20, 2000, 5, 10, bandit_loot, experience_drop)
-    slime = Enemy("Slime", 10, 2000, 5, 2, slime_loot, experience_drop)
-    skeleton = Enemy("Skeleton", 10, 2000, 5, 5, skeleton_loot, experience_drop)
-    lizard = Enemy("Lizard-Man", 25, 2500, 8, 10, lizard_loot, experience_drop)
-    bug = Enemy("Giant Bug", 30, 3000, 10, 10, bug_loot, experience_drop)
-    zombie = Enemy("Zombie", 20, 2500, 8, 2, zombie_loot, experience_drop)
-    wolf = Enemy("Wolf", 10, 2000, 5, 15, wolf_loot, experience_drop)
-    goblin = Enemy("Goblin", 10, 2500, 6, 5, goblin_loot, experience_drop)
+    bandit = Enemy("Bandit", 20, 20, 5, 10, bandit_loot, experience_drop)
+    slime = Enemy("Slime", 10, 20, 5, 2, slime_loot, experience_drop)
+    skeleton = Enemy("Skeleton", 10, 20, 5, 5, skeleton_loot, experience_drop)
+    lizard = Enemy("Lizard-Man", 25, 25, 8, 10, lizard_loot, experience_drop)
+    bug = Enemy("Giant Bug", 30, 30, 10, 10, bug_loot, experience_drop)
+    zombie = Enemy("Zombie", 20, 25, 8, 2, zombie_loot, experience_drop)
+    wolf = Enemy("Wolf", 10, 20, 5, 15, wolf_loot, experience_drop)
+    goblin = Enemy("Goblin", 10, 25, 6, 5, goblin_loot, experience_drop)
 
     if area == "Road":
         enemies = [
