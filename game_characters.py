@@ -185,7 +185,7 @@ class Player(Character):
 
                 elif choice <= str(available_items) and choice > str(0):
                     if "Sword" in adventurer.inventory[int(choice)-1]:
-                        self.equip_shield(adventurer.inventory[int(choice)-1])
+                        self.equip_sword(adventurer.inventory[int(choice)-1])
                         adventurer.inventory.pop(int(choice)-1)
 
                     elif "Armor" in adventurer.inventory[int(choice)-1]:
@@ -211,6 +211,7 @@ class Player(Character):
             def_up = random.randint(1, 5)
             spd_up = random.randint(1, 5)
             self.exp = 0
+            self.level += 1
             self.max_health += hp_up
             self.attack += atk_up
             self.defence += def_up
@@ -233,6 +234,12 @@ class Player(Character):
 
         else:
             adventurer.inventory.append(self.sword)
+            if "Iron" in self.sword:
+                self.attack -= 2
+            elif "Steel" in self.sword:
+                self.attack -= 4
+            elif "Silver" in self.sword:
+                self.attack -= 6
             self.sword = sword
 
         slow_print(f"You have equipped a {self.sword}")
@@ -258,6 +265,12 @@ class Player(Character):
 
         else:
             adventurer.inventory.append(self.shield)
+            if "Iron" in self.shield:
+                self.defence -= 2
+            elif "Steel" in self.shield:
+                self.defence -= 4
+            elif "Silver" in self.shield:
+                self.defence -= 6
             self.shield = shield
 
         slow_print(f"You have equipped a {self.shield}")

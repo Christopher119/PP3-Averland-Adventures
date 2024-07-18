@@ -145,11 +145,14 @@ If the Player is defeated the game_over function runs and the game ends.<br>
 
 ## Skeleton
 
-How the app should execute its code.
+As the app works entirely through the python terminal and requires no external visuals such as HTML, or CSS code, there is no need to determine a wireframe for the presentation.<br>
+As long as the app follows the strutcure laid out in the flow charts and doesn't extend beyond 80 character columns and 24 character rows without becoming obtrusive the app should work perfectly.<br>
 
 ## Surface
 
-Description of visuals.
+I wanted everything on the app to be presented cleanly.
+I made sure that no line of text extended beyond 80 characters to prevent words from being slice when wrapped to the following row.
+I made sure that any lines that were long used new-line breaks to force a wrap before any words would be sliced.
 
 # Features
 
@@ -183,11 +186,28 @@ There were multiple stages of testing as the project developed.<br>
 
 |TEST|PROCESS|EXPECTATION|RESULT|
 |--|--|--|--|
-| What was test | What I did | What I expected | Did it work |
+| Printing to Terminal | What I did | What I expected | Did it work |
+| Taking Input from User | Using various print statements and string interpolation | Strings and values would successfully print to terminal | SUCCESS |
+| Try/Except User Input | Using Try/Except/Else statments with nested if/else statments | Error would be successfully caught and looped on to try again | SUCCESS |
+| Executing Correct Code from User Input | Simple if/else statments following try/except to execute print statements and function calls | Prints and functions would execute | SUCCESS |
+| Implementing slower Text | Researched how to implement the feature and tested with basic strings | Strings would print out character by character at defined speeds | SUCCESS |
+| Implementing Delays | Imported the sleep function from the time module | The program would wait the specified time | SUCCESS |
+| Implementing Screen Clears | Imported the os module to use the system() function | The screen would clear when called | SUCCESS |
+| Creating Classes | Created basic Classes with placeholder values, printing values to screen | Class and values would create and display correctly | SUCCESS |
+| Modifying Class values | Using statements to modify class values | Values would correctly update | FAILURE - updates were not kept between scripts |
+| Using Class methods to modify values | Using methods within Classes to modify the values | Values would correctly update | SUCCESS |
+| Inventory System | Purchasing and Selling items in the shop | Items would be added or removed from the player inventory | SUCCESS |
+| Battle System | Creating debug variables for Player and Enemy to fight | Battles would flow as intended | SUCCESS |
+| Quest System | Full loop of accepting, completing, reporting quest | Quests would behave as expected | SUCCESS |
+| Random Battles | Walking back and forth between sub-rooms | Battles would continually trigger randomly | SUCCESS |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
+| Splitting script into multiple scripts | Sliced methods into other scripts and imported necessary ones | Code would still run as normal | FAILURE - cyclical import error |
+| Creating new helper scripts | Sliced certain methods out and put them in their own scripts to be used | Code would run as intended | SUCCESS |
+
+
 
 # Validating
 
