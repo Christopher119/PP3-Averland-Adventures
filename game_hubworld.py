@@ -76,7 +76,7 @@ def shop():
         """
         A function used in the shop for purchasing equipment.
         The player can buy Swords, Armor, or Potions which
-        will be added to their inventory if they have 
+        will be added to their inventory if they have
         enough gold to purchase them.
         """
         while True:
@@ -266,7 +266,7 @@ def shop():
     def sell():
         """
         A function used in the shop for selling equipment.
-        The player can sell their Swords, Armor, or Potions 
+        The player can sell their Swords, Armor, or Potions
         which will be popped from their inventory and gold
         will be added to their total.
         """

@@ -43,6 +43,7 @@ def road_start():
 
             elif choice == str(3):
                 print("You decide you are unprepared and return to town.")
+                adventurer.health = adventurer.max_health
                 slow_screen_clear()
                 move_to_town()
                 return False
@@ -685,6 +686,7 @@ def road_7():
         else:
             if choice == str(1):
                 slow_print("You continue and arrive at the next town.")
+                adventurer.health = adventurer.max_health
                 slow_screen_clear()
                 move_to_town()
                 return False

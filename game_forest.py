@@ -5,7 +5,11 @@ from game_battles import *
 
 
 def forest_start():
-
+    """
+    A simple function for the beginning of the forest 'dungeon'.
+    The player can return to town, look around, or proceed into
+    the forest, or check their status and equipment.
+    """
     slow_print("You arrive at the entrance to the nearby forest.\n"
                "Tales of monsters dens and hidden riches bid many\n"
                "adventurer to tackle it.\n")
@@ -44,6 +48,7 @@ def forest_start():
 
             elif choice == str(3):
                 slow_print("You decide you are unprepared and return to town.")
+                adventurer.health = adventurer.max_health
                 slow_screen_clear()
                 move_to_town()
                 return False
@@ -53,7 +58,11 @@ def forest_start():
 
 
 def forest_room1a():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    """
     slow_print("A few animals dash into the bushes\n"
                "as you walk into a small clearing.")
 
@@ -100,7 +109,11 @@ def forest_room1a():
 
 
 def forest_room1b():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    """
     while True:
         slow_print("Some birds are chirping nearby as you \n"
                    "make your way through the dense foliage.")
@@ -144,7 +157,13 @@ def forest_room1b():
 
 
 def forest_room1c():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a healing spring in this room that the player
+    can drink from to restore health.
+    """
     slow_print("The air suddenly feels lighter as you "
                "come across a \nsmall spring. The water "
                "seems to shimmer as you look at it.")
@@ -187,7 +206,12 @@ def forest_room1c():
 
 
 def forest_room2a():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a random encounter in this room.
+    """
     enemy = random_enemy("Forest")
     random_battle(enemy, 5)
     if enemy.name == "Slime":
@@ -241,7 +265,12 @@ def forest_room2a():
 
 
 def forest_room2b():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a random encounter in this room.
+    """
     enemy = random_enemy("Forest")
     random_battle(enemy, 3)
     if enemy.name == "Slime":
@@ -292,7 +321,11 @@ def forest_room2b():
 
 
 def forest_room2c():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    """
     slow_print("The forest seems strangely quiet now... \n"
                "Perhaps there is a danger ahead?")
 
@@ -332,6 +365,9 @@ def forest_room2c():
 
 
 def forest_room3a():
+    """
+    A simple function to check for the status of the forest_3c_camp.
+    """
     if adventurer.forest3a_camp is False:
         forest_room3a_campfight()
 
@@ -340,6 +376,11 @@ def forest_room3a():
 
 
 def forest_room3a_campfight():
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    If the camp has yet to be defeated you are given the option
+    to attempt to sneak past or to fight the camp.
+    """
     while True:
         adventurer.forest3c_camp_enemy = random_enemy("Forest")
         adventurer.forest3c_camp_enemy.name += " Group"
@@ -402,6 +443,14 @@ def forest_room3a_campfight():
 
 
 def forest_room3a_campdefeat():
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    This room will display either when the player sneaks
+    past the 3c camp or defeats it.
+    The player can proceed in certain directions,
+    or look around.
+    There is a random encounter in this room.
+    """
     while True:
         if adventurer.forest3a_camp is True:
             slow_print("The bodies of the "
@@ -444,7 +493,12 @@ def forest_room3a_campdefeat():
 
 
 def forest_room3b():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a random encounter in this room.
+    """
     enemy = random_enemy("Forest")
     random_battle(enemy, 6)
     if enemy.name == "Slime":
@@ -497,7 +551,12 @@ def forest_room3b():
 
 
 def forest_room3c():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a random encounter in this room.
+    """
     enemy = random_enemy("Forest")
     random_battle(enemy, 3)
     if enemy.name == "Slime":
@@ -543,7 +602,12 @@ def forest_room3c():
 
 
 def forest_room4b():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    The player can find a Steel Sword if they look.
+    """
     slow_print("You come to a dead end in the path. The trees are\n "
                "too tightly packed to squeeze through.")
 
@@ -586,7 +650,11 @@ def forest_room4b():
 
 
 def forest_room4c():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    """
     slow_print("The trees are growing much more closely together here, \n"
                "forcing you to squeeze through or turn around.")
 
@@ -641,7 +709,11 @@ def forest_room4c():
 
 
 def forest_room5a():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    """
     slow_print("You step into an empty clearing.\n"
                "A breath of fresh air after the recent "
                "squeeze through\nthose tight trees.")
@@ -691,6 +763,15 @@ def forest_room5a():
 
 
 def forest_room5b():
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a fairy and healing pool in this room.
+    Attempting to grab the fairy teleports the player to
+    before the camp in 3c. Drinking from the pool fully
+    heals the player.
+    """
     slow_print("The air seems to glow as you step into a small clearing.\n"
                "It takes a moment but you realise that glow is actually\n"
                "dust sprinkling from a fairy's wings as it hovers above\n"
@@ -753,7 +834,12 @@ def forest_room5b():
 
 
 def forest_room5c():
-
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a random encounter in this room.
+    """
     enemy = random_enemy("Forest")
     random_battle(enemy, 3)
     if enemy.name == "Slime":
@@ -804,6 +890,12 @@ def forest_room5c():
 
 
 def forest_room6a():
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a forced boss encounter in this room.
+    """
     slow_print("As you move through the trees you here an "
                "indescribable noise.\n Like something "
                "scratching the very thoughts in your mind.")
@@ -821,6 +913,13 @@ def forest_room6a():
 
 
 def forest_room6c():
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can proceed in certain directions,
+    or look around.
+    There is a bandit camp that the player must face in
+    this room.
+    """
     if adventurer.forest_6c_camp is False:
         slow_print("You step out of the trees and into a clearing where\n"
                    "some bandits have set up a camp!")
@@ -879,6 +978,12 @@ def forest_room6c():
 
 
 def forest_room7():
+    """
+    A simple function for a 'room' of the forest 'dungeon'.
+    The player can now leave the forest,
+    or look around.
+    There is no way back into the forest from here.
+    """
     while True:
         slow_print("You are sitting in a small "
                    "clearing at the end of the forest.")
@@ -898,6 +1003,7 @@ def forest_room7():
             if choice == str(1):
                 slow_print("You depart from the forest,\n"
                            "heading toward the nearest town.")
+                adventurer.health = adventurer.max_health
                 slow_screen_clear()
                 move_to_town()
                 return False
