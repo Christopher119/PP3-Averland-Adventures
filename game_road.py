@@ -5,7 +5,11 @@ from game_battles import *
 
 
 def road_start():
-
+    """
+    This function is for the beginning of the road 'dungeon'.
+    It is the start of the road leading from town, and the only way
+    to return to town unless the player is at the end of the road.
+    """
     while True:
         slow_print("The wall of the town is at your back as "
                    "you begin travelling the Merchant's Road.")
@@ -48,6 +52,11 @@ def road_start():
 
 
 def road_1():
+    """
+    This function is another 'room' in the road 'dungeon'.
+    It simply contains options to continue, turn back, or
+    look around.
+    """
     while True:
         slow_print("You walk at a brisk pace, enjoying the refreshing air.")
         slow_print("\nWhat will you do?\n")
@@ -91,6 +100,12 @@ def road_1():
 
 
 def road_2():
+    """
+    This function is another 'room' in the road 'dungeon'.
+    It simply contains options to continue, turn back, or
+    look around.
+    It also has a possible random encounter versus an enemy.
+    """
     enemy = random_enemy("Road")
     random_battle(enemy, 7)
     if enemy.name == "Slime":
@@ -135,6 +150,13 @@ def road_2():
 
 
 def road_3():
+    """
+    This function is another 'room' in the road 'dungeon'.
+    It simply contains options to continue, turn back, or
+    look around.
+    Looking will reveal a path to a side road the player
+    can then choose to travel.
+    """
     while True:
         slow_print("You keep your hand on the hilt of your "
                    "weapon, wary for any potential threats.")
@@ -201,6 +223,14 @@ def road_3():
 
 
 def road_3a():
+    """
+    This function is a 'sub-room' in the road 'dungeon'
+    for road_3().
+    It simply contains options to turn back, or
+    look around.
+    Looking will reveal a path to the player
+    which they can then choose to travel.
+    """
     while True:
         slow_print("You move through some bushes warily.")
         slow_print("\nWhat will you do?\n")
@@ -260,6 +290,16 @@ def road_3a():
 
 
 def road_3b():
+    """
+    This function is a 'sub-room' in the road 'dungeon'
+    for road_3().
+    It simply contains options to turn back, or
+    continue.
+    It has a forced battle versus a randomised enemy.
+    This enemy is stored in a variable within the character
+    class to be reused in the following sub-room for a
+    boss encounter.
+    """
     slow_print("You follow the tracks through the bushes.")
 
     # generating a random enemy and assigning it to a variable
@@ -312,6 +352,14 @@ def road_3b():
 
 
 def road_3c():
+    """
+    This function is a 'sub-room' in the road 'dungeon'
+    for road_3().
+    It has a forced battle versus the randomised enemy
+    type from the previous sub-room.
+    This enemy's health, attack, and name are modified
+    to be more difficult in combat.
+    """
     if adventurer.road3_camp_fought is False:
         slow_print("As you thought there are multiple "
                    f"{adventurer.road3_enemies.name}s here.")
@@ -342,7 +390,14 @@ def road_3c():
 
 
 def road_4():
-
+    """
+    This function is a 'room' in the road 'dungeon'.
+    It simply contains the options to continue, turn back,
+    or look around.
+    It has a random encounter chance.
+    Looking can reveal another path for the player to
+    travel.
+    """
     enemy = random_enemy("Road")
     random_battle(enemy, 5)
     if enemy.name == "Slime":
@@ -415,6 +470,13 @@ def road_4():
 
 
 def road_4a():
+    """
+    This function is a 'sub-room' in the road 'dungeon'
+    for road_4().
+    It has a forced battle versus a randomised enemy
+    that is saved to the player class.
+    The player can turn back or continue further from here.
+    """
     slow_print("You follow the evidence of a struggle further off the road.")
     sleep(1.5)
 
@@ -466,6 +528,14 @@ def road_4a():
 
 
 def road_4b():
+    """
+    This function is a 'sub-room' in the road 'dungeon'
+    for road_3().
+    It has a forced battle versus the randomised enemy
+    type from the previous sub-room.
+    This enemy's health, attack, and name are modified
+    to be more difficult in combat.
+    """
     if adventurer.road_4_group is False:
         slow_print("As you thought there are multiple "
                    f"{adventurer.road4_enemies.name}s here.\n"
@@ -497,6 +567,12 @@ def road_4b():
 
 
 def road_5():
+    """
+    This function is a 'room' in the road 'dungeon'.
+    It simply contains the options to continue, turn back,
+    or look around.
+    It has a random encounter chance.
+    """
     enemy = random_enemy("Road")
     random_battle(enemy, 3)
     if enemy.name == "Slime":
@@ -538,6 +614,12 @@ def road_5():
 
 
 def road_6():
+    """
+    This function is a 'room' in the road 'dungeon'.
+    It simply contains the options to continue, turn back,
+    or look around.
+    It has a random encounter chance.
+    """
     enemy = random_enemy("Road")
     random_battle(enemy, 2)
     if enemy.name == "Slime":
@@ -579,6 +661,11 @@ def road_6():
 
 
 def road_7():
+    """
+    This function is a 'room' in the road 'dungeon'.
+    It simply contains the options to continue, turn back,
+    or look around.
+    """
     while True:
         slow_print("As you walk the road you see the "
                    "next town not far from you.")
