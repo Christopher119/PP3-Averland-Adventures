@@ -1,8 +1,7 @@
 
 # AVERLAND ADVENTURES
-___
-
-This is a simple text-based "Choose Your Own Adventure" styled RPG game.
+This app is a simple text-based "Choose Your Own Adventure" styled RPG game.
+It is intended for users who enjoy roleplaying games.
 
 # Five UX Planes
 
@@ -150,8 +149,8 @@ As long as the app follows the strutcure laid out in the flow charts and doesn't
 
 ## Surface
 
-I wanted everything on the app to be presented cleanly.
-I made sure that no line of text extended beyond 80 characters to prevent words from being slice when wrapped to the following row.
+I wanted everything on the app to be presented cleanly.<br>
+I made sure that no line of text extended beyond 80 characters to prevent words from being slice when wrapped to the following row.<br>
 I made sure that any lines that were long used new-line breaks to force a wrap before any words would be sliced.
 
 # Features
@@ -219,7 +218,7 @@ All features were implemented as planned, however the game could be greatly expa
 Possible future additions to the game may include:
 
 1. Most important feature would be a helper function used to make choices, to help eliminate repeated code.<br>
-    I feel this would be best accomplished with a function that takes in *args or *kwargs as an argument.
+    I feel this would be best accomplished with a function that takes in *args or *kwargs as an argument.<br>
     As of now I am uncertain how to implement it effectively.<br>
 
 2. A more randomised quest system.<br>
@@ -244,6 +243,13 @@ Possible future additions to the game may include:
 7. A save function.<br>
     Storing the player's current data to a file the player can then use to load their character after they quit the game so they do not have to start over entirely.<br>
 
+8. Better script heirarchy.<br>
+    While I got the scripts to work together once I split them, I encountered numerous difficulties in the process.<br>
+    Having a better planned and understood method of calling and accessing different functions, variables, and scripts across a large project is something I'm keen to learn.<br>
+
+9. Visuals.<br>
+    Currently the app runs off a fully blank terminal.<br>
+    It may help to use some ASCII style visuals in the terminal or frame it with some simple html and css for better presentation.<br>
 
 # Testing
 
@@ -327,7 +333,9 @@ Notable bugs included:<br>
 
 4. Had to remove the game_over() function from both intro and battle due to cyclical import errors. Removed to prevent errors. (Perhaps a separate script for it would work?)<br>
 
-5. Parsing errors not being caught correctly by try/except statements. Took all input as a string and parsed comparions using str() to prevent it.
+5. Parsing errors not being caught correctly by try/except statements. Took all input as a string and parsed comparions using str() to prevent it.<br>
+
+6. Player values not updating after I split the app into multiple projects. Required the creation of an update method within the Player class.<br>
 
 # Deployment
 
@@ -346,7 +354,7 @@ In order to deply the site:<br>
 10. I initially deployed it manually by selecting `main` as my branch and selecting `Deploy Branch`.
 11. I have since anabled `Automatic Deployments` by selecting `Enable Automatic Deploys`
 
-The live link can be found here - 
+The live link can be found here - https://pp3-averland-adventures-d2bcd231bf1f.herokuapp.com/
 
 # Credits
 
@@ -367,3 +375,6 @@ https://stackoverflow.com/questions/306400/how-can-i-randomly-select-choose-an-i
 The code for finding a random number in a range was found here:<br>
 https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9
 This has since been changed from randrange() to randint()
+
+The idea to create a method within the Player class to update values across scripts was found here:<br>
+https://stackoverflow.com/questions/39425762/how-to-modify-variables-in-another-python-file

@@ -101,8 +101,9 @@ def game_intro():
                        "and only use alphabetic characters.\n")
             slow_screen_clear()
         else:
-            adventurer.update_values(Player(your_name, 100, 10, 10, 5, 1000,
-                                     ["Potion"], [], "Broken Sword", "Dented Armor"))
+            adventurer.update_values(Player(your_name, 100, 10, 10, 5, 100,
+                                     ["Potion"], [], "Broken Sword",
+                                     "Dented Armor"))
             slow_print(f"You are {adventurer.name}! You are a brave soul "
                        f"with {adventurer.health} points of health.")
             slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
