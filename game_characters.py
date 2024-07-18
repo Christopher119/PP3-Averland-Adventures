@@ -188,9 +188,10 @@ class Enemy(Character):
     Creates an Instance of an Enemy Character Class.
     """
 
-    def __init__(self, name, health, attack, defence, speed, loot):
+    def __init__(self, name, health, attack, defence, speed, loot, experience):
         super().__init__(name, health, attack, defence, speed)
         self.loot = loot
+        self.experience = experience
 
 
     def drop_loot(self, player, loot):
