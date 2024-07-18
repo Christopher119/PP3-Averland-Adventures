@@ -196,14 +196,13 @@ There were multiple stages of testing as the project developed.<br>
 | Creating Classes | Created basic Classes with placeholder values, printing values to screen | Class and values would create and display correctly | SUCCESS |
 | Modifying Class values | Using statements to modify class values | Values would correctly update | FAILURE - updates were not kept between scripts |
 | Using Class methods to modify values | Using methods within Classes to modify the values | Values would correctly update | SUCCESS |
-| Inventory System | Purchasing and Selling items in the shop | Items would be added or removed from the player inventory | SUCCESS |
 | Battle System | Creating debug variables for Player and Enemy to fight | Battles would flow as intended | SUCCESS |
 | Quest System | Full loop of accepting, completing, reporting quest | Quests would behave as expected | SUCCESS |
 | Random Battles | Walking back and forth between sub-rooms | Battles would continually trigger randomly | SUCCESS |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Equipment System | Filling Inventory with equipment to equip | Equipment would change and be added to inventory, stats would update | SUCCESS |
+| Levelling System | Fight debug enemies and full loop of regular Enemies | Experience would be given, level and stats would increase as expected | SUCCESS |
+| Shop System | Debug amount of gold to use to buy and sell all inventory | Items would be added and removed from inventory as expected | SUCCESS |
+| Inventory System | Using items in battle | Items would work and be removed from inventory as expected | SUCCESS |
 | Splitting script into multiple scripts | Sliced methods into other scripts and imported necessary ones | Code would still run as normal | FAILURE - cyclical import error |
 | Creating new helper scripts | Sliced certain methods out and put them in their own scripts to be used | Code would run as intended | SUCCESS |
 

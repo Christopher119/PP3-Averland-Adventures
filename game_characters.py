@@ -18,7 +18,7 @@ class Character:
         """
         A function allowing one character to reduce another characters health
         """
-        damage_taken = self.attack - (other_char.defence / 2.5)
+        damage_taken = round(self.attack - (other_char.defence / 2.5))
         if damage_taken <= 0:
             slow_print("You completely blocked the attack and took no damage!")
         else:
