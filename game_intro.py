@@ -77,6 +77,7 @@ def exit_game():
     slow_print("You will be missed, brave adventurer.")
     slow_print("Perhaps we shall see you again, another time.")
     slow_print("Farewell.")
+    quit()
 
 
 def game_intro():
