@@ -261,7 +261,6 @@ def forest_room2a():
                            "Perhaps territorial warning signs from some \n"
                            "bandits or monsters.")
                 slow_screen_clear()
-    # forest 1a, 2b, 2c
 
 
 def forest_room2b():

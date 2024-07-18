@@ -254,13 +254,15 @@ The game_battles.py file was fully checked in the CI Python Linter and returned 
 
 All known bugs have been found and removed.<br>
 Notable bugs included:<br>
-1. Example.<br>
+1. Cyclical import errors. Certain scripts needed to be broken up into smaller scripts to be imported to prevent this error.<br>
 
-2. Example.<br>
+2. Negative damage taken during battles. If defense was too high or attack was too low attacks would heal the target rather than being nullified.<br>
 
-3. Example.<br>
+3. Empty items added to inventory list. This was an issue with the Player class not having fully updated values in its update_values() method, resulting in empty entries.<br>
 
-4. Example.<br>
+4. Had to remove the game_over() function from both intro and battle due to cyclical import errors. Removed to prevent errors. (Perhaps a separate script for it would work?)<br>
+
+5. Parsing errors not being caught correctly by try/except statements. Took all input as a string and parsed comparions using str() to prevent it.
 
 # Deployment
 
@@ -284,3 +286,19 @@ The live link can be found here -
 # Credits
 
 ## Content
+The code for learning how to clear the terminal was found here:<br>
+https://www.geeksforgeeks.org/clear-screen-python/
+
+The code for my slow_print function was found here:<br>
+https://stackoverflow.com/questions/75486619/how-to-print-one-character-at-a-time-but-maintain-print-function-python
+This is also how I learned about the time.sleep() function used for my slow_screen_clear() function
+
+The code used to print out numbered lists was found here:<br>
+https://stackoverflow.com/questions/29811082/how-to-print-out-a-numbered-list-in-python-3
+
+The code for randomly selecting an item from a list was found here:<br>
+https://stackoverflow.com/questions/306400/how-can-i-randomly-select-choose-an-item-from-a-list-get-a-random-element
+
+The code for finding a random number in a range was found here:<br>
+https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9
+This has since been changed from randrange() to randint()

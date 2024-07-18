@@ -66,7 +66,6 @@ def town():
                 return False
 
 
-# move to hubworld.py
 def shop():
     """
     A function to hold the Shop the player can
@@ -379,7 +378,6 @@ def shop():
                 return False
 
 
-# move to hubworld.py
 def find_a_quest():
     """
     A function to hold the tavern where the player can find new quests.
@@ -619,7 +617,6 @@ def find_a_quest():
                 return False
 
 
-# move to hubworld.py
 def begin_adventure():
     """
     A simple function that brings the player
