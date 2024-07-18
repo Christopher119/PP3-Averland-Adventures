@@ -40,7 +40,7 @@ def town():
             elif choice == str(2):
                 slow_print("You walk towards the tavern, "
                            "the hustle and bustle of the\n"
-                           "patrons already audible before"
+                           "patrons already audible before "
                            "you open the door.")
                 slow_screen_clear()
                 find_a_quest()

@@ -747,8 +747,8 @@ def forest_room5b():
 
             elif choice == str(5):
                 slow_print("You look at the fairy. She is perhaps no\n"
-                           "bigger than a hummingbird and is content to\n"
-                           "simply watch you as you watch her.")
+                           "bigger than a hummingbird and is content\n"
+                           "to simply watch you as you watch her.")
                 slow_screen_clear()
 
 
@@ -760,8 +760,8 @@ def forest_room5c():
         adventurer.slimes_defeated += 1
 
     while True:
-        slow_print("You step into a tiny clearing, \n"
-                   "surrounded on all side by densely packed trees.")
+        slow_print("You step into a tiny clearing,\n"
+                   "surrounded on all side by densely\npacked trees.")
         slow_print("\nWhat will you do?\n")
         slow_print("1. Go North")
         slow_print("2. Go West.")
@@ -806,7 +806,7 @@ def forest_room5c():
 def forest_room6a():
     slow_print("As you move through the trees you here an "
                "indescribable noise.\n Like something "
-               "scracthing the very thoughts in your mind.")
+               "scratching the very thoughts in your mind.")
     slow_print("A shadow bursts forth from between the trees!")
     spider = Enemy("Giant Spider", 50, 25, 10, 10, 150, 100)
     battle_event(adventurer, spider)
