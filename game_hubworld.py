@@ -62,6 +62,7 @@ def town():
                 slow_print(f"Rest now, brave {adventurer.name}.")
                 slow_print("Perhaps we shall see you again, another time.")
                 slow_print("Farewell.")
+                quit()
                 return False
 
 
