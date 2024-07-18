@@ -29,7 +29,7 @@ def forest_start():
 
         else:
             if choice == str(1):
-                slow_print("You press through the trees and bushes")
+                slow_print("You press through the trees and bushes.")
                 slow_screen_clear()
                 forest_room1a()
                 return False
@@ -126,7 +126,7 @@ def forest_room1b():
                 return False
 
             elif choice == str(2):
-                slow_print("You head west.")
+                slow_print("You head east.")
                 slow_screen_clear()
                 forest_room1a()
                 return False
@@ -280,7 +280,7 @@ def forest_room2b():
                 return False
 
             elif choice == str(3):
-                slow_print("You head West.")
+                slow_print("You head South.")
                 slow_screen_clear()
                 forest_room1b()
                 return False

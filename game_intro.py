@@ -121,7 +121,7 @@ def game_intro():
                        f"{adventurer.gold} gold pieces.")
             slow_print(f"You have a {adventurer.inventory[0]} in your inventory.")
             slow_print(f"Your quest log is empty for now.")
-            slow_print(f"Prepare to embark on a thrilling adventure, "
+            slow_print(f"Prepare to embark on a thrilling adventure,\n"
                        "in pursuit of fame and fortune, "
                        f"brave {adventurer.name}!\n")
             slow_print("...", 0.25)

@@ -287,6 +287,7 @@ def shop():
                                    f"{adventurer.inventory[int(choice)-1]}.")
                         slow_print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(int(choice)-1)
+                        slow_screen_clear()
 
                     elif (adventurer.inventory[int(choice)-1]
                           == "Steel Sword"
@@ -299,6 +300,7 @@ def shop():
                                    f"{adventurer.inventory[int(choice)-1]}.")
                         slow_print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(int(choice)-1)
+                        slow_screen_clear()
 
                     elif (adventurer.inventory[int(choice)-1]
                             == "Silver Sword"
@@ -311,6 +313,7 @@ def shop():
                                    f"{adventurer.inventory[int(choice)-1]}.")
                         slow_print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(int(choice)-1)
+                        slow_screen_clear()
 
                     else:
                         adventurer.gold += 10
@@ -318,6 +321,7 @@ def shop():
                                    f"{adventurer.inventory[int(choice)-1]}.")
                         slow_print(f"Current gold: {adventurer.gold}")
                         adventurer.inventory.pop(int(choice)-1)
+                        slow_screen_clear()
 
     def leave_shop():
         slow_print("You leave the shop and return to the center of town.\n")
@@ -387,7 +391,7 @@ def find_a_quest():
                         slow_print("You have accepted the quest to "
                               "defeat Slimes.")
                         adventurer.quests.append("Slay Slimes")
-                        slow_screen_clear()
+                    slow_screen_clear()
 
                 elif choice == str(2):
                     if "Defend Caravan" in adventurer.quests:
@@ -396,7 +400,7 @@ def find_a_quest():
                         slow_print("You have accepted the quest to "
                                    "defend a merchant caravan.")
                         adventurer.quests.append("Defend Caravan")
-                        slow_screen_clear()
+                    slow_screen_clear()
 
                 elif choice == str(3):
                     if "Clear Bandit Camp" in adventurer.quests:
@@ -405,7 +409,7 @@ def find_a_quest():
                         slow_print("You have accepted the quest to "
                                    "clear out a bandit camp.")
                         adventurer.quests.append("Clear Bandit Camp")
-                        slow_screen_clear()
+                    slow_screen_clear()
 
                 elif choice == str(4):
                     os.system('clear')
