@@ -156,25 +156,62 @@ I made sure that any lines that were long used new-line breaks to force a wrap b
 
 # Features
 
-## Game
+## Game#
+The game begins by prompting the user to start, read the rules, or exit the game.<br>
+![Demo image of the splash screen in game_intro.py](assets/readme_images/demo_images/demo_game_intro.png)
 
-## Intro
+### Intro
+Selecting to start the game prompts the user to enter a name for their adventurer, and prints out several stats about them before proceeding to the hubworld.<br>
+![Demo image of the intro in game_intro.py](assets/readme_images/demo_images/demo_game_intro_start.png)
 
 ### Rules
+Selecting to read the rules simply tells the user how the game operates, informing them that the game will only function if the on screen prompts are followed.<br>
+![Demo image of the rules in game_intro.py](assets/readme_images/demo_images/demo_game_intro_rules.png)
 
 ## Hubworld
+The game begins with you in the centre of a town, with several options. The shop, the tavern for a quest, to adventure, to check your status, or to quit the game.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_hubworld_town.png)
 
-### Town
+### Status
+This simply tells the user their current status. Level, attack, defense, speed, gold, inventory, equipped items, and quest flags. It will also prompt the user if they wish to change their equipment.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_hubworld_town_status.png)
 
 ### Shop
+The shop allows a user to purchase new equipment, which will be added to the players inventory.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_hubworld_shop_weapons.png)
+
+The shop also allows the player to sell equipment, should they reach a point that they no longer need that item.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_hubworld_shop_sell.png)
 
 ### Quests
+The tavern offers players a few objectives to try and fulfill. These quests will be added to the players quest list, and can be fulfilled when adventuring.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_hubworld_tavern.png)
 
 ### Adventure
+The town  gates prompt the player for where they wish to go. As of now there are two possible "dungeons" to tackle, or the player can return to the town centre.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_hubworld_adventure.png)
 
 ## Merchant Road
+The merchant road is the simpler dungeon, consisting primarily of one "room" after the next.<br>
+Some of these have random battles that can occur.<br>
+Some have hidden paths the player can discover.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_road.png)
 
 ## Forest
+The forest is the more complex dungeon, consisting of 3 columns of rooms that do not all connect.<br>
+The player must move between them and try to find the way to the end, or simply return to the beginning and go back to town.<br>
+Like the road there are some secrets that can be found by looking while in the forest.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_forest.png)
+
+## Battles
+Battles prompt the user to attack, defend, or use an item.<br>
+Attacking will deal damage to the enemy.<br>
+Defending will reduce incoming damage and has a chance for a critical counter attack.<br>
+Items allow you to use potions to heal mid battle.<br>
+A battle round always ends with the enemy attacking.<br>
+A battle ends once the player or the enemy is defeated.<br>
+![Demo image of an in progress battle](assets/readme_images/demo_images/demo_game_battle.png)
+
 
 ## Features Left to Implement
 
