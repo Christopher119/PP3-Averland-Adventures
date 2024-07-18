@@ -1,3 +1,4 @@
+import random
 from game_slow_functions import *
 
 class Character:
@@ -41,29 +42,6 @@ class Character:
             return True
 
 
-    def recover_health(self, amount):
-        """
-        A simple function to restore health to a character
-        and prevent it from going above 100.
-        """
-        self.health += amount
-        if self.health > 100:
-            self.health = 100
-            slow_print("You are fully healed!")
-        else:
-            slow_print(f"You recovered {amount} health!")
-
-
-    def use_potion(self, amount):
-        """
-        A simple function using the above recover_health() function to
-        restore health and print out the results.
-        """
-        self.recover_health(amount)
-        slow_print(f"You now have {player.health}.")
-        sleep(1.5)
-
-
 class Player(Character):
     """
     Creates an Instance of a Player Character Class.
@@ -72,6 +50,9 @@ class Player(Character):
     def __init__(self, name, health, attack, defence,
                  speed, gold, inventory, quests):
         super().__init__(name, health, attack, defence, speed)
+        self.max_health = 100
+        self.level = 1
+        self.exp = 0
         self.gold = gold
         self.inventory = inventory
         self.quests = quests
@@ -115,7 +96,8 @@ class Player(Character):
 
     def check_status(self):
         slow_print(f"Your name: {self.name}")
-        slow_print(f"Your health: {self.health}")
+        slow_print(f"Your level: {self.level}")
+        slow_print(f"Your health: {self.health}/{self.max_health}")
         slow_print(f"Your attack: {self.attack}")
         slow_print(f"Your defence: {self.defence}")
         slow_print(f"Your speed: {self.speed}")
@@ -131,11 +113,57 @@ class Player(Character):
                 slow_print(number+1, keys_owned)
 
 
+    def level_up(self, xp_amount):
+        self.exp += xp_amount
+        slow_print(f"You earned {xp_amount} from your victory!")
+
+        if self.exp >= 100:
+            slow_print("You leveled up!")
+            hp_up = random.randint(2, 10)
+            atk_up = random.randint(1, 5)
+            def_up = random.randint(1, 5)
+            spd_up = random.randint(1, 5)
+            self.exp = 0
+            self.max_health += hp_up
+            self.attack += atk_up
+            self.defence += def_up
+            self.speed += spd_up
+            slow_print(f"Health has increased by {hp_up} points!")
+            slow_print(f"Attack has increased by {atk_up} points!")
+            slow_print(f"Defence has increased by {def_up} points!")
+            slow_print(f"Speed has increased by {spd_up} points!")
+
+
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
         self.defence *= 2
         other_char.attack_other(self)
         self.defence /= 2
+
+
+    def recover_health(self, amount):
+        """
+        A simple function to restore health to a character
+        and prevent it from going above 100.
+        """
+        self.health += amount
+        if self.health > self.max_health:
+            self.health = self.max_health
+            slow_print("You are fully healed!")
+
+        else:
+            slow_print(f"You recovered {amount} health!")
+
+        slow_print(f"You now have {self.health}.")
+
+
+    def use_potion(self, amount):
+        """
+        A simple function using the above recover_health() function to
+        restore health and print out the results.
+        """
+        self.recover_health(amount)
+        sleep(1.5)
 
 
     def reset_flags(self):
