@@ -180,6 +180,7 @@ def battle_event(player, enemy_type):
                                     adventurer.inventory.\
                                         pop(int(choice)-1)
                                     inventory_loop = False
+                                    enemy_type.attack_other(player)
 
                                 else:
                                     slow_print(f"You are already at "
@@ -191,6 +192,7 @@ def battle_event(player, enemy_type):
                                     adventurer.use_potion(50)
                                     adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
+                                    enemy_type.attack_other(player)
 
                                 else:
                                     slow_print(f"You are already at "
@@ -202,6 +204,7 @@ def battle_event(player, enemy_type):
                                     adventurer.use_potion(100)
                                     adventurer.inventory.pop(int(choice)-1)
                                     inventory_loop = False
+                                    enemy_type.attack_other(player)
 
                                 else:
                                     slow_print(f"You are already at "
