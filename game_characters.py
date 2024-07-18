@@ -203,6 +203,13 @@ class Player(Character):
             self.sword = sword
 
         slow_print(f"You have equipped a {self.sword}")
+        if "Iron" in self.sword:
+            self.attack += 2
+        elif "Steel" in self.sword:
+            self.attack += 4
+        elif "Silver" in self.sword:
+            self.attack += 6
+
         slow_screen_clear()
 
 
@@ -215,6 +222,12 @@ class Player(Character):
             self.shield = shield
 
         slow_print(f"You have equipped a {self.shield}")
+        if "Iron" in self.shield:
+            self.attack += 2
+        elif "Steel" in self.shield:
+            self.attack += 4
+        elif "Silver" in self.shield:
+            self.attack += 6
         slow_screen_clear()
 
 
