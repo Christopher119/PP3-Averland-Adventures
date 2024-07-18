@@ -170,7 +170,7 @@ class Player(Character):
                         self.equip_shield(adventurer.inventory[int(choice)-1])
                         adventurer.inventory.pop(int(choice)-1)
 
-                    elif "Shield" in adventurer.inventory[int(choice)-1]:
+                    elif "Armor" in adventurer.inventory[int(choice)-1]:
                         self.equip_shield(adventurer.inventory[int(choice)-1])
                         adventurer.inventory.pop(int(choice)-1)
 
@@ -228,11 +228,11 @@ class Player(Character):
 
         slow_print(f"You have equipped a {self.shield}")
         if "Iron" in self.shield:
-            self.attack += 2
+            self.defence += 2
         elif "Steel" in self.shield:
-            self.attack += 4
+            self.defence += 4
         elif "Silver" in self.shield:
-            self.attack += 6
+            self.defence += 6
         slow_screen_clear()
 
 
