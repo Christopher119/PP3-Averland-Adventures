@@ -11,7 +11,7 @@ def road_start():
     to return to town unless the player is at the end of the road.
     """
     while True:
-        slow_print("The wall of the town is at your back as "
+        slow_print("The wall of the town is at your back as\n"
                    "you begin travelling the Merchant's Road.")
         slow_print("\nWhat will you do?\n")
         slow_print("1. Continue down the road.")

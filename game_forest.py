@@ -275,7 +275,7 @@ def forest_room2b():
     if enemy.name == "Slime":
         adventurer.slimes_defeated += 1
 
-    slow_print("The trees are particularly dense in this part of the \n"
+    slow_print("The trees are particularly dense in this part of the\n"
                "forest, making it difficult to move quickly.")
 
     while True:
@@ -503,9 +503,9 @@ def forest_room3b():
     if enemy.name == "Slime":
         adventurer.slimes_defeated += 1
 
-    slow_print("A sweet scent reaches your nose as you push "
-               "through some bushes. Perhaps there is a fresh flower "
-               "blooming nearby.")
+    slow_print("A sweet scent reaches your nose as you push\n"
+               "through some bushes. Perhaps there is a \n"
+               "fresh flower blooming nearby.")
 
     while True:
         slow_print("You are standing by some flowering bushes.")
@@ -544,7 +544,7 @@ def forest_room3b():
                 return False
 
             elif choice == str(4):
-                slow_print("You see a flowerbed blooming under "
+                slow_print("You see a flowerbed blooming under\n"
                            "the shade of a fallen log.")
                 slow_screen_clear()
 
@@ -561,7 +561,7 @@ def forest_room3c():
     if enemy.name == "Slime":
         adventurer.slimes_defeated += 1
 
-    slow_print("The forest is getting denser the deeper you go. \n"
+    slow_print("The forest is getting denser the deeper you go.\n"
                "It looks like there's only one path forward.")
 
     while True:
@@ -634,7 +634,7 @@ def forest_room4b():
 
             elif choice == str(2):
                 if adventurer.room4bitem is False:
-                    slow_print("You notice something just past "
+                    slow_print("You notice something just past\n"
                                "a gap in the trees.")
                     slow_print("You reach through and grab it.")
                     slow_print("You found a Steel Sword!")
@@ -643,7 +643,7 @@ def forest_room4b():
                     slow_screen_clear()
 
                 else:
-                    slow_print("You aren't able to see much thanks "
+                    slow_print("You aren't able to see much thanks\n"
                                "to how dark it is due to the trees.")
                     slow_screen_clear()
 
@@ -654,7 +654,7 @@ def forest_room4c():
     The player can proceed in certain directions,
     or look around.
     """
-    slow_print("The trees are growing much more closely together here, \n"
+    slow_print("The trees are growing much more closely together here,\n"
                "forcing you to squeeze through or turn around.")
 
     while True:
@@ -691,7 +691,7 @@ def forest_room4c():
                 if "Missing Necklace" in adventurer.quests and \
                  adventurer.necklace_found is False:
                     slow_print("You notice something shining in a hole "
-                               "in one of the tree trunks. \nReaching "
+                               "in one of the tree trunks.\nReaching "
                                "inside you grab hold of an old necklace.")
                     adventurer.necklace_found = True
                     slow_screen_clear()
