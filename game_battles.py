@@ -19,14 +19,14 @@ def random_enemy(area):
 
     experience_drop = random.randint(5, 15)
 
-    bandit = Enemy("Bandit", 20, 20, 5, 10, bandit_loot, experience_drop)
-    slime = Enemy("Slime", 10, 20, 5, 2, slime_loot, experience_drop)
-    skeleton = Enemy("Skeleton", 10, 20, 5, 5, skeleton_loot, experience_drop)
-    lizard = Enemy("Lizard-Man", 25, 25, 8, 10, lizard_loot, experience_drop)
-    bug = Enemy("Giant Bug", 30, 30, 10, 10, bug_loot, experience_drop)
-    zombie = Enemy("Zombie", 20, 25, 8, 2, zombie_loot, experience_drop)
-    wolf = Enemy("Wolf", 10, 20, 5, 15, wolf_loot, experience_drop)
-    goblin = Enemy("Goblin", 10, 25, 6, 5, goblin_loot, experience_drop)
+    bandit = Enemy("Bandit", 20, 2000, 5, 10, bandit_loot, experience_drop)
+    slime = Enemy("Slime", 10, 2000, 5, 2, slime_loot, experience_drop)
+    skeleton = Enemy("Skeleton", 10, 2000, 5, 5, skeleton_loot, experience_drop)
+    lizard = Enemy("Lizard-Man", 25, 2500, 8, 10, lizard_loot, experience_drop)
+    bug = Enemy("Giant Bug", 30, 3000, 10, 10, bug_loot, experience_drop)
+    zombie = Enemy("Zombie", 20, 2500, 8, 2, zombie_loot, experience_drop)
+    wolf = Enemy("Wolf", 10, 2000, 5, 15, wolf_loot, experience_drop)
+    goblin = Enemy("Goblin", 10, 2500, 6, 5, goblin_loot, experience_drop)
 
     if area == "Road":
         enemies = [
@@ -80,8 +80,8 @@ def battle_event(player, enemy_type):
         player.check_life()
         sleep(1.5)
         if player.check_life():
-            game_over()
             slow_screen_clear()
+            game_over()
 
     slow_print(f"You have encountered a {enemy_type.name}!")
     if player.speed > enemy_type.speed:
@@ -226,27 +226,4 @@ def game_over():
     slow_print("For now, rest... and worry not about the "
                "people of Averland any longer...")
     slow_print("...")
-    while True:
-        slow_print("\nWould you like to start again?")
-        slow_print("1. Yes")
-        slow_print("2. No")
-        choice = input()
-        try:
-            if choice != str(1) and choice != str(2):
-                raise Exception
-        except Exception:
-            slow_print("Please enter only 1 or 2.\n")
-            slow_screen_clear()
-        else:
-            if choice == str(1):
-                slow_print("May your efforts bear more fruit "
-                           "this time, adventurer.\n")
-                slow_screen_clear()
-                game_intro()
-                return False
-
-            elif choice == str(2):
-                slow_print("Perhaps we shall meet again in another life.\n")
-                sleep(3)
-                quit()
-                return False
+    quit()
