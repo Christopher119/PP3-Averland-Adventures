@@ -62,7 +62,7 @@ def random_battle(enemy_type, encounter_chance):
 
     if battle_chance > encounter_chance:
         battle_event(adventurer, enemy_type)
-        sleep(3)
+        sleep(1.5)
 
 
 def battle_event(player, enemy_type):
@@ -81,6 +81,7 @@ def battle_event(player, enemy_type):
         sleep(1.5)
         if player.check_life():
             game_over()
+            slow_screen_clear()
 
     slow_print(f"You have encountered a {enemy_type.name}!")
     if player.speed > enemy_type.speed:
