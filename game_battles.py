@@ -144,7 +144,7 @@ def battle_event(player, enemy_type):
                 while inventory_loop is True:
                     available_items = 0
                     for number, items_owned in enumerate(adventurer.inventory):
-                        slow_print(number+1, items_owned)
+                        print(number+1, items_owned)
                         available_items += 1
                     slow_print("\nWhat would you like to use? \
                     \nPress 0 to return to the battle menu.")

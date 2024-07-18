@@ -48,7 +48,7 @@ class Player(Character):
     """
 
     def __init__(self, name, health, attack, defence,
-                 speed, gold, inventory, quests):
+                 speed, gold, inventory, quests, sword, shield):
         super().__init__(name, health, attack, defence, speed)
         self.max_health = 100
         self.level = 1
@@ -56,6 +56,8 @@ class Player(Character):
         self.gold = gold
         self.inventory = inventory
         self.quests = quests
+        self.sword = sword
+        self.shield = shield
         self.keyitems = []
 
         # variables used for checks through dungeons
@@ -95,6 +97,7 @@ class Player(Character):
 
 
     def check_status(self):
+        slow_screen_clear()
         slow_print(f"Your name: {self.name}")
         slow_print(f"Your level: {self.level}")
         slow_print(f"Your experience: {self.exp}/100")
@@ -103,15 +106,71 @@ class Player(Character):
         slow_print(f"Your defence: {self.defence}")
         slow_print(f"Your speed: {self.speed}")
         slow_print(f"Your gold: {self.gold}")
+        slow_print(f"Your sword: {self.sword}")
+        slow_print(f"Your shield: {self.shield}")
         slow_print(f"Your inventory:")
         for number, items_owned in enumerate(self.inventory):
-                slow_print(number+1, items_owned)
+                print(number+1, items_owned)
         slow_print(f"Your quests:")
         for number, quests_owned in enumerate(self.quests):
-                slow_print(number+1, quests_owned)
+                print(number+1, quests_owned)
         slow_print(f"Your key items:")
         for number, keys_owned in enumerate(self.keyitems):
-                slow_print(number+1, keys_owned)
+                print(number+1, keys_owned)
+        
+        while True:
+            slow_print("\nWould you like to change your equipment?")
+            slow_print("1. Yes.")
+            slow_print("2. No.")
+            choice = input()
+            try:
+                if choice != str(1) and choice != str(2):
+                    raise Exception
+
+            except Exception:
+                print("Please enter only 1 or 2.\n")
+                slow_screen_clear()
+
+            else:
+                if choice == str(1):
+                    slow_screen_clear()
+                    self.equipment_display()
+
+                else:
+                    slow_print("Returning to game.")
+                    slow_screen_clear()
+                    return False
+
+
+    def equipment_display(self):
+        while True:
+            available_items = 0
+            for number, items_owned in enumerate(self.inventory):
+                print(number+1, items_owned)
+                available_items += 1
+            slow_print("\nWhat would you like to equip?\n"
+                       "Press 0 to return to the previous menu.")
+            choice = input()
+            try:
+                if choice > str(available_items) and choice.alpha() is True:
+                    raise Exception
+            except Exception:
+                slow_print("Please only enter the numbers on screen, "
+                           "or 0 to return to the previous menu.")
+            else:
+                if choice == str(0):
+                    return False
+                elif choice <= str(available_items) and choice > str(0):
+                    if "Sword" in adventurer.inventory[int(choice)-1]:
+                        self.equip_shield(adventurer.inventory[int(choice)-1])
+                        adventurer.inventory.pop(int(choice)-1)
+
+                    elif "Shield" in adventurer.inventory[int(choice)-1]:
+                        self.equip_shield(adventurer.inventory[int(choice)-1])
+                        adventurer.inventory.pop(int(choice)-1)
+
+                    else:
+                        slow_print("You cannot equip that.")
 
 
     def level_up(self, xp_amount):
@@ -133,6 +192,30 @@ class Player(Character):
             slow_print(f"Attack has increased by {atk_up} points!")
             slow_print(f"Defence has increased by {def_up} points!")
             slow_print(f"Speed has increased by {spd_up} points!")
+
+
+    def equip_sword(self, sword):
+        if not sword:
+            self.sword = sword
+
+        else:
+            adventurer.inventory.append(self.sword)
+            self.sword = sword
+
+        slow_print(f"You have equipped a {self.sword}")
+        slow_screen_clear()
+
+
+    def equip_shield(self, shield):
+        if not self.shield:
+            self.shield = shield
+
+        else:
+            adventurer.inventory.append(self.shield)
+            self.shield = shield
+
+        slow_print(f"You have equipped a {self.shield}")
+        slow_screen_clear()
 
 
     def block_attack(self, other_char):
@@ -201,4 +284,4 @@ class Enemy(Character):
 
 
 adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
-                    ["Old Sword", "New Sword",  "Potion"], [])
+                    ["Old Sword", "New Sword",  "Potion", "Silver Sword", "Silver Armor"], [], "", "")

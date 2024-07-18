@@ -22,9 +22,11 @@ def splash_screen():
         slow_print("1. Start Game")
         slow_print("2. Read Rules")
         slow_print("3. Exit Game")
+        slow_print("4. Check Status")
         choice = input()
         try:
-            if choice != str(1) and choice != str(2) and choice != str(3):
+            if choice != str(1) and choice != str(2) \
+             and choice != str(3) and choice != str(4):
                 raise Exception
 
         except Exception:
@@ -43,6 +45,9 @@ def splash_screen():
             elif choice == str(3):
                 exit_game()
                 return False
+
+            elif choice == str(4):
+                adventurer.check_status()
 
 
 # move to intro.py
@@ -111,7 +116,7 @@ def game_intro():
             slow_screen_clear()
         else:
             adventurer.update_values(Player(your_name, 100, 10, 10, 5, 1000,
-                                     ["Potion"], []))
+                                     ["Potion"], [], "", ""))
             slow_print(f"You are {adventurer.name}! You are a brave soul "
                        f"with {adventurer.health} points of health.")
             slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
