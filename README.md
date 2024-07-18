@@ -67,24 +67,44 @@ There were multiple stages of testing as the project developed.<br>
 # Validating
 
 ## run.py
+The run.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the run.py validation check](assets/readme_images/linter_images/linter_run_validation.png)
 
 ## game_slow_functions
+The run.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_slow_functions.py validation check](assets/readme_images/linter_images/linter_game_slow_functions_validation.png)
 
 ## game_inside_travels
+The game_inside_travels.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_inside_travels.py validation check](assets/readme_images/linter_images/linter_game_inside_travels_validation.png)
 
 ## game_outside_travels
+The game_outside_travels.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_outside_travels.py validation check](assets/readme_images/linter_images/linter_game_outside_travels_validation.png)
 
-## game characters
+## game_characters
+The game_characters.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_characters.py validation check](assets/readme_images/linter_images/linter_game_characters_validation.png)
 
 ## game_intro
+The game_intro.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_intro.py validation check](assets/readme_images/linter_images/linter_game_intro_validation.png)
 
 ## game_hubworld
+The game_hubworld.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_hubworld.py validation check](assets/readme_images/linter_images/linter_game_hubworld_validation.png)
 
 ## game_road
+The game_road.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_road.py validation check](assets/readme_images/linter_images/linter_game_road_validation.png)
 
 ## game_forest
+The game_forest.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_forest.py validation check](assets/readme_images/linter_images/linter_game_forest_validation.png)
 
 ## game_battles
+The game_battles.py file was fully checked in the CI Python Linter and returned no errors.<br>
+![Image showing the game_battles.py validation check](assets/readme_images/linter_images/linter_game_battles_validation.png)
 
 # Bugs
 
