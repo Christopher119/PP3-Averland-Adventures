@@ -16,11 +16,13 @@ def town():
         slow_print("1. Shop.")
         slow_print("2. Accept a quest.")
         slow_print("3. Depart on an adventure.")
-        slow_print("4. Rest and end your adventures.")
+        slow_print("4. Check your status")
+        slow_print("5. Rest and end your adventures.")
         choice = input()
         try:
             if choice != str(1) and choice != str(2) \
-             and choice != str(3) and choice != str(4):
+             and choice != str(3) and choice != str(4) \
+             and choice != str(5):
                 raise Exception
         except Exception:
             slow_print("Please enter only 1, 2, 3 or 4.\n")
@@ -52,6 +54,9 @@ def town():
                 return False
 
             elif choice == str(4):
+                adventurer.check_status()
+
+            elif choice == str(5):
                 os.system('clear')
                 slow_print(f"Rest now, brave {adventurer.name}.")
                 slow_print("Perhaps we shall see you again, another time.")

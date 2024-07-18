@@ -16,6 +16,7 @@ def forest_start():
         slow_print("1. Head deeper into the forest.")
         slow_print("2. Look around.")
         slow_print("3. Return to town.")
+        slow_print("4. Check your Status.")
         choice = input()
         try:
             if choice != str(1) and choice != str(2) \
@@ -46,6 +47,9 @@ def forest_start():
                 slow_screen_clear()
                 move_to_town()
                 return False
+            
+            elif choice == str(4):
+                adventurer.check_status()
 
 
 def forest_room1a():
@@ -622,7 +626,6 @@ def forest_room4c():
                     slow_print("You notice something shining in a hole "
                                "in one of the tree trunks. \nReaching "
                                "inside you grab hold of an old necklace.")
-                    adventurer.keyitems.append("Missing Necklace")
                     adventurer.necklace_found = True
                     slow_screen_clear()
 
@@ -865,6 +868,7 @@ def forest_room6c():
                                "directions.\nThey are thankful "
                                "for the help and quickly run "
                                "from the forest back to town.")
+                    adventurer.forest_kidnapped_person = True
                     slow_screen_clear()
 
                 else:

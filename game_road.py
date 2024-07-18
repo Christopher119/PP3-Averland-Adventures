@@ -12,6 +12,7 @@ def road_start():
         slow_print("1. Continue down the road.")
         slow_print("2. Look around.")
         slow_print("3. Return to town.")
+        slow_print("4. Check your Status.")
         choice = input()
         try:
             if choice != str(1) and choice != str(2) \
@@ -40,6 +41,9 @@ def road_start():
                 slow_screen_clear()
                 move_to_town()
                 return False
+            
+            elif choice == str(4):
+                adventurer.check_status()
 
 
 def road_1():
@@ -320,6 +324,10 @@ def road_3c():
             adventurer.slimes_defeated += 3
 
         slow_print("After the battle you search around the area.")
+        if "Missing Person" in adventurer.quests:
+            slow_print("You find the missing person hiding nearby.\n")
+            slow_print("You promise to help them back to the road safely.\n")
+            adventurer.missing_person_found = True
         slow_print("With nothing else of value to find you return "
                    "to the main road, triumphant.")
 
@@ -416,7 +424,9 @@ def road_4a():
         enemy = random_enemy("Road")
         if road4_enemies.name == "Slime":
             adventurer.slimes_defeated += 1
-        slow_print("After the battle placeholder")
+        slow_print("You take a moment to relax after the battle.\n"
+                   "You have no doubt there is a group of "
+                   f"{adventurer.road4_enemies.name}s ahead.")
 
     else:
         slow_print(f"The body of the {adventurer.road4_enemies.name} "
@@ -457,7 +467,9 @@ def road_4a():
 def road_4b():
     if adventurer.road_4_group is False:
         slow_print("As you thought there are multiple "
-                   f"{adventurer.road4_enemies.name}s here.")
+                   f"{adventurer.road4_enemies.name}s here.\n"
+                   "They have surrounded a caravan they forced\n"
+                   "off the road.")
         sleep(1.5)
         adventurer.road4_enemies.health += 30
         adventurer.road4_enemies.attack += 10
@@ -468,6 +480,9 @@ def road_4b():
         adventurer.road_4_group = True
 
         slow_print("After the battle you search around the area.")
+        slow_print("The merchants are truly thankful for your rescue\n"
+                   "promising to report your deeds to the adventurer's guild.")
+        adventurer.caravan_saved = True
         slow_print("With nothing else of value to find you return "
                    "to the main road, triumphant.")
 

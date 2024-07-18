@@ -114,9 +114,12 @@ class Player(Character):
         slow_print(f"Your quests:")
         for number, quests_owned in enumerate(self.quests):
                 print(number+1, quests_owned)
-        slow_print(f"Your key items:")
-        for number, keys_owned in enumerate(self.keyitems):
-                print(number+1, keys_owned)
+        slow_print(f"Slimes you have defeated: {self.slimes_defeated}")
+        slow_print(f"Caravan defended: {self.caravan_saved}")
+        slow_print(f"Bandit camp cleared: {self.forest_6c_camp}")
+        slow_print(f"Necklace found: {self.necklace_found}")
+        slow_print(f"Found missing person: {self.missing_person_found}")
+        slow_print(f"Saved kidnapped person: {self.forest_kidnapped_person}")
 
         while True:
             slow_print("\nWould you like to change your equipment?")
