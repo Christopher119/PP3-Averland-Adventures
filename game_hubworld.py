@@ -3,6 +3,7 @@ from game_characters import *
 from game_inside_travels import move_to_road, move_to_forest
 from game_characters import *
 
+
 def town():
     """
     A function to hold the Town the player will return
@@ -73,7 +74,8 @@ def shop():
     # methods specific to shopping
     def buy():
         while True:
-            slow_print("You approach the shopkeep and ask what they have for sale.")
+            slow_print("You approach the shopkeep and ask what "
+                       "they have for sale.")
             slow_print("\nShop selection:")
             slow_print("1. Weapons")
             slow_print("2. Armor")
@@ -93,11 +95,11 @@ def shop():
                     while True:
                         slow_print("\nAvailable weapons for sale:")
                         slow_print("1. Iron Sword: +2 Attack when "
-                              "equipped. 50 gold.")
+                                   "equipped. 50 gold.")
                         slow_print("2. Steel Sword: +4 Attack when "
-                              "equipped. 150 gold.")
+                                   "equipped. 150 gold.")
                         slow_print("3. Silver Sword: +6 Attack when "
-                              "equipped. 300 gold.")
+                                   "equipped. 300 gold.")
                         slow_print("4. Check other options.")
                         choice = input()
                         try:
@@ -114,9 +116,9 @@ def shop():
                                 elif "Iron Sword" in adventurer.inventory:
                                     slow_print("You already own an Iron Sword")
                                 else:
-                                    slow_print("You have added an Iron Sword to "
-                                               "your inventory. Remember to "
-                                               "equip it.")
+                                    slow_print("You have added an Iron "
+                                               "Sword to your inventory.\n"
+                                               "Remember to equip it.")
                                     adventurer.inventory.append("Iron Sword")
                                 slow_screen_clear()
                             elif choice == str(2):
@@ -125,20 +127,21 @@ def shop():
                                 elif "Steel Sword" in adventurer.inventory:
                                     slow_print("You already own a Steel Sword")
                                 else:
-                                    slow_print("You have added a Steel Sword to "
-                                               "your inventory. Remember to "
-                                               "equip it.")
+                                    slow_print("You have added a Steel Sword "
+                                               "to your inventory.\nRemember "
+                                               "to equip it.")
                                     adventurer.inventory.append("Steel Sword")
                                 slow_screen_clear()
                             elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     slow_print("You cannot afford this item.")
                                 elif "Silver Sword" in adventurer.inventory:
-                                    slow_print("You already own a Silver Sword")
+                                    slow_print("You already own a "
+                                               "Silver Sword")
                                 else:
                                     slow_print("You have added a Silver Sword "
-                                               "to your inventory. Remember to "
-                                               "equip it.")
+                                               "to your inventory.\nRemember "
+                                               "to equip it.")
                                     adventurer.inventory.append("Silver Sword")
                                 slow_screen_clear()
                             elif choice == str(4):
@@ -182,20 +185,20 @@ def shop():
                                 elif "Steel Armor" in adventurer.inventory:
                                     slow_print("You already own Steel Armor")
                                 else:
-                                    slow_print("You have added Steel Armor to your "
-                                               "inventory. Remember to "
-                                               "equip it.")
+                                    slow_print("You have added Steel Armor "
+                                               "to your inventory.\nRemember "
+                                               "to equip it.")
                                     adventurer.inventory.append("Steel Armor")
                                 slow_screen_clear()
                             elif choice == str(3):
                                 if adventurer.gold <= 300:
                                     slow_print("You cannot afford this item.")
                                 elif "Silver Armor" in adventurer.inventory:
-                                    slow_print("You already own a Silver Armor")
+                                    slow_print("You already own Silver Armor")
                                 else:
-                                    slow_print("You have added Silver Armor to "
-                                               "your inventory. Remember to "
-                                               "equip it.")
+                                    slow_print("You have added Silver Armor "
+                                               "to your inventory. Remember "
+                                               "to equip it.")
                                     adventurer.inventory.append("Silver Armor")
                                 slow_screen_clear()
                             elif choice == str(4):
@@ -206,9 +209,11 @@ def shop():
                 elif choice == str(3):
                     while True:
                         slow_print("\nAvailable items for sale:")
-                        slow_print("1. Potion. Restore 25 Health. 50 gold.")
-                        slow_print("2. Large Potion. Restore 50 Health. 150 gold.")
-                        slow_print("3. Max Potion: Fully restore Health. 300 gold.")
+                        slow_print("1. Potion. Restore 25 Health.\n50 gold.")
+                        slow_print("2. Large Potion. Restore 50 Health.\n"
+                                   "150 gold.")
+                        slow_print("3. Max Potion: Fully restore Health.\n"
+                                   "300 gold.")
                         slow_print("4. Check other options.")
                         choice = input()
                         try:
@@ -263,7 +268,7 @@ def shop():
                 print(number+1, items_owned)
                 available_items += 1
             print("\nWhat would you like to sell?\n"
-                       "Press 0 to return to the shop.")
+                  "Press 0 to return to the shop.")
             choice = input()
             try:
                 if choice > str(available_items) and choice.alpha() is True:
@@ -389,7 +394,7 @@ def find_a_quest():
                         slow_print("You have already accepted this quest.")
                     else:
                         slow_print("You have accepted the quest to "
-                              "defeat Slimes.")
+                                   "defeat Slimes.")
                         adventurer.quests.append("Slay Slimes")
                     slow_screen_clear()
 
@@ -439,7 +444,8 @@ def find_a_quest():
                     if "Missing Necklace" in adventurer.quests:
                         slow_print("You have already accepted this quest.")
                     else:
-                        slow_print("You have offered to help find the necklace.")
+                        slow_print("You have offered to help "
+                                   "find the necklace.")
                         adventurer.quests.append("Missing Necklace")
                     slow_screen_clear()
 
@@ -448,7 +454,7 @@ def find_a_quest():
                         slow_print("You have already accepted this quest.")
                     else:
                         slow_print("You have agreed to help "
-                              "find the missing person.")
+                                   "find the missing person.")
                         adventurer.quests.append("Missing Person")
                     slow_screen_clear()
 
@@ -457,14 +463,13 @@ def find_a_quest():
                         slow_print("You have already accepted this quest.")
                     else:
                         slow_print("You have agreed to help "
-                              "rescue the kidnapped person.")
+                                   "rescue the kidnapped person.")
                         adventurer.quests.append("Bandit Kidnapping")
                     slow_screen_clear()
 
                 elif choice == str(4):
                     find_a_quest()
                     return False
-
 
     def report_quests():
         slow_print("You step up to the counter to report on your quests.")
@@ -488,7 +493,8 @@ def find_a_quest():
 
         if "Clear Bandit Camp" in adventurer.quests:
             if adventurer.forest_6c_camp is True:
-                slow_print("You collected your reward for clearing the bandit camp.")
+                slow_print("You collected your reward for "
+                           "clearing the bandit camp.")
                 slow_print("You earned 70 gold!")
                 adventurer.gold += 70
                 adventurer.forest_6c_camp = False
@@ -497,7 +503,8 @@ def find_a_quest():
 
         if "Missing Necklace" in adventurer.quests:
             if adventurer.necklace_found is True:
-                slow_print("You collected your reward for finding the necklace.")
+                slow_print("You collected your reward "
+                           "for finding the necklace.")
                 slow_print("You earned 30 gold!")
                 adventurer.gold += 30
                 adventurer.necklace_found = False
@@ -506,7 +513,8 @@ def find_a_quest():
 
         if "Missing Person" in adventurer.quests:
             if adventurer.missing_person_found is True:
-                slow_print("You collected your reward for finding the missing person.")
+                slow_print("You collected your reward for "
+                           "finding the missing person.")
                 slow_print("You earned 40 gold!")
                 adventurer.gold += 40
                 adventurer.missing_person_found = False
@@ -515,7 +523,8 @@ def find_a_quest():
 
         if "Bandit Kidnapping" in adventurer.quests:
             if adventurer.forest_kidnapped_person is True:
-                slow_print("You collected your reward for rescuing the kidnapped person.")
+                slow_print("You collected your reward for "
+                           "rescuing the kidnapped person.")
                 slow_print("You earned 100 gold!")
                 adventurer.gold += 100
                 adventurer.forest_kidnapped_person = False
@@ -526,12 +535,10 @@ def find_a_quest():
         else:
             slow_print("You haven't accepted any quests yet.")
 
-
     def leave_tavern():
         slow_print("You leave the tavern and return to the center of town.\n")
         slow_screen_clear()
         town()
-
 
     while True:
         slow_print("You are in the tavern.")

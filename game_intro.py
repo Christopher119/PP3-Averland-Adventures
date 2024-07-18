@@ -44,7 +44,6 @@ def splash_screen():
             elif choice == str(3):
                 exit_game()
                 return False
-            
 
 
 # move to intro.py
@@ -119,7 +118,8 @@ def game_intro():
             slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
                        f"defence, {adventurer.speed} speed and "
                        f"{adventurer.gold} gold pieces.")
-            slow_print(f"You have a {adventurer.inventory[0]} in your inventory.")
+            slow_print(f"You have a {adventurer.inventory[0]} "
+                       "in your inventory.")
             slow_print(f"Your quest log is empty for now.")
             slow_print(f"Prepare to embark on a thrilling adventure,\n"
                        "in pursuit of fame and fortune, "

@@ -1,6 +1,7 @@
 import random
 from game_slow_functions import *
 
+
 class Character:
     """
     Creates an Instance of a Character Class.
@@ -12,7 +13,6 @@ class Character:
         self.attack = attack
         self.defence = defence
         self.speed = speed
-
 
     def attack_other(self, other_char):
         """
@@ -30,7 +30,6 @@ class Character:
             elif other_char.health <= 0:
                 other_char.health = 0
                 slow_print(f"{other_char.name} has no health remaining!")
-
 
     def check_life(self):
         """
@@ -90,7 +89,6 @@ class Player(Character):
         self.forest3c_camp_enemy = 0
         self.room4bitem = False
 
-
     def update_values(self, new_value):
         self.name = new_value.name
         self.health = new_value.health
@@ -101,19 +99,21 @@ class Player(Character):
         self.inventory = new_value.inventory
         self.quests = new_value.quests
 
-
     def check_status(self):
         slow_screen_clear()
-        slow_print(f"Your name: {self.name}. Your level: {self.level}. Your gold: {self.gold}")
-        slow_print(f"Your experience: {self.exp}/100. Your health: {self.health}/{self.max_health}")
-        slow_print(f"Your attack: {self.attack}. Your defence: {self.defence}. Your speed: {self.speed}")
+        slow_print(f"Your name: {self.name}. Your level: {self.level}. "
+                   f"Your gold: {self.gold}")
+        slow_print(f"Your experience: {self.exp}/100. Your health: "
+                   f"{self.health}/{self.max_health}")
+        slow_print(f"Your attack: {self.attack}. Your defence: "
+                   f"{self.defence}. Your speed: {self.speed}")
         slow_print(f"Your sword: {self.sword}. Your shield: {self.shield}")
         slow_print(f"Your inventory:")
         for number, items_owned in enumerate(self.inventory):
-                print(number+1, items_owned)
+            print(number+1, items_owned)
         slow_print(f"Your quests:")
         for number, quests_owned in enumerate(self.quests):
-                print(number+1, quests_owned)
+            print(number+1, quests_owned)
         slow_print(f"Slimes you have defeated: {self.slimes_defeated}")
         slow_print(f"Caravan defended: {self.caravan_saved}")
         slow_print(f"Bandit camp cleared: {self.forest_6c_camp}")
@@ -143,7 +143,6 @@ class Player(Character):
                     slow_print("Returning to game.")
                     slow_screen_clear()
                     return False
-
 
     def equipment_display(self):
         while True:
@@ -177,7 +176,6 @@ class Player(Character):
                     else:
                         slow_print("You cannot equip that.")
 
-
     def level_up(self, xp_amount):
         self.exp += xp_amount
         slow_print(f"You earned {xp_amount} experience from your victory!")
@@ -198,7 +196,6 @@ class Player(Character):
             slow_print(f"Defence has increased by {def_up} points!")
             slow_print(f"Speed has increased by {spd_up} points!")
 
-
     def equip_sword(self, sword):
         if not sword:
             self.sword = sword
@@ -217,7 +214,6 @@ class Player(Character):
 
         slow_screen_clear()
 
-
     def equip_shield(self, shield):
         if not self.shield:
             self.shield = shield
@@ -235,13 +231,11 @@ class Player(Character):
             self.defence += 6
         slow_screen_clear()
 
-
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
         self.defence *= 2
         other_char.attack_other(self)
         self.defence /= 2
-
 
     def recover_health(self, amount):
         """
@@ -258,7 +252,6 @@ class Player(Character):
 
         slow_print(f"You now have {self.health}.")
 
-
     def use_potion(self, amount):
         """
         A simple function using the above recover_health() function to
@@ -266,7 +259,6 @@ class Player(Character):
         """
         self.recover_health(amount)
         sleep(1.5)
-
 
     def reset_flags(self):
         self.found_gold_road_1 = False
@@ -293,11 +285,10 @@ class Enemy(Character):
         self.loot = loot
         self.experience = experience
 
-
     def drop_loot(self, player, loot):
         player.gold += self.loot
         slow_print(f"The {self.name} dropped {self.loot} gold!")
 
 
 adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
-                    ["Old Sword", "New Sword",  "Potion", "Silver Sword", "Silver Armor"], [], "", "")
+                    ["Old Sword", "New Sword",  "Potion"], [], "", "")

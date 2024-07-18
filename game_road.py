@@ -3,6 +3,7 @@ from game_characters import *
 from game_outside_travels import move_to_town
 from game_battles import *
 
+
 def road_start():
 
     while True:
@@ -41,7 +42,7 @@ def road_start():
                 slow_screen_clear()
                 move_to_town()
                 return False
-            
+
             elif choice == str(4):
                 adventurer.check_status()
 

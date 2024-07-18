@@ -125,8 +125,9 @@ def battle_event(player, enemy_type):
                 # https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9
                 stun_chance = random.randrange(10)+1
                 if stun_chance > 7:
-                    slow_print(f"You knocked the {enemy_type.name} off balance! \
-                               You strike for a counter attack!")
+                    slow_print(f"You knocked the {enemy_type.name} "
+                               "off balance!\nYou strike for "
+                               "a counter attack!")
                     player.attack *= 1.5
                     player.attack_other(enemy_type)
                     player.attack /= 1.5
@@ -201,5 +202,5 @@ def battle_event(player, enemy_type):
 
                             else:
                                 slow_print("Using that item will "
-                                      "have no effect.")
+                                           "have no effect.")
                             slow_screen_clear()

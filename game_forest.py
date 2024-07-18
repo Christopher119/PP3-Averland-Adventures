@@ -47,7 +47,7 @@ def forest_start():
                 slow_screen_clear()
                 move_to_town()
                 return False
-            
+
             elif choice == str(4):
                 adventurer.check_status()
 
@@ -395,7 +395,7 @@ def forest_room3a_campfight():
                 random_battle(adventurer.forest3c_camp_enemy, -1)
                 adventurer.forest3a_camp = True
                 if forest3c_camp_enemy.name == "Slime":
-                        adventurer.slimes_defeated += 3
+                    adventurer.slimes_defeated += 3
                 slow_screen_clear()
                 forest_room3a_campdefeat()
                 return False
@@ -904,6 +904,6 @@ def forest_room7():
 
             elif choice == str(2):
                 slow_print("The forest is eerily quiet here.\n"
-                           "Perhaps the giant spiders had hunted "
+                           "Perhaps the giant spiders had hunted\n"
                            "or scared all the other critters away.")
                 slow_screen_clear()

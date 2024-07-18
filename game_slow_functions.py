@@ -4,6 +4,7 @@ import os
 from sys import stdout
 from time import sleep
 
+
 def slow_print(text, delay=0.025):
     """
     A function to print out lines character by character rather
