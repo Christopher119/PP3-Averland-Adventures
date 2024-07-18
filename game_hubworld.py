@@ -73,6 +73,12 @@ def shop():
     """
     # methods specific to shopping
     def buy():
+        """
+        A function used in the shop for purchasing equipment.
+        The player can buy Swords, Armor, or Potions which
+        will be added to their inventory if they have 
+        enough gold to purchase them.
+        """
         while True:
             slow_print("You approach the shopkeep and ask what "
                        "they have for sale.")
@@ -258,6 +264,12 @@ def shop():
                     return False
 
     def sell():
+        """
+        A function used in the shop for selling equipment.
+        The player can sell their Swords, Armor, or Potions 
+        which will be popped from their inventory and gold
+        will be added to their total.
+        """
         os.system('clear')
         slow_print("You open your bag to see what you "
                    "could sell to the shopkeep.\n")
@@ -329,6 +341,9 @@ def shop():
                         slow_screen_clear()
 
     def leave_shop():
+        """
+        A function used to return to the town.
+        """
         slow_print("You leave the shop and return to the center of town.\n")
         slow_screen_clear()
         town()
@@ -371,6 +386,11 @@ def find_a_quest():
 
     # methods specific to the tavern for quests
     def quest_board():
+        """
+        A function to display quests to a player. The player can
+        accept these quests, which will be added to a list within
+        the player class.
+        """
         while True:
             slow_print("You check the quest board for "
                        "official quests from the town guild.\n")
@@ -422,6 +442,11 @@ def find_a_quest():
                     return False
 
     def ask_a_local():
+        """
+        A function to display quests to a player. The player can
+        accept these quests, which will be added to a list within
+        the player class.
+        """
         while True:
             slow_print("You ask a local and they tell you "
                        "about some jobs you could do.\n")
@@ -472,6 +497,14 @@ def find_a_quest():
                     return False
 
     def report_quests():
+        """
+        A function to report quests a player has finished. It will check
+        if the player has accepted a quest, then if the criteria has been
+        fulfilled by checking for a bool within the player class.
+        It will either reward the player x amount of gold, and then reset
+        the bool and quest within the player list, or inform them they have
+        not accepted any quests or have not completed the quest yet.
+        """
         slow_print("You step up to the counter to report on your quests.")
         if "Slay Slimes" in adventurer.quests:
             if adventurer.slimes_defeated >= 5:
@@ -479,15 +512,18 @@ def find_a_quest():
                 slow_print("You earned 50 gold!")
                 adventurer.gold += 50
                 adventurer.slimes_defeated = 0
+                adventurer.quests.remove("Slay Slimes")
             else:
                 slow_print("You haven't defeated enough slimes yet.")
 
         if "Defend Caravan" in adventurer.quests:
             if adventurer.caravan_saved is True:
-                slow_print("You collected your reward for slaying 5 slimes.")
+                slow_print("You collected your reward for "
+                           "defending the caravan.")
                 slow_print("You earned 100 gold!")
                 adventurer.gold += 100
                 adventurer.caravan_saved = False
+                adventurer.quests.remove("Defend Caravan")
             else:
                 slow_print("You haven't defended any caravan.")
 
@@ -498,6 +534,7 @@ def find_a_quest():
                 slow_print("You earned 70 gold!")
                 adventurer.gold += 70
                 adventurer.forest_6c_camp = False
+                adventurer.quests.remove("Clear Bandit Camp")
             else:
                 slow_print("You haven't cleared the camp.")
 
@@ -508,6 +545,7 @@ def find_a_quest():
                 slow_print("You earned 30 gold!")
                 adventurer.gold += 30
                 adventurer.necklace_found = False
+                adventurer.quests.remove("Missing Necklace")
             else:
                 slow_print("You haven't found the necklace.")
 
@@ -518,6 +556,7 @@ def find_a_quest():
                 slow_print("You earned 40 gold!")
                 adventurer.gold += 40
                 adventurer.missing_person_found = False
+                adventurer.quests.remove("Missing Person")
             else:
                 slow_print("You haven't found the missing person.")
 
@@ -528,6 +567,7 @@ def find_a_quest():
                 slow_print("You earned 100 gold!")
                 adventurer.gold += 100
                 adventurer.forest_kidnapped_person = False
+                adventurer.quests.remove("Bandit Kidnapping")
 
             else:
                 slow_print("You haven't found the kidnapped person.")
@@ -536,6 +576,11 @@ def find_a_quest():
             slow_print("You haven't accepted any quests yet.")
 
     def leave_tavern():
+        """
+        A simple function to leave the quest
+        selection in the tavern
+        and return to the town.
+        """
         slow_print("You leave the tavern and return to the center of town.\n")
         slow_screen_clear()
         town()
@@ -575,6 +620,12 @@ def find_a_quest():
 
 # move to hubworld.py
 def begin_adventure():
+    """
+    A simple function that brings the player
+    to the town gates where they can choose to
+    leave for the road, the forest, or to go
+    back into town to prepare more.
+    """
     while True:
         slow_print("You are at the town gates.")
         slow_print("\nWhat is your destination?\n")
