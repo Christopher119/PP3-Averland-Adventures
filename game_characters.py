@@ -90,6 +90,12 @@ class Player(Character):
         self.room4bitem = False
 
     def update_values(self, new_value):
+        """
+        A function allowing the other scripts in the game to modify
+        placeholder adventurer variable created at the bottom of
+        this script.
+        """
+
         self.name = new_value.name
         self.health = new_value.health
         self.attack = new_value.attack
@@ -100,6 +106,13 @@ class Player(Character):
         self.quests = new_value.quests
 
     def check_status(self):
+        """
+        A simple function that will display the player's stats to
+        the terminal. It will also list their inventory, quests, and
+        quest variables. It will then ask if they want to equip
+        something.
+        """
+
         slow_screen_clear()
         slow_print(f"Your name: {self.name}. Your level: {self.level}. "
                    f"Your gold: {self.gold}")
@@ -145,6 +158,12 @@ class Player(Character):
                     return False
 
     def equipment_display(self):
+        """
+        This function will list out possible equipment the player
+        can equip and prompt them to enter what they wish to equip.
+        If they choose a sword or shield the relevant function
+        will execute. Else it will tell them they can't equip it.
+        """
         while True:
             available_items = 0
             for number, items_owned in enumerate(self.inventory):
@@ -177,6 +196,11 @@ class Player(Character):
                         slow_print("You cannot equip that.")
 
     def level_up(self, xp_amount):
+        """
+        A simple function to add experience to a player and
+        increase a player's level and stats once they reach 100
+        experience points.
+        """
         self.exp += xp_amount
         slow_print(f"You earned {xp_amount} experience from your victory!")
 
@@ -197,6 +221,13 @@ class Player(Character):
             slow_print(f"Speed has increased by {spd_up} points!")
 
     def equip_sword(self, sword):
+        """
+        A simple function to equip the player with their chosen
+        sword. The sword will be removed from their inventory.
+        If they replaced an equipped sword it will be added to
+        their inventory.
+        The type of sword will then increase the player's stats.
+        """
         if not sword:
             self.sword = sword
 
@@ -215,6 +246,13 @@ class Player(Character):
         slow_screen_clear()
 
     def equip_shield(self, shield):
+        """
+        A simple function to equip the player with their chosen
+        shield. The shield will be removed from their inventory.
+        If they replaced an equipped shield it will be added to
+        their inventory.
+        The type of shield will then increase the player's stats.
+        """
         if not self.shield:
             self.shield = shield
 
@@ -232,6 +270,10 @@ class Player(Character):
         slow_screen_clear()
 
     def block_attack(self, other_char):
+        """
+        A simple function to block an enemy attack
+        in battle. It will double defence temporarily.
+        """
         slow_print("You block the enemy attack!")
         self.defence *= 2
         other_char.attack_other(self)
@@ -261,6 +303,11 @@ class Player(Character):
         sleep(1.5)
 
     def reset_flags(self):
+        """
+        A simple function to reset dungeon flags
+        when a player returns from the forest or
+        road. Allowing encounters to be seen again.
+        """
         self.found_gold_road_1 = False
         self.road3_side_road_seen = False
         self.road3_tracks_found = False
@@ -286,9 +333,16 @@ class Enemy(Character):
         self.experience = experience
 
     def drop_loot(self, player, loot):
+        """
+        A simple function used to determine
+        how much gold an enemy will drop and
+        add to the players gold total.
+        """
         player.gold += self.loot
         slow_print(f"The {self.name} dropped {self.loot} gold!")
 
 
+# declaring a placeholder Player character to
+# be accessed and modified by other scripts
 adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
                     ["Old Sword", "New Sword",  "Potion"], [], "", "")
