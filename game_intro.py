@@ -111,14 +111,14 @@ def game_intro():
             slow_screen_clear()
         else:
             adventurer.update_values(Player(your_name, 100, 10, 10, 5, 1000,
-                                     ["Old Sword", "Old Shield"], ["Empty"]))
+                                     ["Potion"], []))
             slow_print(f"You are {adventurer.name}! You are a brave soul "
                        f"with {adventurer.health} points of health.")
             slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
                        f"defence, {adventurer.speed} speed and "
                        f"{adventurer.gold} gold pieces.")
-            slow_print(f"You have {adventurer.inventory} in your inventory.")
-            slow_print(f"Your quest log is {adventurer.quests}... for now.")
+            slow_print(f"You have a {adventurer.inventory[0]} in your inventory.")
+            slow_print(f"Your quest log is empty for now.")
             slow_print(f"Prepare to embark on a thrilling adventure, "
                        "in pursuit of fame and fortune, "
                        f"brave {adventurer.name}!\n")
