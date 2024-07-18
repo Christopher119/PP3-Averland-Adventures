@@ -824,7 +824,7 @@ def forest_room6c():
     if adventurer.forest_6c_camp is False:
         slow_print("You step out of the trees and into a clearing where\n"
                    "some bandits have set up a camp!")
-        bandit_camp = Enemy("Bandits", 50, 25, 10, 10, 100)
+        bandit_camp = Enemy("Bandits", 50, 25, 10, 10, 100, 50)
         battle_event(adventurer, bandit_camp)
         adventurer.forest_6c_camp = True
         if "Clear Bandit Camp" in adventurer.quests:
