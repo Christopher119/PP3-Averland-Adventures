@@ -118,4 +118,3 @@ def game_intro():
             slow_print(".", 0.25)
             town()
             return False
-
