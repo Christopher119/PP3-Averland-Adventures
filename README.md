@@ -378,3 +378,6 @@ This has since been changed from randrange() to randint()
 
 The idea to create a method within the Player class to update values across scripts was found here:<br>
 https://stackoverflow.com/questions/39425762/how-to-modify-variables-in-another-python-file
+
+Checking if inputs contained alphabetic characters was learned on W3Schools:<br>
+https://www.w3schools.com/python/ref_string_isalpha.asp
