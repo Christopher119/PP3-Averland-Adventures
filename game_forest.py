@@ -1,7 +1,7 @@
-from slow_functions import *
-from characters import *
-from game_variables import *
-from hubworld import *
+from game_slow_functions import *
+from game_characters import *
+from game_outside_travels import move_to_town
+from game_battles import *
 
 
 def forest_start():
@@ -44,7 +44,7 @@ def forest_start():
             elif choice == str(3):
                 slow_print("You decide you are unprepared and return to town.")
                 slow_screen_clear()
-                town()
+                move_to_town()
                 return False
 
 
@@ -876,7 +876,7 @@ def forest_room7():
                 slow_print("You depart from the forest,\n"
                            "heading toward the nearest town.")
                 slow_screen_clear()
-                town()
+                move_to_town()
                 return False
 
             elif choice == str(2):

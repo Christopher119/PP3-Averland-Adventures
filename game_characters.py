@@ -1,4 +1,4 @@
-from slow_functions import *
+from game_slow_functions import *
 
 class Character:
     """
@@ -12,19 +12,24 @@ class Character:
         self.defence = defence
         self.speed = speed
 
+
     def attack_other(self, other_char):
         """
         A function allowing one character to reduce another characters health
         """
         damage_taken = self.attack - (other_char.defence / 2.5)
-        other_char.health -= damage_taken
-        slow_print(f"{other_char.name} took {damage_taken} damage!")
-        if other_char.health > 0:
-            slow_print(f"{other_char.name} has {other_char.health} "
-                       "health remaining!")
-        elif other_char.health <= 0:
-            other_char.health = 0
-            slow_print(f"{other_char.name} has no health remaining!")
+        if damage_taken <= 0:
+            slow_print("You completely blocked the attack and took no damage!")
+        else:
+            other_char.health -= damage_taken
+            slow_print(f"{other_char.name} took {damage_taken} damage!")
+            if other_char.health > 0:
+                slow_print(f"{other_char.name} has {other_char.health} "
+                           "health remaining!")
+            elif other_char.health <= 0:
+                other_char.health = 0
+                slow_print(f"{other_char.name} has no health remaining!")
+
 
     def check_life(self):
         """
@@ -34,6 +39,7 @@ class Character:
         if self.health <= 0:
             self.health = 0
             return True
+
 
     def recover_health(self, amount):
         """
@@ -46,6 +52,7 @@ class Character:
             slow_print("You are fully healed!")
         else:
             slow_print(f"You recovered {amount} health!")
+
 
     def use_potion(self, amount):
         """
@@ -69,15 +76,18 @@ class Player(Character):
         self.inventory = inventory
         self.quests = quests
         self.keyitems = []
+
         # variables used for checks through dungeons
         # will be reset to default on return to town
         # road variables
         self.found_gold_road_1 = False
+
         # road_3 variables
         self.road3_side_road_seen = False
         self.road3_tracks_found = False
         self.road3_enemy_fought = False
         self.road3_camp_fought = False
+
         # road_4 variables
         self.road_4_struggle_seen = False
         self.road_4_fight = False
@@ -91,11 +101,24 @@ class Player(Character):
         self.necklace_found = False
         self.forest_6c_camp = False
 
+
+    def update_values(self, new_value):
+        self.name = new_value.name
+        self.health = new_value.health
+        self.attack = new_value.attack
+        self.defence = new_value.defence
+        self.speed = new_value.speed
+        self.gold = new_value.gold
+        self.inventory = new_value.inventory
+        self.quests = new_value.quests
+
+
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
         self.defence *= 2
         other_char.attack_other(self)
         self.defence /= 2
+
 
     def reset_flags(self):
         self.road3_side_road_seen = False
@@ -123,6 +146,11 @@ class Enemy(Character):
         super().__init__(name, health, attack, defence, speed)
         self.loot = loot
 
+
     def drop_loot(self, player, loot):
         player.gold += self.loot
         slow_print(f"The {self.name} dropped {self.loot} gold!")
+
+
+adventurer = Player("Adventurer Boy", 100, 1000, 10, 12, 1000,
+                    ["Old Sword", "New Sword",  "Potion"], [])

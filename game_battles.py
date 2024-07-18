@@ -1,6 +1,6 @@
 import random
-from slow_functions import *
-from characters import *
+from game_slow_functions import *
+from game_characters import *
 
 
 def random_enemy(area):

@@ -1,8 +1,7 @@
-from slow_functions import *
-from characters import *
-from game_variables import *
-from game_road import *
-from game_forest import *
+from game_slow_functions import *
+from game_characters import *
+from game_inside_travels import move_to_road, move_to_forest
+from game_characters import *
 
 def town():
     """
@@ -11,6 +10,7 @@ def town():
     """
     adventurer.reset_flags()
     os.system('clear')
+    print(adventurer.name)
     slow_print("You are in town.")
     while True:
         slow_print("What would you like to do?\n")
@@ -510,13 +510,13 @@ def begin_adventure():
             if choice == str(1):
                 slow_print("You travel the merchant's road.\n")
                 slow_screen_clear()
-                road_start()
+                move_to_road()
                 return False
 
             elif choice == str(2):
                 slow_print("You depart towards the forest\n")
                 slow_screen_clear()
-                forest_start()
+                move_to_forest()
                 return False
 
             elif choice == str(3):

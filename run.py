@@ -12,9 +12,9 @@ from time import sleep
 import random
 
 # importing other scripts
-from slow_functions import *
-from intro import *
-from characters import *
+from game_slow_functions import *
+from game_intro import *
+from game_characters import *
 
 
 #def slow_print(text, delay=0.025):

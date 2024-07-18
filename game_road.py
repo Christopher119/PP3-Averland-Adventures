@@ -1,8 +1,7 @@
-from slow_functions import *
-from characters import *
-from game_variables import *
-from hubworld import *
-
+from game_slow_functions import *
+from game_characters import *
+from game_outside_travels import move_to_town
+from game_battles import *
 
 def road_start():
 
@@ -39,7 +38,7 @@ def road_start():
             elif choice == str(3):
                 print("You decide you are unprepared and return to town.")
                 slow_screen_clear()
-                town()
+                move_to_town()
                 return False
 
 
@@ -564,7 +563,7 @@ def road_7():
             if choice == str(1):
                 slow_print("You continue and arrive at the next town.")
                 slow_screen_clear()
-                town()
+                move_to_town()
                 return False
 
             elif choice == str(2):

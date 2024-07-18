@@ -4,10 +4,10 @@ import os
 from sys import stdout
 from time import sleep
 
-from slow_functions import *
-from characters import *
-from game_variables import *
-from hubworld import town
+from game_slow_functions import *
+from game_characters import *
+from game_hubworld import town
+
 
 def splash_screen():
     """
@@ -110,8 +110,8 @@ def game_intro():
                   "and only use alphabetic characters.\n")
             slow_screen_clear()
         else:
-            adventurer = Player(your_name, 100, 10, 10, 5, 10,
-                                ["Old Sword", "Old Shield"], ["Empty"])
+            adventurer.update_values(Player(your_name, 100, 10, 10, 5, 1000,
+                                     ["Old Sword", "Old Shield"], ["Empty"]))
             slow_print(f"You are {adventurer.name}! You are a brave soul "
                        f"with {adventurer.health} points of health.")
             slow_print(f"{adventurer.attack} attack, {adventurer.defence} "
