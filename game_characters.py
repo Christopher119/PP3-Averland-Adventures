@@ -113,6 +113,24 @@ class Player(Character):
         self.quests = new_value.quests
 
 
+    def check_status(self):
+        slow_print(f"Your name: {self.name}")
+        slow_print(f"Your health: {self.health}")
+        slow_print(f"Your attack: {self.attack}")
+        slow_print(f"Your defence: {self.defence}")
+        slow_print(f"Your speed: {self.speed}")
+        slow_print(f"Your gold: {self.gold}")
+        slow_print(f"Your inventory:")
+        for number, items_owned in enumerate(self.inventory):
+                slow_print(number+1, items_owned)
+        slow_print(f"Your quests:")
+        for number, quests_owned in enumerate(self.quests):
+                slow_print(number+1, quests_owned)
+        slow_print(f"Your key items:")
+        for number, keys_owned in enumerate(self.keyitems):
+                slow_print(number+1, keys_owned)
+
+
     def block_attack(self, other_char):
         slow_print("You block the enemy attack!")
         self.defence *= 2
