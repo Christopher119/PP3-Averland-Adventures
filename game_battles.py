@@ -154,8 +154,8 @@ def battle_event(player, enemy_type):
                     for number, items_owned in enumerate(adventurer.inventory):
                         print(number+1, items_owned)
                         available_items += 1
-                    slow_print("\nWhat would you like to use? \
-                    \nPress 0 to return to the battle menu.")
+                    slow_print("\nWhat would you like to use?\n"
+                               "Press 0 to return to the battle menu.")
                     choice = input()
                     try:
                         if choice > str(available_items) \
@@ -163,8 +163,8 @@ def battle_event(player, enemy_type):
                             raise Exception
 
                     except Exception:
-                        slow_print("Please only enter the numbers on screen, \
-                        \nor 0 to return to the shop.")
+                        slow_print("Please only enter the numbers on screen,\n"
+                                   "or 0 to return to the shop.")
                         slow_screen_clear()
 
                     else:

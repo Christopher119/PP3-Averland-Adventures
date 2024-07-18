@@ -156,7 +156,7 @@ I made sure that any lines that were long used new-line breaks to force a wrap b
 
 # Features
 
-## Game#
+## Game
 The game begins by prompting the user to start, read the rules, or exit the game.<br>
 ![Demo image of the splash screen in game_intro.py](assets/readme_images/demo_images/demo_game_intro.png)
 
@@ -215,6 +215,34 @@ A battle ends once the player or the enemy is defeated.<br>
 
 ## Features Left to Implement
 
+All features were implemented as planned, however the game could be greatly expanded on given time..
+Possible future additions to the game may include:
+
+1. Most important feature would be a helper function used to make choices, to help eliminate repeated code.<br>
+    I feel this would be best accomplished with a function that takes in *args or *kwargs as an argument.
+    As of now I am uncertain how to implement it effectively.<br>
+
+2. A more randomised quest system.<br>
+    As of now the quest system is very static. It would be nice to have quests be pulled randomly from a list and offered to the player with each visit.<br>
+
+3. A more robust inventory system.<br>
+    As of now the inventory system feels quite static.<br>
+    Perhaps having equipment items registered as sets which the player could hold, the key being their name and a value of their stat boost?
+
+4. More dungeons.<br>
+    While the two implemented dungeons (Road and Forest) function well, having the option for more would help increase replayability.
+
+5. Scaling difficulty.<br>
+    As the player levels up or buys stronger equipment they can start to outclass enemies entirely.<br>
+    Perhaps a system would be need to take the player's current level so as to scale the stats supplied to randomised enemies.<br>
+    Or a difficulty scale as seen in the game flow chart that would increase enemy stats based on dungeon.
+
+6. Greater item variety.<br>
+    Currently the only usable items are potions to restore player health.<br>
+    Perhaps an addition of items such as throwing knives or bombs that could damage enemies, or tonics to temporarily increase a players stats.
+
+7. A save function.<br>
+    Storing the player's current data to a file the player can then use to load their character after they quit the game so they do not have to start over entirely.<br>
 
 
 # Testing
