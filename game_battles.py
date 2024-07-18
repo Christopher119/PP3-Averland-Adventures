@@ -210,3 +210,42 @@ def battle_event(player, enemy_type):
                                 slow_print("Using that item will "
                                            "have no effect.")
                             slow_screen_clear()
+
+
+def game_over():
+    """
+    A function called when the player loses all health.
+    It will present the option for the player to try
+    again or quit.
+    """
+    slow_print("Alas, brave adventurer, it seems the dangers "
+               "of Averland were too great for you...")
+    slow_print("Perhaps, someday, another brave soul with take "
+               "up your sword and fight in your name...")
+    slow_print("For now, rest... and worry not about the "
+               "people of Averland any longer...")
+    slow_print("...")
+    while True:
+        slow_print("\nWould you like to start again?")
+        slow_print("1. Yes")
+        slow_print("2. No")
+        choice = input()
+        try:
+            if choice != str(1) and choice != str(2):
+                raise Exception
+        except Exception:
+            slow_print("Please enter only 1 or 2.\n")
+            slow_screen_clear()
+        else:
+            if choice == str(1):
+                slow_print("May your efforts bear more fruit "
+                           "this time, adventurer.\n")
+                slow_screen_clear()
+                game_intro()
+                return False
+
+            elif choice == str(2):
+                slow_print("Perhaps we shall meet again in another life.\n")
+                sleep(3)
+                quit()
+                return False
