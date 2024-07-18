@@ -8,7 +8,16 @@ This is a simple text-based "Choose Your Own Adventure" styled RPG game.
 
 ## Strategy
 
-What users want from the app.
+Users will want clean presentation of text.
+Users will want unambiguous options presented to them.
+Users will want to be able to loop through each area of the game in a logical way.
+Users will want a progression system.
+Users will want equipment for their character.
+Users will want to be able to earn gold for more equipment.
+Users will want to be able to defeat enemies.
+Users will want to be able to clear quests.
+Users will want to be able to restart if they fail.
+Users will want the option to quit once they are done.
 
 ## Scope
 
@@ -17,6 +26,42 @@ How the app should operate.
 ## Structure
 
 How the app should be built.
+A flowchart was drawn up before any code was written to better understand how each function would lead to one another to create the gameplay loop.<br>
+![Image of a flowchart that established the basis for the how the game would operate](assets/readme_images/game_flow_chart.png)
+
+A flowchart was drawn up before any code was written to better map out the road for when it came time to code it.<br>
+![Image of a flowchart that established the basis and map for the road 'dungeon'](assets/readme_images/game_road_flow_chart.png)
+
+A flowchart was drawn up before any code was written to better map out the forest for when it came time to code it.<br>
+![Image of a flowchart that established the basis and map for the forest 'dungeon'](assets/readme_images/game_forest_flow_chart.png)
+
+### Main Scripts
+
+#### run.py
+
+#### Helper Scripts
+
+##### game_slow_functions
+
+##### game_inside_travels
+
+##### game_outside_travels
+
+### World Scripts
+
+#### game_intro
+
+#### game_hubworld
+
+#### game_road
+
+#### game_forest
+
+### Other Scripts
+
+#### game_characters
+
+#### game_battles
 
 ## Skeleton
 
