@@ -111,6 +111,7 @@ def battle_event(player, enemy_type):
                 if enemy_type.check_life():
                     slow_print(f"You have defeated the {enemy_type.name}!")
                     enemy_type.drop_loot(adventurer, enemy_type.loot)
+                    adventurer.level_up(enemy_type.experience)
                     slow_screen_clear()
                     battle_loop = False
                     break
@@ -133,6 +134,7 @@ def battle_event(player, enemy_type):
                     if enemy_type.check_life():
                         print(f"You have defeated the {enemy_type.name}!")
                         enemy_type.drop_loot(adventurer, enemy_type.loot)
+                        adventurer.level_up(enemy_type.experience)
                         slow_screen_clear()
                         battle_loop = False
                     slow_screen_clear()
