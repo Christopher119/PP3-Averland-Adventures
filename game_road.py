@@ -16,7 +16,7 @@ def road_start():
         choice = input()
         try:
             if choice != str(1) and choice != str(2) \
-             and choice != str(3):
+             and choice != str(3) and choice != str(4):
                 raise Exception
 
         except Exception:

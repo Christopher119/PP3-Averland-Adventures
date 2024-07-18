@@ -539,7 +539,7 @@ def find_a_quest():
         choice = input()
         try:
             if choice != str(1) and choice != str(2) \
-             and choice != str(3):
+             and choice != str(3) and choice != str(4):
                 raise Exception
         except Exception:
             slow_print("Please enter only 1, 2, or 3.\n")
@@ -555,7 +555,7 @@ def find_a_quest():
 
             elif choice == str(3):
                 report_quests()
-                return False
+                slow_screen_clear()
 
             elif choice == str(4):
                 leave_tavern()
