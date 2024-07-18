@@ -1,32 +1,122 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome,
+# AVERLAND ADVENTURES
+___
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+This is a simple text-based "Choose Your Own Adventure" styled RPG game.
 
-## Reminders
+# Five UX Planes
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## Strategy
 
-## Creating the Heroku app
+What users want from the app.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Scope
 
-1. `heroku/python`
-2. `heroku/nodejs`
+How the app should operate.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Structure
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+How the app should be built.
 
-Connect your GitHub repository and deploy as normal.
+## Skeleton
 
-## Constraints
+How the app should execute its code.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Surface
 
----
+Description of visuals.
 
-Happy coding!
+# Features
+
+## Game
+
+## Intro
+
+### Rules
+
+## Hubworld
+
+### Town
+
+### Shop
+
+### Quests
+
+### Adventure
+
+## Merchant Road
+
+## Forest
+
+## Features Left to Implement
+
+
+
+# Testing
+
+There were multiple stages of testing as the project developed.<br>
+
+|TEST|PROCESS|EXPECTATION|RESULT|
+|--|--|--|--|
+| What was test | What I did | What I expected | Did it work |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+
+# Validating
+
+## run.py
+
+## game_slow_functions
+
+## game_inside_travels
+
+## game_outside_travels
+
+## game characters
+
+## game_intro
+
+## game_hubworld
+
+## game_road
+
+## game_forest
+
+## game_battles
+
+# Bugs
+
+All known bugs have been found and removed.<br>
+Notable bugs included:<br>
+1. Example.<br>
+
+2. Example.<br>
+
+3. Example.<br>
+
+4. Example.<br>
+
+# Deployment
+
+This app was deployed through Heroku by being linked to the Github repository.<br>
+In order to deply the site:<br>
+
+1. I navigated to my `Dashboard` on Heroku.<br>
+2. I selected the `New` dropdown and selected `Create new app`. <br>
+3. I gave the app the name "Averland Adventures" and set the region to Europe.<br>
+4. I navigated to the `Settings` tab.<br>
+5. I added the `heroku/python` and `heroku/nodejs` to by clicking the `Add buildpack` button.<br>
+6. I created a `Config Var` by selecting `Reveal Config Vars` and adding "Port" to the `Key` and "8000" to the `Port`. I confirmed this by selecting `Add` <br>
+7. I navigated to the `Deploy` tab.
+8. I selected `GitHub` as my deployment method.
+9. I searched for and connected my repository name under the `App connected to GitHub` selection.
+10. I initially deployed it manually by selecting `main` as my branch and selecting `Deploy Branch`.
+11. I have since anabled `Automatic Deployments` by selecting `Enable Automatic Deploys`
+
+The live link can be found here - 
+
+# Credits
+
+## Content
