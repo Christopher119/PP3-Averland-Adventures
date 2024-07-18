@@ -1,9 +1,3 @@
-# https://www.geeksforgeeks.org/clear-screen-python/
-import os
-# imported to create a character by character print function
-from sys import stdout
-from time import sleep
-
 from game_slow_functions import *
 from game_characters import *
 from game_hubworld import town
@@ -46,13 +40,10 @@ def splash_screen():
                 return False
 
 
-# move to intro.py
 def rules():
     """
     A function to display rules to the player.
     """
-    # https://www.geeksforgeeks.org/clear-screen-python/
-    # clearing screen before presenting new lines
     os.system('clear')
     slow_print("In Averland Adventures you take on "
                "the role of a new adventurer.")
@@ -78,7 +69,6 @@ def rules():
                 return False
 
 
-# move to intro.py
 def exit_game():
     """
     A function to end the game.
@@ -89,7 +79,6 @@ def exit_game():
     slow_print("Farewell.")
 
 
-# move to intro.py
 def game_intro():
     """
     A function to begin the game.
@@ -132,6 +121,11 @@ def game_intro():
 
 
 def game_over():
+    """
+    A function called when the player loses all health.
+    It will present the option for the player to try
+    again or quit.
+    """
     slow_print("Alas, brave adventurer, it seems the dangers "
                "of Averland were too great for you...")
     slow_print("Perhaps, someday, another brave soul with take "
